@@ -16,9 +16,9 @@ export default function HardwarePage() {
           I believe in the tight integration of hardware and software to create seamless experiences. My approach is to design and build physical projects that are both functional and beautiful.
         </p>
         <div className="grid gap-8">
-          {hardwareData.map(project => (
+          {hardwareData.map((project, index) => (
             <div key={project.name} className="grid md:grid-cols-2 gap-8 items-start">
-               <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
+               <Card className={`bg-card border-border hover:border-accent/50 transition-colors duration-300 ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
                 <CardHeader>
                     <CardTitle className="text-xl font-headline mb-2">{project.name}</CardTitle>
                     <CardDescription className="text-muted-foreground text-sm">{project.description}</CardDescription>

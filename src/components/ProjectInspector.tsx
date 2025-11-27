@@ -24,7 +24,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden">
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={project.name} className="border-b-0">
-                <div className="p-6 flex flex-col md:flex-row items-start md:items-center gap-4 text-left">
+                <div className="p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 text-left">
                     {image && (
                     <div className="relative w-24 h-16 rounded-md overflow-hidden flex-shrink-0">
                         <Image
@@ -37,10 +37,10 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                     </div>
                     )}
                     <div className="flex-grow">
-                        <h3 className="text-xl font-headline mb-2">{project.name}</h3>
+                        <h3 className="text-lg md:text-xl font-headline mb-1 md:mb-2">{project.name}</h3>
                         <p className="text-muted-foreground text-sm">{project.description}</p>
                     </div>
-                    <div className='flex gap-2 items-center'>
+                    <div className='flex gap-2 items-center self-end md:self-center'>
                         {project.link && project.link !== "#" && (
                             <Button asChild variant="outline" size="sm">
                                 <a
@@ -48,13 +48,13 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    View Project <ArrowUpRight className="ml-1 h-4 w-4" />
+                                    View <ArrowUpRight className="ml-1 h-4 w-4 hidden sm:inline" />
                                 </a>
                             </Button>
                         )}
                         {project.interactive && (
                             <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:hidden">
-                                <span className="flex items-center gap-2">Details <ChevronsUpDown className="h-4 w-4" /></span>
+                               <span className="flex items-center gap-2 text-sm">Details <ChevronsUpDown className="h-4 w-4" /></span>
                             </AccordionTrigger>
                         )}
                     </div>

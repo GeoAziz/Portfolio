@@ -32,7 +32,7 @@ export default function Home() {
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4 mb-8">
           Dive into the different domains of my work, from software systems and AI to hardware and open-source contributions.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <Button variant="outline" asChild><Link href="/systems">Systems</Link></Button>
             <Button variant="outline" asChild><Link href="/ai">AI</Link></Button>
             <Button variant="outline" asChild><Link href="/hardware">Hardware</Link></Button>
