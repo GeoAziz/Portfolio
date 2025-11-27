@@ -9,6 +9,8 @@ import { Button } from './ui/button';
 import {
   Sheet,
   SheetContent,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -77,6 +79,9 @@ export function Navigation() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
+               <SheetHeader>
+                <SheetTitle className="sr-only">Main Menu</SheetTitle>
+              </SheetHeader>
               <Link href="/" className="flex items-center space-x-2 mb-6">
                  <svg
                     xmlns="http://www.w3.org/2000/svg"
