@@ -41,7 +41,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
   const isHardware = isHardwareProject(project);
   const isOpenSource = isOpenSourceProject(project);
 
-  const title = isOpenSource ? project.name : project.title ?? (project as Project).name;
+  const title = 'name' in project ? project.name : project.title;
   let shortDescription = '';
   if (isSystem) shortDescription = project.short_description;
   else if ('description' in project) shortDescription = project.description;
