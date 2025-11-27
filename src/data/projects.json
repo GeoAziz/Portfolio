@@ -1,8 +1,8 @@
 
 [
   {
-    "name": "Distributed Threat Analyzer",
-    "description": "Multi-node system for monitoring and predicting network anomalies.",
+    "name": "CYGNUS",
+    "description": "Exploring multi-node model execution and orchestration.",
     "tech": ["Python", "PySpark", "Docker", "Kafka"],
     "link": "https://github.com/GeoAziz/jarvis-cyber-daemon",
     "interactive": true,
@@ -10,21 +10,21 @@
     "image": "distributed-threat-analyzer"
   },
   {
-    "name": "Modular AI Assistant",
-    "description": "Conversational AI with memory, task automation, and plugin support.",
+    "name": "NEURA-LINK",
+    "description": "Investigating long-term context persistence in reasoning.",
     "tech": ["Next.js", "Node.js", "OpenAI API", "Framer Motion"],
     "link": "#",
     "interactive": true,
-    "category": "Systems",
+    "category": "AI",
     "image": "modular-ai-assistant"
   },
   {
-    "name": "Real-Time Data Pipeline",
-    "description": "Streaming system for processing IoT sensor data in real-time.",
-    "tech": ["Python", "Apache Flink", "Docker", "AWS"],
+    "name": "QUANTUM CORE",
+    "description": "Rapid inference using reconfigurable hardware acceleration.",
+    "tech": ["Verilog", "FPGA", "Python"],
     "link": "#",
-    "interactive": false,
-    "category": "Systems",
+    "interactive": true,
+    "category": "Hardware",
     "image": "real-time-data-pipeline"
   },
   {
@@ -73,3 +73,4 @@
     "image": "iot-sensor-community"
   }
 ]
+
