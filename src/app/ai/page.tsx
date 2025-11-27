@@ -1,5 +1,4 @@
 
-
 import { ProjectInspector } from '@/components/ProjectInspector';
 import { SectionHeader } from '@/components/SectionHeader';
 import { aiData } from '@/lib/content';
@@ -17,7 +16,7 @@ export default function AiPage() {
       <div className="space-y-16">
         <div className="text-center max-w-4xl mx-auto">
             <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
-                <BrainCircuit className="w-10 h-10 text-accent" /> AI / Machine Intelligence
+                <BrainCircuit className="w-10 h-10 text-accent-ai" /> AI / Machine Intelligence
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground">
                 Explorations in language, reasoning & autonomous models.
@@ -30,11 +29,11 @@ export default function AiPage() {
             {models.map((model) => (
               <Dialog key={model.id}>
                 <DialogTrigger asChild>
-                   <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 text-left cursor-pointer h-full flex flex-col">
+                   <Card className="bg-card border-border hover:border-accent-ai/50 transition-colors duration-300 text-left cursor-pointer h-full flex flex-col">
                       <CardHeader>
                         <div className="flex items-start justify-between gap-4">
                            <CardTitle className="text-xl font-headline">{model.name}</CardTitle>
-                           <Cpu className="w-6 h-6 text-accent/80 flex-shrink-0" />
+                           <Cpu className="w-6 h-6 text-accent-ai/80 flex-shrink-0" />
                         </div>
                         <CardDescription>{model.type}</CardDescription>
                       </CardHeader>
@@ -68,18 +67,18 @@ export default function AiPage() {
                      <div>
                         <h4 className="font-semibold text-foreground mb-2">Strengths</h4>
                         <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                          {model.strengths.map(s => <li key={s}>{s}</li>)}
+                          {model.strengths?.map(s => <li key={s}>{s}</li>)}
                         </ul>
                       </div>
                       <div>
                         <h4 className="font-semibold text-foreground mb-2">Weaknesses</h4>
                          <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                          {model.weaknesses.map(w => <li key={w}>{w}</li>)}
+                          {model.weaknesses?.map(w => <li key={w}>{w}</li>)}
                         </ul>
                       </div>
                        <div>
                         <h4 className="font-semibold text-foreground mb-2">Sample Prompt</h4>
-                        <code className="text-accent bg-secondary p-2 rounded-md block text-xs">{model.sample_prompt}</code>
+                        <code className="text-accent-ai bg-secondary p-2 rounded-md block text-xs">{model.sample_prompt}</code>
                       </div>
                        <div>
                         <h4 className="font-semibold text-foreground mb-2">Sample Output</h4>

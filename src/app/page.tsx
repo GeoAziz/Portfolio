@@ -7,22 +7,26 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { projectsData } from '@/lib/content';
 import { Code, Cpu, HardDrive } from 'lucide-react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const competencies = [
   {
     icon: HardDrive,
     title: 'Systems Engineering',
     description: 'I design and build stable, scalable, high-performance architectures.',
+    color: 'text-accent-systems',
   },
   {
     icon: Cpu,
     title: 'AI & Machine Learning',
     description: 'I experiment with models, agents, and intelligent automation.',
+     color: 'text-accent-ai',
   },
   {
     icon: Code,
     title: 'Hardware & Embedded',
     description: 'I work with electronics, microcontrollers, and physical-digital interfaces.',
+    color: 'text-accent-hardware',
   },
 ];
 
@@ -61,7 +65,7 @@ export default function Home() {
           {competencies.map((competency) => (
             <div key={competency.title} className="flex items-start gap-4">
               <div className="bg-secondary p-3 rounded-full">
-                <competency.icon className="w-6 h-6 text-accent" />
+                <competency.icon className={cn("w-6 h-6", competency.color)} />
               </div>
               <div>
                 <h3 className="text-lg font-headline font-semibold text-foreground">{competency.title}</h3>

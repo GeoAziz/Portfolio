@@ -14,7 +14,7 @@ export default function HardwarePage() {
       <div className="space-y-16">
         <div className="text-center max-w-4xl mx-auto">
             <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
-                <HardDrive className="w-10 h-10 text-accent" /> Hardware Engineering
+                <HardDrive className="w-10 h-10 text-accent-hardware" /> Hardware Engineering
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground">
                 From microcontrollers to sensors, circuits & real-world robotics.

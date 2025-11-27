@@ -9,6 +9,13 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
@@ -41,9 +48,11 @@ export default {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
-        },
-        'accent-2': {
-          DEFAULT: 'hsl(var(--accent-2))',
+          systems: 'hsl(var(--accent-systems))',
+          ai: 'hsl(var(--accent-ai))',
+          hardware: 'hsl(var(--accent-hardware))',
+          research: 'hsl(var(--accent-research))',
+          opensource: 'hsl(var(--accent-opensource))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -95,7 +104,7 @@ export default {
         'fade-in-up': {
           '0%': {
             opacity: '0',
-            transform: 'translateY(20px)',
+            transform: 'translateY(10px)',
           },
           '100%': {
             opacity: '1',
@@ -106,7 +115,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in-up': 'fade-in-up 0.45s ease-in-out forwards',
+        'fade-in-up': 'fade-in-up 0.5s ease-in-out forwards',
       },
     },
   },

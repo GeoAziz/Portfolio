@@ -54,7 +54,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
   else if ('tech' in project) tech = project.tech;
 
   const link = isOpenSource ? project.repo : ('link' in project ? project.link : '#');
-  const interactive = isOpenSource ? true : ('interactive' in project ? project.interactive : false);
+  const interactive = 'interactive' in project ? project.interactive : false;
 
   return (
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden">
@@ -83,6 +83,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                     href={link}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label={`View project ${title} on GitHub`}
                                 >
                                     View <ArrowUpRight className="ml-1 h-4 w-4 hidden sm:inline" />
                                 </a>
@@ -133,7 +134,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                         </div>
                                          <div>
                                             <h4 className="font-semibold mb-2 text-foreground">Result</h4>
-                                            <p className="text-accent">{project.result}</p>
+                                            <p className="text-accent-ai">{project.result}</p>
                                         </div>
                                     </>
                                 )}
@@ -177,7 +178,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                            {isSystem && project.diagram_ascii && (
                                 <div>
                                     <h4 className="font-semibold mb-2 text-foreground">Architecture</h4>
-                                    <pre className="bg-secondary p-4 rounded-md text-muted-foreground font-mono text-xs whitespace-pre-wrap">
+                                    <pre className="bg-secondary p-4 rounded-md text-muted-foreground font-mono text-xs whitespace-pre-wrap overflow-x-auto">
                                         <code>
                                         {project.diagram_ascii.join('\n')}
                                         </code>

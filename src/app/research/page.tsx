@@ -20,7 +20,7 @@ export default function ResearchPage() {
       <div className="space-y-16">
         <div className="text-center max-w-4xl mx-auto">
             <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
-                <TestTube className="w-10 h-10 text-accent" /> Research & Inquiry
+                <TestTube className="w-10 h-10 text-accent-research" /> Research & Inquiry
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground">
                 Documenting experiments, discoveries, hypotheses & evolving intellectual frameworks.
@@ -37,7 +37,7 @@ export default function ResearchPage() {
               const details = researchDetails[item.id];
               return (
                 <AccordionItem value={item.id} key={item.id} asChild>
-                    <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
+                    <Card className="bg-card border-border hover:border-accent-research/50 transition-colors duration-300">
                         <AccordionTrigger className="p-6 text-left w-full hover:no-underline">
                              <div className="flex-grow">
                                 <CardTitle className="text-xl font-headline text-left">{item.title}</CardTitle>
@@ -92,7 +92,7 @@ export default function ResearchPage() {
             <div className="max-w-3xl mx-auto space-y-6 mt-8">
                 {learningLog.map((log, index) => (
                     <div key={index} className="bg-card border border-border/50 rounded-lg p-4 text-sm relative flex items-start gap-4">
-                        <Lightbulb className="w-4 h-4 text-accent/80 mt-1 flex-shrink-0" />
+                        <Lightbulb className="w-4 h-4 text-accent-research/80 mt-1 flex-shrink-0" />
                         <div>
                             <p className="absolute -top-3 left-4 bg-card px-2 text-xs text-muted-foreground">{log.date}</p>
                             <p className="text-foreground/90 italic">{log.entry}</p>

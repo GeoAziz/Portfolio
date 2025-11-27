@@ -1,7 +1,9 @@
 
-export function SectionHeader({ title }: { title: string }) {
+import { cn } from '@/lib/utils';
+
+export function SectionHeader({ title, className }: { title: string; className?: string }) {
   return (
-    <div className="relative text-center mb-12">
+    <div className={cn("relative text-center mb-12", className)}>
       <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-foreground">
         {title}
       </h2>

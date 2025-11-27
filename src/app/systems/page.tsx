@@ -5,6 +5,7 @@ import { systemsData } from '@/lib/content';
 import { MotionFade } from '@/components/MotionFade';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Cpu } from 'lucide-react';
 
 export default function SystemsPage() {
   const { systems_intro, systems_skills, systems_projects } = systemsData;
@@ -13,8 +14,8 @@ export default function SystemsPage() {
     <MotionFade>
       <div className="space-y-16">
         <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-                {systems_intro.title}
+             <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
+                <Cpu className="w-10 h-10 text-accent-systems" /> {systems_intro.title}
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground">
                 {systems_intro.subtitle}
@@ -25,8 +26,8 @@ export default function SystemsPage() {
         </div>
         
         <section>
-          <h2 className="text-2xl font-headline font-bold mb-6 text-center">System Skill Matrix</h2>
-          <Card className="bg-card border-border">
+          <SectionHeader title="System Skill Matrix" />
+          <Card className="bg-card border-border mt-8">
             <CardContent className="p-6">
               <div className="flex flex-wrap justify-center gap-2">
                 {systems_skills.map((skill) => (

@@ -16,7 +16,7 @@ export default function OpenSourcePage() {
       <div className="space-y-16">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
-            <Github className="w-10 h-10 text-accent" /> Open Source
+            <Github className="w-10 h-10 text-accent-opensource" /> Open Source
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground">
             Building tools, frameworks, and utilities that empower the community.
@@ -38,7 +38,7 @@ export default function OpenSourcePage() {
         <section>
             <SectionHeader title="Tooling Philosophy" />
             <div className="max-w-3xl mx-auto mt-8 text-center">
-                 <blockquote className="border-l-4 border-accent pl-6 text-xl md:text-2xl font-light text-foreground/90 italic text-left mb-8">
+                 <blockquote className="border-l-4 border-accent-opensource pl-6 text-xl md:text-2xl font-light text-foreground/90 italic text-left mb-8">
                     {philosophy.statement}
                  </blockquote>
                 <div className="flex flex-wrap justify-center gap-2">

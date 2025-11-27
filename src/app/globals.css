@@ -19,7 +19,11 @@
     --muted-foreground: 0 0% 60%;
     --accent: 196 100% 70%;
     --accent-foreground: 0 0% 7%;
-    --accent-2: 46 100% 62%;
+    --accent-systems: 210 100% 60%;
+    --accent-ai: 270 90% 70%;
+    --accent-hardware: 135 90% 55%;
+    --accent-research: 45 100% 60%;
+    --accent-opensource: 25 95% 65%;
     --destructive: 355 100% 63%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 10%;
@@ -48,7 +52,6 @@
     --muted-foreground: 0 0% 60%;
     --accent: 196 100% 70%;
     --accent-foreground: 0 0% 7%;
-    --accent-2: 46 100% 62%;
     --destructive: 355 100% 63%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 10%;
