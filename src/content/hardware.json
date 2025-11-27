@@ -1,21 +1,30 @@
 
 [
   {
-    "title": "Biometric Sensor Firmware",
-    "summary": "Firmware for a custom PCB that reads and processes biometric data in real-time with low power consumption.",
-    "stack": ["C++", "PlatformIO", "FreeRTOS"],
-    "architecture": "Microcontroller-based system using FreeRTOS for task scheduling. I2C and SPI for sensor communication. BLE for data transmission.",
-    "responsibilities": "Wrote the complete firmware, designed power management strategies, and implemented the communication protocols.",
-    "link": null,
-    "image": "biometric-sensor-fw"
+    "title": "IoT Sensor Hub",
+    "summary": "Multi-sensor environmental monitoring system with remote dashboard.",
+    "stack": ["Arduino", "Raspberry Pi", "MQTT", "Python"],
+    "architecture": "An IoT system with multiple sensors connected to an Arduino, which sends data to a Raspberry Pi via MQTT. A Python script on the Pi processes the data and displays it on a remote dashboard.",
+    "responsibilities": "Designed the hardware setup, wrote the Arduino and Python code, and configured the MQTT broker for communication.",
+    "link": "https://github.com",
+    "image": "iot-sensor-hub"
   },
   {
-    "title": "Modular Smart Home Hub",
-    "summary": "A central hub for smart home devices with a custom-designed enclosure and modular hardware components.",
-    "stack": ["Fusion 360", "ESP32", "PCB Design"],
-    "architecture": "Main control board with an ESP32, connected to swappable modules for different protocols (Zigbee, Z-Wave).",
-    "responsibilities": "Designed the 3D-printable enclosure, laid out the main PCB, and developed a proof-of-concept module.",
+    "title": "3D Printed Robotic Arm",
+    "summary": "Robotic arm controlled via Python scripts and custom controller.",
+    "stack": ["Python", "Servo Motors", "3D Printing", "C++"],
+    "architecture": "A 3D-printed robotic arm with servo motors controlled by a custom C++ firmware on a microcontroller. High-level control is provided by Python scripts that send commands to the arm.",
+    "responsibilities": "Designed the 3D model for the arm, developed the C++ firmware for motor control, and wrote Python scripts for automation.",
     "link": "https://github.com",
-    "image": "smart-home-hub"
+    "image": "robotic-arm"
+  },
+  {
+    "title": "Modular IoT Kit",
+    "summary": "Portable IoT prototyping kit with interchangeable modules.",
+    "stack": ["Arduino", "ESP32", "Sensors", "React Dashboard"],
+    "architecture": "A modular IoT kit featuring an ESP32 mainboard and interchangeable sensor modules. Data is sent to a React-based dashboard for real-time monitoring.",
+    "responsibilities": "Designed the modular hardware system, developed the firmware for the ESP32, and built the React dashboard for data visualization.",
+    "link": "https://github.com",
+    "image": "iot-kit"
   }
 ]

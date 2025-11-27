@@ -1,12 +1,21 @@
 
 [
   {
-    "title": "React State Visualizer",
-    "summary": "A developer tool to visualize React component state and props in real-time, improving debugging workflows.",
-    "stack": ["TypeScript", "React", "Browser Extensions"],
-    "architecture": "A Chrome DevTools extension that hooks into the React Fiber tree to extract and display component data.",
-    "responsibilities": "Core contributor, focusing on the data extraction logic and the UI for rendering the state tree.",
+    "title": "OpenAI Plugin Hub",
+    "summary": "Community-driven repository for AI plugin examples.",
+    "stack": ["Node.js", "Next.js", "React"],
+    "architecture": "A community-driven hub for discovering and sharing OpenAI plugins. The platform is built with Next.js and Node.js, providing a space for developers to contribute and find new tools.",
+    "responsibilities": "Created the initial concept, built the platform using Next.js and Node.js, and managed community contributions.",
     "link": "https://github.com",
-    "image": "react-state-visualizer"
+    "image": "openai-plugin-hub"
+  },
+  {
+    "title": "IoT Sensor Community",
+    "summary": "Open-source Arduino and Raspberry Pi sensor projects.",
+    "stack": ["Arduino", "Python", "MQTT"],
+    "architecture": "An open-source collection of projects for IoT sensors using Arduino and Raspberry Pi. The projects use MQTT for communication and include Python scripts for data processing.",
+    "responsibilities": "Contributed several projects to the collection, wrote documentation, and helped other community members with their implementations.",
+    "link": "https://github.com",
+    "image": "iot-sensor-community"
   }
 ]

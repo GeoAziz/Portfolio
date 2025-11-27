@@ -1,17 +1,24 @@
 
 [
   {
-    "title": "A Novel Approach to Asynchronous Task Parallelism",
-    "publication": "Journal of Advanced Computing",
-    "date": "2023-08-15",
-    "summary": "This paper introduces a graph-based model for managing dependencies in highly parallel asynchronous systems, reducing overhead and improving resource utilization compared to traditional promise-based or async/await models.",
-    "link": "https://example.com/paper1"
+    "title": "Optimized Distributed AI Framework",
+    "publication": "Journal of Parallel and Distributed Computing",
+    "date": "2023-01-01",
+    "summary": "Framework for high-speed AI computation across multiple nodes.",
+    "link": "https://github.com"
   },
   {
-    "title": "Verifiable Computation for Decentralized Systems",
-    "publication": "Proceedings of the Symposium on System Security",
-    "date": "2022-11-01",
-    "summary": "We propose a new cryptographic primitive that allows for efficient verification of complex computations in a trustless environment, with applications in blockchain and confidential computing.",
-    "link": "https://example.com/paper2"
+    "title": "Low-Power IoT Systems",
+    "publication": "IEEE Transactions on Sustainable Computing",
+    "date": "2022-01-01",
+    "summary": "Sustainable microcontrollers with ultra-low energy consumption.",
+    "link": "https://github.com"
+  },
+  {
+    "title": "3D-Printed Robotic Control Systems",
+    "publication": "International Conference on Robotics and Automation",
+    "date": "2021-01-01",
+    "summary": "Designing scalable, modular robotic hardware with open-source controllers.",
+    "link": "https://github.com"
   }
 ]

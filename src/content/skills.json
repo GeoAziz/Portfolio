@@ -1,21 +1,15 @@
 
 [
-  { "name": "React", "level": "expert", "category": "frontend" },
   { "name": "Next.js", "level": "expert", "category": "frontend" },
-  { "name": "TypeScript", "level": "expert", "category": "frontend" },
-  { "name": "Tailwind CSS", "level": "proficient", "category": "frontend" },
-  { "name": "WebGL", "level": "proficient", "category": "frontend" },
+  { "name": "Tailwind CSS", "level": "expert", "category": "frontend" },
+  { "name": "Three.js", "level": "proficient", "category": "frontend" },
+  { "name": "Framer Motion", "level": "proficient", "category": "frontend" },
   
-  { "name": "Go", "level": "expert", "category": "backend" },
-  { "name": "Node.js", "level": "expert", "category": "backend" },
   { "name": "Python", "level": "expert", "category": "backend" },
-  { "name": "PostgreSQL", "level": "proficient", "category": "backend" },
-  { "name": "Kubernetes", "level": "proficient", "category": "backend" },
-  { "name": "C++", "level": "proficient", "category": "backend" },
+  { "name": "Distributed Systems", "level": "expert", "category": "backend" },
+  { "name": "Machine Learning", "level": "proficient", "category": "backend" },
   
-  { "name": "Git", "level": "expert", "category": "tools" },
+  { "name": "Arduino", "level": "proficient", "category": "tools" },
   { "name": "Docker", "level": "expert", "category": "tools" },
-  { "name": "Figma", "level": "proficient", "category": "tools" },
-  { "name": "Terraform", "level": "proficient", "category": "tools" },
-  { "name": "Linux", "level": "expert", "category": "tools" }
+  { "name": "Git", "level": "expert", "category": "tools" }
 ]
