@@ -25,7 +25,8 @@ export function Navigation() {
   const pathname = usePathname();
 
   const openCommandPalette = () => {
-    const event = new KeyboardEvent('keydown', { key: 'k', ctrlKey: true });
+    // Simulate Ctrl+K or Cmd+K
+    const event = new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, metaKey: true });
     document.dispatchEvent(event);
   };
 
@@ -102,7 +103,9 @@ export function Navigation() {
         <div className="flex flex-1 items-center justify-end space-x-2">
           <Button variant="outline" size="sm" onClick={openCommandPalette} className="flex items-center gap-2">
             <span className="text-xs">Search...</span>
-            <Command className="h-4 w-4" />
+            <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+              <span className="text-xs">⌘</span>K
+            </kbd>
           </Button>
         </div>
       </div>
