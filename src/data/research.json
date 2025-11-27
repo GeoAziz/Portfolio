@@ -1,24 +1,92 @@
 
-[
-  {
-    "title": "Optimized Distributed AI Framework",
-    "summary": "Framework for high-speed AI computation across multiple nodes.",
-    "link": "#",
-    "publication": "Journal of Parallel and Distributed Computing",
-    "date": "2023-01-01"
+{
+  "researchEntries": [
+    {
+      "id": "edge-latency",
+      "title": "Inference Latency on Edge Devices",
+      "question": "How much can inference speed be improved via quantization + operator fusion on Raspberry Pi?",
+      "summary": "Testing CPU vs GPU acceleration paths, and reduced-precision models.",
+      "status": "ongoing",
+      "tags": ["edge computing", "performance", "optimization"]
+    },
+    {
+      "id": "sensor-noise-filtering",
+      "title": "Noise Reduction in Sensor Fusion",
+      "question": "To what extent can complementary filters outperform naive averaging for IMU stability?",
+      "summary": "Combining accelerometer + gyroscope data for cleaner motion profiles.",
+      "status": "concluded",
+      "tags": ["hardware", "signal processing", "filters"]
+    },
+    {
+      "id": "llm-personalization",
+      "title": "Small-Scale Personalization of Language Models",
+      "question": "How do LoRA adapters affect internal representation geometry of embeddings?",
+      "summary": "Testing whether personality injection leaks into general reasoning.",
+      "status": "in revision",
+      "tags": ["LLM", "representation theory", "fine-tuning"]
+    }
+  ],
+  "researchDetails": {
+    "edge-latency": {
+      "motivation": "Real-time edge inference enables offline intelligent devices.",
+      "experiments": [
+        "Benchmarked FP32 vs INT8 performance",
+        "Measured thermal throttling under sustained inference",
+        "Compared ARM CPU vs VideoCore GPU paths"
+      ],
+      "findings": [
+        "Quantized models improved speed by ~2.4x",
+        "Thermal ceiling reached faster on GPU",
+        "CPU path more stable but slower"
+      ],
+      "future": [
+        "Testing vendor-specific acceleration",
+        "Trying binary neural networks"
+      ]
+    },
+     "sensor-noise-filtering": {
+      "motivation": "Clean sensor data is critical for stable control systems in robotics and navigation.",
+      "experiments": [
+        "Implemented a basic complementary filter in C++ on an Arduino",
+        "Compared its output to a simple moving average of raw sensor values",
+        "Visualized orientation data in real-time using a Processing sketch"
+      ],
+      "findings": [
+        "Complementary filter significantly reduced high-frequency jitter from the accelerometer",
+        "Gyroscope drift was effectively corrected over short-to-medium time scales",
+        "Resulting orientation was visibly smoother and more responsive to actual motion"
+      ],
+      "future": [
+        "Explore implementing a full Kalman filter for comparison",
+        "Test filter performance with varying sensor qualities"
+      ]
+    },
+    "llm-personalization": {
+      "motivation": "To understand if models can adopt a 'persona' without corrupting their core reasoning capabilities.",
+      "experiments": [
+        "Fine-tuned a base LLM with a small dataset of stylized, first-person text using LoRA",
+        "Evaluated the adapted model on both in-domain (persona) and out-of-domain (general knowledge) question sets",
+        "Analyzed embedding vectors for key concepts before and after fine-tuning"
+      ],
+      "findings": [
+        "The model successfully adopted the target persona in conversational tasks",
+        "A minor degradation (~4%) in performance was observed on general reasoning benchmarks",
+        "Embedding space showed a slight but measurable shift for persona-related concepts"
+      ],
+      "future": [
+        "Investigate methods to 'freeze' or insulate core knowledge layers during adaptation",
+        "Test if this technique can be used for controlled, reversible 'mode switching' in models"
+      ]
+    }
   },
-  {
-    "title": "Low-Power IoT Systems",
-    "summary": "Sustainable microcontrollers with ultra-low energy consumption.",
-    "link": "#",
-    "publication": "IEEE Transactions on Sustainable Computing",
-    "date": "2022-01-01"
-  },
-  {
-    "title": "3D-Printed Robotic Control Systems",
-    "summary": "Designing scalable, modular robotic hardware with open-source controllers.",
-    "link": "#",
-    "publication": "International Conference on Robotics and Automation",
-    "date": "2021-01-01"
-  }
-]
+  "learningLog": [
+    {
+      "date": "2024-06-21",
+      "entry": "Kalman filters require good system models; complementary filters work even with imperfect assumptions."
+    },
+    {
+      "date": "2024-08-17",
+      "entry": "Attention heads in transformers appear to self-specialize even without explicit constraints."
+    }
+  ]
+}

@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import {
   Dialog,
   DialogContent,
-  DialogTitle,
 } from '@/components/ui/dialog';
 import {
   Command,
@@ -17,14 +16,14 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command';
-import { FileText, Laptop, Cpu, FlaskConical, Github, User, Home } from 'lucide-react';
-import { projectsData, hardwareData, aiData } from '@/lib/content';
+import { FileText, Laptop, Cpu, FlaskConical, Github, User, Home, HardDrive } from 'lucide-react';
+import { projectsData, hardwareData, aiData, systemsData, researchData } from '@/lib/content';
 
 const pages = [
   { name: 'Home', path: '/', icon: Home },
   { name: 'Systems', path: '/systems', icon: Laptop },
   { name: 'AI', path: '/ai', icon: Cpu },
-  { name: 'Hardware', path: '/hardware', icon: Cpu },
+  { name: 'Hardware', path: '/hardware', icon: HardDrive },
   { name: 'Research', path: '/research', icon: FlaskConical },
   { name: 'Open Source', path: '/open-source', icon: Github },
   { name: 'Resume', path: '/resume', icon: User },
@@ -34,6 +33,8 @@ const allProjects = [
   ...projectsData.map(p => ({ name: p.name, group: p.category, path: `/${p.category.toLowerCase().replace(' ', '-')}` })),
   ...hardwareData.hardwareProjects.map(p => ({ name: p.title, group: 'Hardware', path: '/hardware' })),
   ...aiData.experiments.map(p => ({ name: p.title, group: 'AI', path: '/ai' })),
+  ...systemsData.systems_projects.map(p => ({ name: p.title, group: 'Systems', path: '/systems'})),
+  ...researchData.researchEntries.map(p => ({ name: p.title, group: 'Research', path: '/research'}))
 ];
 
 export function CommandPalette() {
@@ -60,7 +61,6 @@ export function CommandPalette() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="overflow-hidden p-0 shadow-lg bg-card border-border">
-      <DialogTitle className="sr-only">Command Palette</DialogTitle>
         <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
@@ -78,7 +78,7 @@ export function CommandPalette() {
               ))}
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading="Projects">
+            <CommandGroup heading="Projects & Research">
               {allProjects.map(project => (
                 <CommandItem
                   key={`${project.group}-${project.name}`}

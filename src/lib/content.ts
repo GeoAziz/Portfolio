@@ -35,13 +35,28 @@ export interface Skill {
   category: string;
 }
 
-export interface ResearchItem {
+export interface ResearchEntry {
+  id: string;
   title: string;
-  publication: string;
-  date: string;
+  question: string;
   summary: string;
-  link: string;
+  status: 'ongoing' | 'concluded' | 'in revision';
+  tags: string[];
 }
+
+export interface ResearchDetail {
+  motivation: string;
+  experiments: string[];
+  findings: string[];
+  future: string[];
+}
+
+export interface ResearchData {
+  researchEntries: ResearchEntry[];
+  researchDetails: { [key: string]: ResearchDetail };
+  learningLog: { date: string; entry: string }[];
+}
+
 
 export interface ResumeExperience {
   role: string;
@@ -167,7 +182,7 @@ function getCategory(skillName: string): 'frontend' | 'backend' | 'tools' {
 
 
 export const identityData: { statement: string; role: string } = identity;
-export const researchData: ResearchItem[] = research;
+export const researchData: ResearchData = research;
 export const resumeData: ResumeData = resume;
 export const systemsData: SystemsData = systems;
 export const aiData: AiData = ai;
