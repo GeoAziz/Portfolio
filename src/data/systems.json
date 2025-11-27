@@ -1,0 +1,71 @@
+
+{
+  "systems_intro": {
+    "title": "Systems Engineering",
+    "subtitle": "Building the invisible machinery that enables computation.",
+    "description": "This part of my work focuses on low-level control, efficient data handling, runtime orchestration, and the engineering of reliable, scalable foundations that other software runs on."
+  },
+  "systems_skills": [
+    "C++",
+    "Rust",
+    "Go",
+    "LLVM",
+    "Memory Management",
+    "File Systems",
+    "Sockets & IPC",
+    "TCP/UDP",
+    "Runtime Optimization",
+    "Distributed Systems",
+    "Load Balancing",
+    "Relational Databases",
+    "NoSQL Storage models",
+    "Consensus Algorithms",
+    "Queue & Event Systems"
+  ],
+  "systems_projects": [
+    {
+      "id": "microkernel",
+      "title": "Microkernel Operating Core",
+      "role": "System Architect",
+      "tech": ["C", "Rust", "Assembly"],
+      "short_description": "A tiny modular OS kernel enabling modular drivers and isolated services.",
+      "long_description": "Built a microkernel architecture where core functionalities (IPC, scheduler, memory) are isolated from drivers. Allows dynamic loading of system services, capability-based access, and prevents driver failures from crashing kernel space.",
+      "architecture_hint": "Process scheduling | memory safety | isolated services",
+      "diagram_ascii": [
+        "┌──────────────┐",
+        "│ Microkernel  │",
+        "├──────┬───────┤",
+        "│ IPC  │  MMU  │",
+        "│ FS   │ Sched │",
+        "└──────┴───────┘"
+      ],
+       "interactive": true
+    },
+    {
+      "id": "compilechain",
+      "title": "AST → Bytecode Compiler",
+      "role": "Compiler Engineer",
+      "tech": ["LLVM", "C++", "Parser Generators"],
+      "short_description": "A compiler pipeline converting a typed language into a custom execution bytecode.",
+      "long_description": "Implemented lexical analysis, AST building, type inference, IR generation, and bytecode output using LLVM. Includes peephole optimizations and dead code elimination for efficient runtime performance.",
+      "architecture_hint": "AST → IR → Optimizer → Bytecode",
+      "diagram_ascii": [
+        "SOURCE → AST → IR → OPT → BYTECODE"
+      ],
+       "interactive": true
+    },
+    {
+      "id": "distributedQueue",
+      "title": "Distributed Message Queue",
+      "role": "Lead Engineer",
+      "tech": ["Go", "Raft", "gRPC", "Protobuf"],
+      "short_description": "A high-throughput message queue enabling scalable async messaging.",
+      "long_description": "Designed a distributed queue with message delivery guarantees, worker leasing, failure recovery, and Raft-based replication. The focus is durability, partition-tolerance, and consistent consumer state tracking.",
+      "architecture_hint": "Guarantees: At-least-once, partition-tolerant",
+      "diagram_ascii": [
+        "CLIENTS ↔ BROKERS ↔ STORAGE NODES"
+      ],
+       "interactive": true
+    }
+  ]
+}

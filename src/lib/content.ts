@@ -5,6 +5,8 @@ import skills from '@/data/skills.json';
 import identity from '@/content/identity.json';
 import research from '@/data/research.json';
 import resume from '@/data/resume.json';
+import systems from '@/data/systems.json';
+
 
 export interface Project {
   name: string;
@@ -59,6 +61,27 @@ export interface ResumeData {
   achievements: string[];
 }
 
+export interface SystemsProject {
+    id: string;
+    title: string;
+    role: string;
+    tech: string[];
+    short_description: string;
+    long_description: string;
+    architecture_hint: string;
+    diagram_ascii: string[];
+}
+
+export interface SystemsData {
+    systems_intro: {
+        title: string;
+        subtitle: string;
+        description: string;
+    };
+    systems_skills: string[];
+    systems_projects: SystemsProject[];
+}
+
 
 export const projectsData: Project[] = projects;
 export const hardwareData: HardwareProject[] = hardware;
@@ -66,3 +89,4 @@ export const skillsData: Skill[] = skills.map(skill => ({ ...skill, category: 'f
 export const identityData: { statement: string; role: string } = identity;
 export const researchData: ResearchItem[] = research;
 export const resumeData: ResumeData = resume;
+export const systemsData: SystemsData = systems;
