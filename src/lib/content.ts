@@ -6,9 +6,11 @@ import identity from '@/content/identity.json';
 import research from '@/data/research.json';
 import resume from '@/data/resume.json';
 import systems from '@/data/systems.json';
-import ai from '@/data/ai.json';
+import * as aiModule from '@/data/ai.json';
 import hardware from '@/data/hardware.json';
 import opensource from '@/data/opensource.json';
+
+const ai = aiModule.default || aiModule;
 
 
 export interface Project {
@@ -236,11 +238,14 @@ export const hardwareData: HardwareData = hardware;
 export const openSourceData: OpenSourceData = opensource;
     
 // Add interactive flag to AI experiments for ProjectInspector
-aiData.experiments.forEach(exp => {
-    exp.interactive = true;
-    exp.name = exp.title;
-    exp.tech = exp.tags;
-});
+if (aiData && aiData.experiments) {
+    aiData.experiments.forEach(exp => {
+        exp.interactive = true;
+        exp.name = exp.title;
+        exp.tech = exp.tags;
+    });
+}
+
 
 // Add interactive flag to Hardware projects for ProjectInspector
 hardwareData.hardwareProjects.forEach(proj => {
