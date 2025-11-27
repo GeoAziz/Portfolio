@@ -10,7 +10,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Project } from '@/lib/content';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ChevronsUpDown } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface ProjectInspectorProps {
@@ -53,8 +53,8 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                             </Button>
                         )}
                         {project.interactive && (
-                            <AccordionTrigger asChild>
-                                <Button variant="secondary" size="sm">Details</Button>
+                            <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:hidden">
+                                <span className="flex items-center gap-2">Details <ChevronsUpDown className="h-4 w-4" /></span>
                             </AccordionTrigger>
                         )}
                     </div>
