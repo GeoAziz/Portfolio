@@ -8,25 +8,32 @@ import {
 } from '@/components/ui/accordion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { Project, SystemsProject } from '@/lib/content';
+import type { Project, SystemsProject, AiExperiment } from '@/lib/content';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowUpRight, ChevronsUpDown } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface ProjectInspectorProps {
-  project: Project | SystemsProject;
+  project: Project | SystemsProject | AiExperiment;
 }
 
-function isSystemsProject(project: Project | SystemsProject): project is SystemsProject {
-  return 'long_description' in project;
+function isSystemsProject(project: any): project is SystemsProject {
+  return 'long_description' in project && 'diagram_ascii' in project;
+}
+
+function isAiExperiment(project: any): project is AiExperiment {
+    return 'method' in project && 'observation' in project;
 }
 
 export function ProjectInspector({ project }: ProjectInspectorProps) {
-  const image = 'image' in project ? PlaceHolderImages.find(img => img.id === project.image) : undefined;
+  const image = 'image' in project && project.image ? PlaceHolderImages.find(img => img.id === project.image) : undefined;
   
   const isSystem = isSystemsProject(project);
-  const title = isSystem ? project.title : project.name;
+  const isAi = isAiExperiment(project);
+
+  const title = isSystem || isAi ? project.title : project.name;
   const shortDescription = isSystem ? project.short_description : project.description;
+  const tech = isAi ? project.tags : project.tech;
 
   return (
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden">
@@ -49,7 +56,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                         <p className="text-muted-foreground text-sm">{shortDescription}</p>
                     </div>
                     <div className='flex gap-2 items-center self-end md:self-center'>
-                        {!isSystem && project.link && project.link !== "#" && (
+                        { 'link' in project && project.link && project.link !== "#" && (
                             <Button asChild variant="outline" size="sm">
                                 <a
                                     href={project.link}
@@ -60,22 +67,22 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                 </a>
                             </Button>
                         )}
-                        {(isSystem || project.interactive) && (
-                            <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:rotate-180">
-                               <span className="flex items-center gap-2 text-sm">Details <ChevronsUpDown className="h-4 w-4" /></span>
+                        {'interactive' in project && project.interactive && (
+                            <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:-rotate-180">
+                               <span className="flex items-center gap-2 text-sm">Details <ChevronsUpDown className="h-4 w-4 transition-transform duration-200" /></span>
                             </AccordionTrigger>
                         )}
                     </div>
                 </div>
 
-                {(isSystem || project.interactive) && (
+                {'interactive' in project && project.interactive && (
                      <AccordionContent>
                         <div className="px-6 pb-6 grid md:grid-cols-2 gap-8">
                             <div className="space-y-4">
                                 <div>
-                                    <h4 className="font-semibold mb-2 text-foreground">Tech Stack</h4>
+                                    <h4 className="font-semibold mb-2 text-foreground">Tech Stack / Tags</h4>
                                     <div className="flex flex-wrap gap-2">
-                                        {project.tech.map(tech => (
+                                        {tech.map(tech => (
                                         <Badge key={tech} variant="secondary" className="font-mono">{tech}</Badge>
                                         ))}
                                     </div>
@@ -91,6 +98,22 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                     <h4 className="font-semibold mb-2 text-foreground">Description</h4>
                                     <p className="text-muted-foreground whitespace-pre-wrap">{project.long_description}</p>
                                 </div>
+                                )}
+                                { isAi && (
+                                    <>
+                                        <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Method</h4>
+                                            <p className="text-muted-foreground">{project.method}</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Observation</h4>
+                                            <p className="text-muted-foreground">{project.observation}</p>
+                                        </div>
+                                         <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Result</h4>
+                                            <p className="text-accent">{project.result}</p>
+                                        </div>
+                                    </>
                                 )}
                            </div>
                            {isSystem && project.diagram_ascii && (
