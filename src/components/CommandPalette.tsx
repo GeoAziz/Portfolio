@@ -18,7 +18,7 @@ import {
   CommandSeparator,
 } from '@/components/ui/command';
 import { FileText, Laptop, Cpu, FlaskConical, Github, User, Home } from 'lucide-react';
-import { projectsData, hardwareData } from '@/lib/content';
+import { projectsData, hardwareData, aiData } from '@/lib/content';
 
 const pages = [
   { name: 'Home', path: '/', icon: Home },
@@ -32,7 +32,8 @@ const pages = [
 
 const allProjects = [
   ...projectsData.map(p => ({ name: p.name, group: p.category, path: `/${p.category.toLowerCase().replace(' ', '-')}` })),
-  ...hardwareData.map(p => ({ name: p.name, group: 'Hardware', path: '/hardware' })),
+  ...hardwareData.hardwareProjects.map(p => ({ name: p.title, group: 'Hardware', path: '/hardware' })),
+  ...aiData.experiments.map(p => ({ name: p.title, group: 'AI', path: '/ai' })),
 ];
 
 export function CommandPalette() {

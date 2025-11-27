@@ -8,13 +8,13 @@ import {
 } from '@/components/ui/accordion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { Project, SystemsProject, AiExperiment } from '@/lib/content';
+import type { Project, SystemsProject, AiExperiment, HardwareProject } from '@/lib/content';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowUpRight, ChevronsUpDown } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface ProjectInspectorProps {
-  project: Project | SystemsProject | AiExperiment;
+  project: Project | SystemsProject | AiExperiment | HardwareProject;
 }
 
 function isSystemsProject(project: any): project is SystemsProject {
@@ -25,15 +25,23 @@ function isAiExperiment(project: any): project is AiExperiment {
     return 'method' in project && 'observation' in project;
 }
 
+function isHardwareProject(project: any): project is HardwareProject {
+    return 'components' in project && 'status' in project;
+}
+
 export function ProjectInspector({ project }: ProjectInspectorProps) {
   const image = 'image' in project && project.image ? PlaceHolderImages.find(img => img.id === project.image) : undefined;
   
   const isSystem = isSystemsProject(project);
   const isAi = isAiExperiment(project);
+  const isHardware = isHardwareProject(project);
 
-  const title = isSystem || isAi ? project.title : project.name;
-  const shortDescription = isSystem ? project.short_description : project.description;
-  const tech = isAi ? project.tags : project.tech;
+  const title = project.title ?? (project as Project).name;
+  const shortDescription = isSystem ? project.short_description : ('description' in project ? project.description : '');
+  let tech: string[] = [];
+  if (isAi) tech = project.tags;
+  else if (isHardware) tech = project.tags;
+  else if ('tech' in project) tech = project.tech;
 
   return (
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden">
@@ -69,7 +77,8 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                         )}
                         {'interactive' in project && project.interactive && (
                             <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:-rotate-180">
-                               <span className="flex items-center gap-2 text-sm">Details <ChevronsUpDown className="h-4 w-4 transition-transform duration-200" /></span>
+                               <span className="sr-only">Details</span>
+                               <ChevronsUpDown className="h-4 w-4 transition-transform duration-200" />
                             </AccordionTrigger>
                         )}
                     </div>
@@ -78,12 +87,12 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                 {'interactive' in project && project.interactive && (
                      <AccordionContent>
                         <div className="px-6 pb-6 grid md:grid-cols-2 gap-8">
-                            <div className="space-y-4">
+                            <div className="space-y-4 text-sm">
                                 <div>
                                     <h4 className="font-semibold mb-2 text-foreground">Tech Stack / Tags</h4>
                                     <div className="flex flex-wrap gap-2">
-                                        {tech.map(tech => (
-                                        <Badge key={tech} variant="secondary" className="font-mono">{tech}</Badge>
+                                        {tech.map(t => (
+                                        <Badge key={t} variant="secondary" className="font-mono">{t}</Badge>
                                         ))}
                                     </div>
                                 </div>
@@ -112,6 +121,30 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                          <div>
                                             <h4 className="font-semibold mb-2 text-foreground">Result</h4>
                                             <p className="text-accent">{project.result}</p>
+                                        </div>
+                                    </>
+                                )}
+                                { isHardware && (
+                                    <>
+                                        <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Components</h4>
+                                            <div className="flex flex-wrap gap-2">
+                                                {project.components.map(c => <Badge key={c} variant="secondary">{c}</Badge>)}
+                                            </div>
+                                        </div>
+                                         <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Core Skills</h4>
+                                            <ul className="list-disc list-inside text-muted-foreground">
+                                                {project.skills.map(s => <li key={s}>{s}</li>)}
+                                            </ul>
+                                        </div>
+                                         <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Status</h4>
+                                            <p className="text-muted-foreground">{project.status}</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Notes</h4>
+                                            <p className="text-muted-foreground italic">"{project.notes}"</p>
                                         </div>
                                     </>
                                 )}
