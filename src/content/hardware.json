@@ -7,7 +7,8 @@
     "architecture": "An IoT system with multiple sensors connected to an Arduino, which sends data to a Raspberry Pi via MQTT. A Python script on the Pi processes the data and displays it on a remote dashboard.",
     "responsibilities": "Designed the hardware setup, wrote the Arduino and Python code, and configured the MQTT broker for communication.",
     "link": "https://github.com",
-    "image": "iot-sensor-hub"
+    "image": "iot-sensor-hub",
+    "model": "/3d/sensorHub.glb"
   },
   {
     "title": "3D Printed Robotic Arm",
@@ -16,7 +17,8 @@
     "architecture": "A 3D-printed robotic arm with servo motors controlled by a custom C++ firmware on a microcontroller. High-level control is provided by Python scripts that send commands to the arm.",
     "responsibilities": "Designed the 3D model for the arm, developed the C++ firmware for motor control, and wrote Python scripts for automation.",
     "link": "https://github.com",
-    "image": "robotic-arm"
+    "image": "robotic-arm",
+    "model": "/3d/robotArm.glb"
   },
   {
     "title": "Modular IoT Kit",
@@ -25,6 +27,7 @@
     "architecture": "A modular IoT kit featuring an ESP32 mainboard and interchangeable sensor modules. Data is sent to a React-based dashboard for real-time monitoring.",
     "responsibilities": "Designed the modular hardware system, developed the firmware for the ESP32, and built the React dashboard for data visualization.",
     "link": "https://github.com",
-    "image": "iot-kit"
+    "image": "iot-kit",
+    "model": "/3d/iotKit.glb"
   }
 ]

@@ -44,23 +44,29 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
           </AccordionTrigger>
           <AccordionContent>
             <div className="px-6 pb-6 space-y-6">
-              <div>
-                <h4 className="font-semibold mb-2 text-foreground">Architecture</h4>
-                <p className="text-sm text-muted-foreground">{project.architecture}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2 text-foreground">Responsibilities</h4>
-                <p className="text-sm text-muted-foreground">{project.responsibilities}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2 text-foreground">Tech Stack</h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.stack.map(tech => (
-                    <Badge key={tech} variant="secondary" className="bg-surface-lighter text-accent-2-DEFAULT">{tech}</Badge>
-                  ))}
+              {project.architecture && (
+                <div>
+                  <h4 className="font-semibold mb-2 text-foreground">Architecture</h4>
+                  <p className="text-sm text-muted-foreground">{project.architecture}</p>
                 </div>
-              </div>
-              {project.link && (
+              )}
+              {project.responsibilities && (
+                <div>
+                  <h4 className="font-semibold mb-2 text-foreground">Responsibilities</h4>
+                  <p className="text-sm text-muted-foreground">{project.responsibilities}</p>
+                </div>
+              )}
+              {project.stack && (
+                <div>
+                  <h4 className="font-semibold mb-2 text-foreground">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.stack.map(tech => (
+                      <Badge key={tech} variant="secondary" className="bg-surface-lighter text-accent-2-DEFAULT">{tech}</Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {project.link && project.link !== "#" && (
                 <div>
                   <a
                     href={project.link}

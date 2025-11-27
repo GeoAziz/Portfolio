@@ -1,15 +1,13 @@
 
 [
-  { "name": "Next.js", "level": "expert", "category": "frontend" },
-  { "name": "Tailwind CSS", "level": "expert", "category": "frontend" },
-  { "name": "Three.js", "level": "proficient", "category": "frontend" },
-  { "name": "Framer Motion", "level": "proficient", "category": "frontend" },
-  
-  { "name": "Python", "level": "expert", "category": "backend" },
-  { "name": "Distributed Systems", "level": "expert", "category": "backend" },
-  { "name": "Machine Learning", "level": "proficient", "category": "backend" },
-  
-  { "name": "Arduino", "level": "proficient", "category": "tools" },
-  { "name": "Docker", "level": "expert", "category": "tools" },
-  { "name": "Git", "level": "expert", "category": "tools" }
+  {"name": "Next.js", "level": "Advanced", "category": "frontend" },
+  {"name": "Tailwind CSS", "level": "Advanced", "category": "frontend" },
+  {"name": "Three.js", "level": "Intermediate", "category": "frontend" },
+  {"name": "Framer Motion", "level": "Intermediate", "category": "frontend" },
+  {"name": "Python", "level": "Advanced", "category": "backend" },
+  {"name": "Arduino", "level": "Intermediate", "category": "tools" },
+  {"name": "Machine Learning", "level": "Intermediate", "category": "backend" },
+  {"name": "Distributed Systems", "level": "Advanced", "category": "backend" },
+  {"name": "Docker", "level": "Advanced", "category": "tools" },
+  {"name": "Git", "level": "Advanced", "category": "tools" }
 ]

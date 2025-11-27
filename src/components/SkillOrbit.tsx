@@ -80,7 +80,7 @@ export function SkillOrbit() {
                     className={cn(
                       'w-3 h-3 rounded-full transition-all duration-300 cursor-pointer',
                       'group-hover:scale-150',
-                      skill.level === 'expert' ? 'bg-accent' : 'bg-accent-2-DEFAULT'
+                      skill.level === 'Advanced' ? 'bg-accent' : 'bg-accent-2'
                     )}
                     style={{
                       animation: `spin-slow ${orbit.duration}s linear infinite ${orbitIndex % 2 === 0 ? 'reverse' : ''}`,

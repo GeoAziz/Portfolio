@@ -16,11 +16,12 @@ export interface Project {
   responsibilities: string;
   link: string | null;
   image: string;
+  model?: string;
 }
 
 export interface Skill {
   name: string;
-  level: 'proficient' | 'expert';
+  level: 'Advanced' | 'Intermediate';
   category: 'frontend' | 'backend' | 'tools';
 }
 
@@ -32,12 +33,27 @@ export interface ResearchItem {
   link: string;
 }
 
-export interface ResumeItem {
+export interface ResumeExperience {
   role: string;
   company: string;
   period: string;
   description: string[];
 }
+
+export interface ResumeEducation {
+  school: string;
+  degree: string;
+  year: string;
+  details: string;
+}
+
+export interface ResumeData {
+  education: ResumeEducation[];
+  experience: ResumeExperience[];
+  skills: string[];
+  achievements: string[];
+}
+
 
 export const projectsData: Project[] = projects;
 export const aiData: Project[] = ai;
@@ -46,4 +62,4 @@ export const opensourceData: Project[] = opensource;
 export const skillsData: Skill[] = skills;
 export const identityData: { statement: string; role: string } = identity;
 export const researchData: ResearchItem[] = research;
-export const resumeData: { experience: ResumeItem[] } = resume;
+export const resumeData: ResumeData = resume;

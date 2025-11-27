@@ -15,7 +15,7 @@ export default function HardwarePage() {
             <div key={project.title} className="grid md:grid-cols-2 gap-8 items-start">
               <ProjectInspector project={project} />
               <div className="sticky top-20">
-                <ModelViewer imageId={project.image} alt={project.title} />
+                <ModelViewer imageId={project.image} alt={project.title} modelSrc={project.model} />
               </div>
             </div>
           ))}

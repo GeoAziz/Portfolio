@@ -6,7 +6,7 @@
     "stack": ["Python", "OpenAI GPT-4", "FastAPI"],
     "architecture": "A FastAPI backend that manages conversational state and memory for a multi-turn chat AI. It uses OpenAI's GPT-4 for generating context-aware responses.",
     "responsibilities": "Developed the conversation memory module, integrated the GPT-4 API, and built the FastAPI service.",
-    "link": "https://github.com",
+    "link": "#",
     "image": "contextual-chat-ai"
   },
   {
@@ -15,7 +15,7 @@
     "stack": ["Python", "PyTorch", "YOLOv8"],
     "architecture": "A real-time object detection system using the YOLOv8 model with PyTorch. The application processes video streams and identifies objects with bounding boxes.",
     "responsibilities": "Implemented the YOLOv8 model, fine-tuned it on a custom dataset, and built the video processing pipeline.",
-    "link": "https://github.com",
+    "link": "#",
     "image": "cv-object-detector"
   },
   {
@@ -24,7 +24,7 @@
     "stack": ["Next.js", "React", "D3.js"],
     "architecture": "A web-based dashboard built with Next.js and React for managing and visualizing AI model training experiments. D3.js is used for creating interactive charts of training metrics.",
     "responsibilities": "Designed the UI/UX for the dashboard, developed the frontend components, and implemented the data visualizations with D3.js.",
-    "link": "https://github.com",
+    "link": "#",
     "image": "ai-experiment-dashboard"
   }
 ]
