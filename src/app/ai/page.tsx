@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { BrainCircuit, Cpu, FlaskConical, Microscope } from 'lucide-react';
 
 export default function AiPage() {
-  if (!aiData) {
+  if (!aiData || !aiData.models || !aiData.experiments || !aiData.skills || !aiData.thoughtLog) {
     return null; // or a loading state
   }
   const { models, experiments, skills, thoughtLog } = aiData;
@@ -29,7 +29,7 @@ export default function AiPage() {
         <section>
           <SectionHeader title="Model Gallery" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {models?.map((model) => (
+            {models.map((model) => (
               <Dialog key={model.id}>
                 <DialogTrigger asChild>
                    <Card className="bg-card border-border hover:border-accent-ai/50 transition-colors duration-300 text-left cursor-pointer h-full flex flex-col">
@@ -97,7 +97,7 @@ export default function AiPage() {
         <section>
           <SectionHeader title="AI Experiments" />
           <div className="grid gap-6 md:gap-8 mt-8">
-            {experiments?.map(project => (
+            {experiments.map(project => (
               <ProjectInspector key={project.title} project={project} />
             ))}
           </div>
@@ -108,7 +108,7 @@ export default function AiPage() {
             <Card className="bg-card border-border mt-8">
                 <CardContent className="p-6">
                 <div className="flex flex-wrap justify-center gap-2">
-                    {skills?.map((skill) => (
+                    {skills.map((skill) => (
                     <Badge key={skill} variant="secondary" className="text-md py-1 px-3 font-mono">{skill}</Badge>
                     ))}
                 </div>
@@ -119,7 +119,7 @@ export default function AiPage() {
         <section>
             <SectionHeader title="Thought Logs" />
             <div className="max-w-3xl mx-auto space-y-6 mt-8">
-                {thoughtLog?.map((log, index) => (
+                {thoughtLog.map((log, index) => (
                     <div key={index} className="bg-card border border-border/50 rounded-lg p-4 text-sm relative">
                         <p className="absolute -top-3 left-4 bg-card px-2 text-xs text-muted-foreground">{log.date}</p>
                         <p className="text-foreground/90 italic">{log.entry}</p>

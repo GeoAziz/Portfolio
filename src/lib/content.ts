@@ -10,7 +10,7 @@ import * as aiModule from '@/data/ai.json';
 import hardware from '@/data/hardware.json';
 import opensource from '@/data/opensource.json';
 
-const ai = aiModule.default || aiModule;
+const ai = (aiModule as any).default || aiModule;
 
 
 export interface Project {
