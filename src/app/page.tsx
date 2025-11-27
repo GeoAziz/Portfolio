@@ -17,14 +17,6 @@ export default function Home() {
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             {identityData.role}
           </p>
-          <div className="flex justify-center gap-4 pt-4">
-            <Button asChild size="lg">
-              <Link href="/systems">View Systems</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/resume">View Resume</Link>
-            </Button>
-          </div>
         </section>
       </MotionFade>
 

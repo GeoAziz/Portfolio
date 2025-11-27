@@ -1,9 +1,16 @@
 
+'use client';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { Button } from './ui/button';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+
+  if (pathname === '/splash') {
+    return null;
+  }
 
   return (
     <footer className="bg-card border-t border-border">

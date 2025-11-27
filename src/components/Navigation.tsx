@@ -24,6 +24,11 @@ const navLinks = [
 export function Navigation() {
   const pathname = usePathname();
 
+  // Don't show navigation on the splash page
+  if (pathname === '/splash') {
+    return null;
+  }
+
   const openCommandPalette = () => {
     // Simulate Ctrl+K or Cmd+K
     const event = new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, metaKey: true });
@@ -101,7 +106,7 @@ export function Navigation() {
         </div>
         
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button variant="outline" size="sm" onClick={openCommandPalette} className="flex items-center gap-2">
+           <Button variant="outline" size="sm" onClick={openCommandPalette} className="flex items-center gap-2">
             <span className="text-xs">Search...</span>
             <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
               <span className="text-xs">⌘</span>K
