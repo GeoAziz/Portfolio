@@ -8,13 +8,13 @@ import {
 } from '@/components/ui/accordion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { Project, SystemsProject, AiExperiment, HardwareProject } from '@/lib/content';
+import type { Project, SystemsProject, AiExperiment, HardwareProject, OpenSourceProject } from '@/lib/content';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowUpRight, ChevronsUpDown } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface ProjectInspectorProps {
-  project: Project | SystemsProject | AiExperiment | HardwareProject;
+  project: Project | SystemsProject | AiExperiment | HardwareProject | OpenSourceProject;
 }
 
 function isSystemsProject(project: any): project is SystemsProject {
@@ -26,7 +26,11 @@ function isAiExperiment(project: any): project is AiExperiment {
 }
 
 function isHardwareProject(project: any): project is HardwareProject {
-    return 'components' in project && 'status' in project;
+    return 'components' in project && 'status' in project && 'notes' in project;
+}
+
+function isOpenSourceProject(project: any): project is OpenSourceProject {
+    return 'repo' in project && 'license' in project;
 }
 
 export function ProjectInspector({ project }: ProjectInspectorProps) {
@@ -35,13 +39,22 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
   const isSystem = isSystemsProject(project);
   const isAi = isAiExperiment(project);
   const isHardware = isHardwareProject(project);
+  const isOpenSource = isOpenSourceProject(project);
 
-  const title = project.title ?? (project as Project).name;
-  const shortDescription = isSystem ? project.short_description : ('description' in project ? project.description : '');
+  const title = isOpenSource ? project.name : project.title ?? (project as Project).name;
+  let shortDescription = '';
+  if (isSystem) shortDescription = project.short_description;
+  else if ('description' in project) shortDescription = project.description;
+
+
   let tech: string[] = [];
   if (isAi) tech = project.tags;
   else if (isHardware) tech = project.tags;
+  else if (isOpenSource) tech = project.tags;
   else if ('tech' in project) tech = project.tech;
+
+  const link = isOpenSource ? project.repo : ('link' in project ? project.link : '#');
+  const interactive = isOpenSource ? true : ('interactive' in project ? project.interactive : false);
 
   return (
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden">
@@ -64,10 +77,10 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                         <p className="text-muted-foreground text-sm">{shortDescription}</p>
                     </div>
                     <div className='flex gap-2 items-center self-end md:self-center'>
-                        { 'link' in project && project.link && project.link !== "#" && (
+                        { link && link !== "#" && (
                             <Button asChild variant="outline" size="sm">
                                 <a
-                                    href={project.link}
+                                    href={link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -75,7 +88,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                 </a>
                             </Button>
                         )}
-                        {'interactive' in project && project.interactive && (
+                        {interactive && (
                             <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:-rotate-180">
                                <span className="sr-only">Details</span>
                                <ChevronsUpDown className="h-4 w-4 transition-transform duration-200" />
@@ -84,15 +97,15 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                     </div>
                 </div>
 
-                {'interactive' in project && project.interactive && (
+                {interactive && (
                      <AccordionContent>
                         <div className="px-6 pb-6 grid md:grid-cols-2 gap-8">
                             <div className="space-y-4 text-sm">
                                 <div>
                                     <h4 className="font-semibold mb-2 text-foreground">Tech Stack / Tags</h4>
                                     <div className="flex flex-wrap gap-2">
-                                        {tech.map(t => (
-                                        <Badge key={t} variant="secondary" className="font-mono">{t}</Badge>
+                                        {(isOpenSource ? [...project.languages, ...project.tags] : tech).map(t => (
+                                            <Badge key={t} variant="secondary" className="font-mono">{t}</Badge>
                                         ))}
                                     </div>
                                 </div>
@@ -145,6 +158,18 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                         <div>
                                             <h4 className="font-semibold mb-2 text-foreground">Notes</h4>
                                             <p className="text-muted-foreground italic">"{project.notes}"</p>
+                                        </div>
+                                    </>
+                                )}
+                                { isOpenSource && (
+                                    <>
+                                         <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">Status</h4>
+                                            <p className="text-muted-foreground capitalize">{project.status} ({project.version})</p>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold mb-2 text-foreground">License</h4>
+                                            <p className="text-muted-foreground">{project.license}</p>
                                         </div>
                                     </>
                                 )}

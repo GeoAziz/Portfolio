@@ -1,0 +1,50 @@
+
+{
+  "openSourceProjects": [
+    {
+      "id": "cyber-scan",
+      "name": "Cyber-Scan",
+      "description": "Network and device scanner for LAN environments with passive fingerprinting capabilities.",
+      "languages": ["Python"],
+      "tags": ["networking", "security", "scan"],
+      "repo": "https://github.com/devmahnx/cyber-scan",
+      "status": "active",
+      "version": "v0.9.1",
+      "license": "MIT"
+    },
+    {
+      "id": "flux-logger",
+      "name": "Flux Logger",
+      "description": "Unified event logging framework for async systems.",
+      "languages": ["Typescript", "Node.js"],
+      "tags": ["logging", "distributed-systems", "telemetry"],
+      "repo": "https://github.com/devmahnx/flux-logger",
+      "status": "experimental",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "edge-ml-utils",
+      "name": "Edge ML Utils",
+      "description": "Collection of machine learning inference tools optimized for ARM devices.",
+      "languages": ["C++", "Python"],
+      "tags": ["machine-learning", "optimization", "edge"],
+      "repo": "https://github.com/devmahnx/edge-ml-utils",
+      "status": "active",
+      "license": "BSD-3"
+    }
+  ],
+  "contributors": [
+    { "handle": "devmahnx", "contributions": 423 },
+    { "handle": "alpha-logic", "contributions": 102 },
+    { "handle": "bytegeist", "contributions": 76 }
+  ],
+  "philosophy": {
+    "statement": "Open source creates communal leverage — we stand on each other's shoulders.",
+    "values": [
+      "transparent development",
+      "documentation clarity",
+      "educational collaboration",
+      "public code review"
+    ]
+  }
+}

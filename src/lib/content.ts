@@ -7,7 +7,8 @@ import research from '@/data/research.json';
 import resume from '@/data/resume.json';
 import systems from '@/data/systems.json';
 import ai from '@/data/ai.json';
-import hardware from '@/data/hardware.json'; // New hardware data
+import hardware from '@/data/hardware.json';
+import opensource from '@/data/opensource.json';
 
 
 export interface Project {
@@ -167,6 +168,36 @@ export interface HardwareData {
   engineeringLog: HardwareLog[];
 }
 
+export interface OpenSourceProject {
+    id: string;
+    name: string;
+    description: string;
+    languages: string[];
+    tags: string[];
+    repo: string;
+    status: string;
+    version: string;
+    license: string;
+    interactive?: boolean;
+    title?: string;
+}
+
+export interface Contributor {
+    handle: string;
+    contributions: number;
+}
+
+export interface Philosophy {
+    statement: string;
+    values: string[];
+}
+
+export interface OpenSourceData {
+    openSourceProjects: OpenSourceProject[];
+    contributors: Contributor[];
+    philosophy: Philosophy;
+}
+
 
 export const projectsData: Project[] = projects;
 // export const hardwareData: OldHardwareProject[] = hardware; // old
@@ -187,6 +218,7 @@ export const resumeData: ResumeData = resume;
 export const systemsData: SystemsData = systems;
 export const aiData: AiData = ai;
 export const hardwareData: HardwareData = hardware;
+export const openSourceData: OpenSourceData = opensource;
     
 // Add interactive flag to AI experiments for ProjectInspector
 aiData.experiments.forEach(exp => {
@@ -198,4 +230,10 @@ aiData.experiments.forEach(exp => {
 // Add interactive flag to Hardware projects for ProjectInspector
 hardwareData.hardwareProjects.forEach(proj => {
     proj.interactive = true;
+});
+
+// Add interactive flag to Open Source projects for ProjectInspector
+openSourceData.openSourceProjects.forEach(proj => {
+    proj.interactive = true;
+    proj.title = proj.name;
 });
