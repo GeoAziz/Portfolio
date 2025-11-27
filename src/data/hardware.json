@@ -1,0 +1,24 @@
+
+[
+  {
+    "name": "IoT Sensor Hub",
+    "description": "Multi-sensor environmental monitoring system with remote dashboard.",
+    "tech": ["Arduino", "Raspberry Pi", "MQTT", "Python"],
+    "image": "iot-sensor-hub",
+    "model": "/3d/sensorHub.glb"
+  },
+  {
+    "name": "3D Printed Robotic Arm",
+    "description": "Robotic arm controlled via Python scripts and custom controller.",
+    "tech": ["Python", "Servo Motors", "3D Printing", "C++"],
+    "image": "robotic-arm",
+    "model": "/3d/robotArm.glb"
+  },
+  {
+    "name": "Modular IoT Kit",
+    "description": "Portable IoT prototyping kit with interchangeable modules.",
+    "tech": ["Arduino", "ESP32", "Sensors", "React Dashboard"],
+    "image": "iot-kit",
+    "model": "/3d/iotKit.glb"
+  }
+]

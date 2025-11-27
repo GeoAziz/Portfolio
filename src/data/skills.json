@@ -1,0 +1,13 @@
+
+[
+  {"name": "Next.js", "level": "Advanced"},
+  {"name": "Tailwind CSS", "level": "Advanced"},
+  {"name": "Three.js", "level": "Intermediate"},
+  {"name": "Framer Motion", "level": "Intermediate"},
+  {"name": "Python", "level": "Advanced"},
+  {"name": "Arduino", "level": "Intermediate"},
+  {"name": "Machine Learning", "level": "Intermediate"},
+  {"name": "Distributed Systems", "level": "Advanced"},
+  {"name": "Docker", "level": "Advanced"},
+  {"name": "Git", "level": "Advanced"}
+]

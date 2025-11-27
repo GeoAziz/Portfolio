@@ -8,7 +8,27 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 type Skill = typeof skillsData[0];
 
-const categories = ['frontend', 'backend', 'tools'];
+const orbitConfig = {
+  frontend: { radius: 120, duration: 60 },
+  backend: { radius: 220, duration: 90 },
+  tools: { radius: 320, duration: 120 },
+};
+
+const mobileOrbitConfig = {
+  frontend: { radius: 80, duration: 60 },
+  backend: { radius: 140, duration: 90 },
+  tools: { radius: 200, duration: 120 },
+};
+
+// Simple categorization for demo
+function getCategory(skillName: string): keyof typeof orbitConfig {
+    const backendSkills = ['Python', 'Distributed Systems', 'Machine Learning'];
+    const toolSkills = ['Docker', 'Git', 'Arduino'];
+    if (backendSkills.includes(skillName)) return 'backend';
+    if (toolSkills.includes(skillName)) return 'tools';
+    return 'frontend';
+}
+
 
 export function SkillOrbit() {
   const isMobile = useIsMobile();
@@ -19,12 +39,14 @@ export function SkillOrbit() {
   }, []);
 
   const orbits = useMemo(() => {
-    const orbitSizes = isMobile ? [80, 140, 200] : [120, 220, 320];
+    const config = isMobile ? mobileOrbitConfig : orbitConfig;
+    const categories: (keyof typeof config)[] = ['frontend', 'backend', 'tools'];
+    
     return categories.map((category, i) => ({
       category,
-      radius: orbitSizes[i],
-      skills: skillsData.filter(s => s.category === category),
-      duration: 60 + i * 30, // seconds for a full rotation
+      radius: config[category].radius,
+      skills: skillsData.filter(s => getCategory(s.name) === category),
+      duration: config[category].duration,
     }));
   }, [isMobile]);
 
@@ -62,6 +84,7 @@ export function SkillOrbit() {
             }}
           >
             {orbit.skills.map((skill: Skill, skillIndex: number) => {
+              if (orbit.skills.length === 0) return null;
               const angle = (skillIndex / orbit.skills.length) * 2 * Math.PI;
               const x = orbit.radius * Math.cos(angle);
               const y = orbit.radius * Math.sin(angle);
@@ -90,7 +113,7 @@ export function SkillOrbit() {
                     className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-card text-foreground text-xs rounded-md
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap"
                   >
-                    {skill.name}
+                    {skill.name} ({skill.level})
                   </span>
                 </div>
               );

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
 } from '@/components/ui/dialog';
 import {
   Command,
@@ -17,7 +18,7 @@ import {
   CommandSeparator,
 } from '@/components/ui/command';
 import { FileText, Laptop, Cpu, FlaskConical, Github, User, Home } from 'lucide-react';
-import { projectsData, aiData, hardwareData, opensourceData } from '@/lib/content';
+import { projectsData, hardwareData } from '@/lib/content';
 
 const pages = [
   { name: 'Home', path: '/', icon: Home },
@@ -30,10 +31,8 @@ const pages = [
 ];
 
 const allProjects = [
-  ...projectsData.map(p => ({ ...p, group: 'Systems', path: '/systems' })),
-  ...aiData.map(p => ({ ...p, group: 'AI', path: '/ai' })),
-  ...hardwareData.map(p => ({ ...p, group: 'Hardware', path: '/hardware' })),
-  ...opensourceData.map(p => ({ ...p, group: 'Open Source', path: '/open-source' })),
+  ...projectsData.map(p => ({ name: p.name, group: p.category, path: `/${p.category.toLowerCase().replace(' ', '-')}` })),
+  ...hardwareData.map(p => ({ name: p.name, group: 'Hardware', path: '/hardware' })),
 ];
 
 export function CommandPalette() {
@@ -45,10 +44,6 @@ export function CommandPalette() {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen(open => !open);
-      }
-      if (e.key === 'k' && e.altKey) {
-        e.preventDefault();
-        setOpen(true);
       }
     };
 
@@ -64,6 +59,7 @@ export function CommandPalette() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="overflow-hidden p-0 shadow-lg bg-card border-border">
+      <DialogTitle className="sr-only">Command Palette</DialogTitle>
         <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
@@ -84,12 +80,12 @@ export function CommandPalette() {
             <CommandGroup heading="Projects">
               {allProjects.map(project => (
                 <CommandItem
-                  key={`${project.group}-${project.title}`}
+                  key={`${project.group}-${project.name}`}
                   onSelect={() => runCommand(() => router.push(project.path))}
-                  value={`project-${project.title}`}
+                  value={`project-${project.name}`}
                 >
                   <FileText className="mr-2 h-4 w-4" />
-                  <span>{project.title}</span>
+                  <span>{project.name}</span>
                   <span className="ml-auto text-xs text-muted-foreground">{project.group}</span>
                 </CommandItem>
               ))}

@@ -1,0 +1,24 @@
+
+[
+  {
+    "title": "Optimized Distributed AI Framework",
+    "summary": "Framework for high-speed AI computation across multiple nodes.",
+    "link": "#",
+    "publication": "Journal of Parallel and Distributed Computing",
+    "date": "2023-01-01"
+  },
+  {
+    "title": "Low-Power IoT Systems",
+    "summary": "Sustainable microcontrollers with ultra-low energy consumption.",
+    "link": "#",
+    "publication": "IEEE Transactions on Sustainable Computing",
+    "date": "2022-01-01"
+  },
+  {
+    "title": "3D-Printed Robotic Control Systems",
+    "summary": "Designing scalable, modular robotic hardware with open-source controllers.",
+    "link": "#",
+    "publication": "International Conference on Robotics and Automation",
+    "date": "2021-01-01"
+  }
+]

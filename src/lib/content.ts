@@ -1,28 +1,33 @@
 
-import projects from '@/content/projects.json';
-import ai from '@/content/ai.json';
-import hardware from '@/content/hardware.json';
-import opensource from '@/content/opensource.json';
-import skills from '@/content/skills.json';
+import projects from '@/data/projects.json';
+import hardware from '@/data/hardware.json';
+import skills from '@/data/skills.json';
 import identity from '@/content/identity.json';
-import research from '@/content/research.json';
-import resume from '@/content/resume.json';
+import research from '@/data/research.json';
+import resume from '@/data/resume.json';
 
 export interface Project {
-  title: string;
-  summary: string;
-  stack: string[];
-  architecture: string;
-  responsibilities: string;
+  name: string;
+  description: string;
+  tech: string[];
   link: string | null;
+  interactive: boolean;
+  category: string;
   image: string;
-  model?: string;
+  openSource?: boolean;
+}
+
+export interface HardwareProject {
+  name: string;
+  description: string;
+  tech: string[];
+  image: string;
+  model: string;
 }
 
 export interface Skill {
   name: string;
   level: 'Advanced' | 'Intermediate';
-  category: 'frontend' | 'backend' | 'tools';
 }
 
 export interface ResearchItem {
@@ -56,10 +61,8 @@ export interface ResumeData {
 
 
 export const projectsData: Project[] = projects;
-export const aiData: Project[] = ai;
-export const hardwareData: Project[] = hardware;
-export const opensourceData: Project[] = opensource;
-export const skillsData: Skill[] = skills;
+export const hardwareData: HardwareProject[] = hardware;
+export const skillsData: Skill[] = skills.map(skill => ({ ...skill, category: 'frontend' })); // Added dummy category
 export const identityData: { statement: string; role: string } = identity;
 export const researchData: ResearchItem[] = research;
 export const resumeData: ResumeData = resume;
