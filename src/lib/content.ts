@@ -58,27 +58,43 @@ export interface ResearchData {
   learningLog: { date: string; entry: string }[];
 }
 
-
-export interface ResumeExperience {
-  role: string;
-  company: string;
-  period: string;
-  description: string[];
-}
-
-export interface ResumeEducation {
-  school: string;
-  degree: string;
-  year: string;
-  details: string;
-}
-
 export interface ResumeData {
-  education: ResumeEducation[];
-  experience: ResumeExperience[];
-  skills: string[];
-  achievements: string[];
+  header: {
+    title: string;
+    subtitle: string;
+    statement: string;
+  };
+  expertise: {
+    coreSkills: string[];
+    languages: string[];
+    frameworks: string[];
+    tools: string[];
+  };
+  experience: {
+    title: string;
+    period: string;
+    description: string;
+  }[];
+  projectsHighlight: {
+    name: string;
+    role: string;
+    impact: string;
+  }[];
+  education: {
+    mode: string;
+    notes: string;
+  };
+  recognition: string[];
+  contact: {
+    availability: string;
+    preferredChannels: string[];
+  };
+  downloadable: {
+    label: string;
+    file: string;
+  };
 }
+
 
 export interface SystemsProject {
     id: string;
@@ -200,7 +216,6 @@ export interface OpenSourceData {
 
 
 export const projectsData: Project[] = projects;
-// export const hardwareData: OldHardwareProject[] = hardware; // old
 export const skillsData: Skill[] = skills.map(skill => ({ ...skill, category: getCategory(skill.name) }));
 
 function getCategory(skillName: string): 'frontend' | 'backend' | 'tools' {
