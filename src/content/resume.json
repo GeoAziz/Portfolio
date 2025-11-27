@@ -1,0 +1,25 @@
+
+{
+  "experience": [
+    {
+      "role": "Senior Systems Engineer",
+      "company": "Stellar Dynamics Inc.",
+      "period": "2020 – Present",
+      "description": [
+        "Architected and led the development of a distributed data processing platform, increasing throughput by 300%.",
+        "Designed and implemented a low-latency microservices framework in Go for real-time analytics.",
+        "Mentored junior engineers and established team-wide coding standards and best practices."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Innovate Solutions",
+      "period": "2017 – 2020",
+      "description": [
+        "Developed and maintained backend services for a large-scale e-commerce platform using Python and Django.",
+        "Built a CI/CD pipeline using Jenkins and Docker, reducing deployment times by 75%.",
+        "Contributed to the frontend development using React and TypeScript."
+      ]
+    }
+  ]
+}

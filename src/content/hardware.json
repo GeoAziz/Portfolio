@@ -1,0 +1,21 @@
+
+[
+  {
+    "title": "Biometric Sensor Firmware",
+    "summary": "Firmware for a custom PCB that reads and processes biometric data in real-time with low power consumption.",
+    "stack": ["C++", "PlatformIO", "FreeRTOS"],
+    "architecture": "Microcontroller-based system using FreeRTOS for task scheduling. I2C and SPI for sensor communication. BLE for data transmission.",
+    "responsibilities": "Wrote the complete firmware, designed power management strategies, and implemented the communication protocols.",
+    "link": null,
+    "image": "biometric-sensor-fw"
+  },
+  {
+    "title": "Modular Smart Home Hub",
+    "summary": "A central hub for smart home devices with a custom-designed enclosure and modular hardware components.",
+    "stack": ["Fusion 360", "ESP32", "PCB Design"],
+    "architecture": "Main control board with an ESP32, connected to swappable modules for different protocols (Zigbee, Z-Wave).",
+    "responsibilities": "Designed the 3D-printable enclosure, laid out the main PCB, and developed a proof-of-concept module.",
+    "link": "https://github.com",
+    "image": "smart-home-hub"
+  }
+]

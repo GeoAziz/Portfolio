@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "neural-disk-scheduler",
+      "description": "Abstract visualization of a neural network.",
+      "imageUrl": "https://images.unsplash.com/photo-1679639539537-0d2e452890f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxBSSUyMGJyYWlufGVufDB8fHx8MTc2NDIxODY1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI brain"
+    },
+    {
+      "id": "modular-data-pipeline",
+      "description": "Flowchart representing a data pipeline.",
+      "imageUrl": "https://images.unsplash.com/photo-1663369691585-1e227fb362cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkYXRhJTIwcGlwZWxpbmV8ZW58MHx8fHwxNzY0MjY4MTMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data pipeline"
+    },
+    {
+      "id": "quantum-ml-model",
+      "description": "Abstract representation of quantum computing.",
+      "imageUrl": "https://images.unsplash.com/photo-1666112835156-c65bb806ac73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFudHVtJTIwY29tcHV0aW5nfGVufDB8fHx8MTc2NDE1NTgwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "quantum computing"
+    },
+    {
+      "id": "biometric-sensor-fw",
+      "description": "A close-up of a circuit board.",
+      "imageUrl": "https://images.unsplash.com/photo-1592659762303-90081d34b277?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzY0MTg3NzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "circuit board"
+    },
+    {
+      "id": "smart-home-hub",
+      "description": "3D render of a futuristic smart home device.",
+      "imageUrl": "https://images.unsplash.com/photo-1752955471067-294a5de5bf48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzbWFydCUyMGRldmljZXxlbnwwfHx8fDE3NjQyNjgxMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smart device"
+    },
+    {
+      "id": "react-state-visualizer",
+      "description": "A code snippet with colorful syntax highlighting.",
+      "imageUrl": "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb2RlJTIwZWRpdG9yfGVufDB8fHx8MTc2NDIwMDI2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code editor"
+    }
+  ]
 }

@@ -1,0 +1,12 @@
+
+[
+  {
+    "title": "Quantum-Enhanced ML Model",
+    "summary": "Exploratory model leveraging principles of quantum mechanics to enhance machine learning algorithm performance on specific problem sets.",
+    "stack": ["Python", "Qiskit", "PyTorch"],
+    "architecture": "Hybrid quantum-classical neural network. Quantum circuits are used for feature mapping, with a classical network for classification.",
+    "responsibilities": "Developed the quantum circuit design, integrated with PyTorch, and benchmarked against classical equivalents.",
+    "link": "https://github.com",
+    "image": "quantum-ml-model"
+  }
+]

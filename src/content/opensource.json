@@ -1,0 +1,12 @@
+
+[
+  {
+    "title": "React State Visualizer",
+    "summary": "A developer tool to visualize React component state and props in real-time, improving debugging workflows.",
+    "stack": ["TypeScript", "React", "Browser Extensions"],
+    "architecture": "A Chrome DevTools extension that hooks into the React Fiber tree to extract and display component data.",
+    "responsibilities": "Core contributor, focusing on the data extraction logic and the UI for rendering the state tree.",
+    "link": "https://github.com",
+    "image": "react-state-visualizer"
+  }
+]

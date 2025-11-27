@@ -1,0 +1,21 @@
+
+[
+  {
+    "title": "Neural Disk Scheduler",
+    "summary": "An AI-driven I/O request optimizer that learns access patterns to predictively schedule disk operations and reduce latency.",
+    "stack": ["Python", "PyTorch", "C++"],
+    "architecture": "A 3-layer modeling framework that ingests I/O traces, processes them via a recurrent neural network, and outputs an optimized request queue. A C++ kernel module interface applies the schedule.",
+    "responsibilities": "Designed the neural network architecture, implemented the training pipeline, and co-developed the kernel interface.",
+    "link": "https://github.com",
+    "image": "neural-disk-scheduler"
+  },
+  {
+    "title": "Modular Data Pipeline Framework",
+    "summary": "A declarative framework for building, deploying, and managing resilient data pipelines with configurable processing stages.",
+    "stack": ["Go", "Kubernetes", "gRPC", "PostgreSQL"],
+    "architecture": "Pipelines are defined as YAML files and translated into a network of gRPC microservices orchestrated by Kubernetes. A central controller manages state and recovery.",
+    "responsibilities": "Led the design of the declarative API, built the gRPC service scaffolding, and implemented the Kubernetes controller.",
+    "link": null,
+    "image": "modular-data-pipeline"
+  }
+]
