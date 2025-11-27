@@ -6,12 +6,9 @@ import identity from '@/content/identity.json';
 import research from '@/data/research.json';
 import resume from '@/data/resume.json';
 import systems from '@/data/systems.json';
-import * as aiModule from '@/data/ai.json';
+import { aiData as ai } from '@/content/ai';
 import hardware from '@/data/hardware.json';
 import opensource from '@/data/opensource.json';
-
-const ai = (aiModule as any).default || aiModule;
-
 
 export interface Project {
   name: string;

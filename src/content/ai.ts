@@ -1,5 +1,5 @@
 
-{
+export const aiData = {
   "models": [
     {
       "id": "astra-mini",
@@ -28,27 +28,23 @@
   "experiments": [
     {
       "title": "Prompt Conditioning & Reasoning Depth",
-      "name": "Prompt Conditioning & Reasoning Depth",
       "model": "Astra-Mini",
       "description": "Testing how different prompt styles change the reasoning quality.",
       "method": "Generated 40 variations of structured, unstructured, and constraint-based prompts.",
       "observation": "Constraint prompts improved reliability by reducing speculative completions.",
       "result": "Reasoning coherence improved 33%",
       "dataset": "custom prompts",
-      "tech": ["prompting", "reasoning", "testing"],
-      "interactive": true
+      "tags": ["prompting", "reasoning", "testing"]
     },
     {
       "title": "Vector-based Semantic Clustering",
-      "name": "Vector-based Semantic Clustering",
       "model": "Arclight-Embed",
       "description": "Converting large text samples into embeddings and clustering them by topic.",
       "method": "Used cosine similarity thresholding and DBSCAN clustering.",
       "observation": "Distinct topic clusters emerged without supervision.",
       "result": "92% topic purity",
       "dataset": "tech articles",
-      "tech": ["embeddings", "vectors", "clustering"],
-      "interactive": true
+      "tags": ["embeddings", "vectors", "clustering"]
     }
   ],
   "skills": [
@@ -74,4 +70,4 @@
       "entry": "Semantic embeddings reveal structural meaning that models don't express textually — meaning and representation can diverge."
     }
   ]
-}
+};
