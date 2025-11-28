@@ -1,0 +1,71 @@
+
+{
+  "hardwareProjects": [
+    {
+      "id": "esp32-bio-sensor",
+      "title": "ESP32 Biometric Sensor Hub",
+      "description": "Wearable sensor node collecting environmental and motion readings for streaming via BLE.",
+      "components": ["ESP32", "MPU6050", "BMP280", "LiPo 1000mAh", "BLE module"],
+      "skills": ["Microcontroller programming", "BLE communication", "Sensor calibration", "Power management"],
+      "status": "working prototype",
+      "notes": "Used interrupt-driven sampling to reduce power consumption.",
+      "tags": ["embedded", "sensors", "IoT", "wearables"]
+    },
+    {
+      "id": "arduino-motor-control",
+      "title": "DC Motor PID Control with Arduino",
+      "description": "Feedback loop motor control using quadrature encoder and real-time PID tuning.",
+      "components": ["Arduino Uno", "Encoder Motor", "L298N driver", "12V supply"],
+      "skills": ["PID tuning", "PWM control", "Closed loop systems", "Signal reading"],
+      "status": "complete",
+      "notes": "Achieved stable rotation with <3% overshoot.",
+      "tags": ["robotics", "control systems"]
+    },
+    {
+      "id": "raspi-edge-gateway",
+      "title": "Raspberry Pi Edge Compute Gateway",
+      "description": "Local processing node for routing sensor clusters and running lightweight inference.",
+      "components": ["Raspberry Pi 4", "USB Wi-Fi module", "SSD storage", "5V regulated power"],
+      "skills": ["Linux configuration", "Edge computing", "Local inference", "System integration"],
+      "status": "in progress",
+      "notes": "Will integrate real-time image capture + embeddings.",
+      "tags": ["edge AI", "gateway", "networking"]
+    }
+  ],
+  "componentInventory": [
+    "Arduino Uno",
+    "ESP32",
+    "Raspberry Pi",
+    "MPU6050 (gyro/accelerometer)",
+    "HC-SR04 ultrasonic sensor",
+    "L298N motor driver",
+    "A4988 stepper driver",
+    "SG90 servo",
+    "LiPo battery",
+    "Voltage regulator 5V",
+    "Breadboards",
+    "Jumper wires",
+    "Mini soldering iron"
+  ],
+  "skills": [
+    "Soldering",
+    "Firmware design",
+    "PWM control",
+    "PID loops",
+    "Analog-digital interfacing",
+    "UART / I2C / SPI",
+    "Power management",
+    "Embedded C++",
+    "Edge ML integration"
+  ],
+  "engineeringLog": [
+    {
+      "date": "2024-10-02",
+      "entry": "ESP32 Wi-Fi beaconing adds power draw spikes — must disable during deep sleep."
+    },
+    {
+      "date": "2024-11-03",
+      "entry": "Motor jitter eliminated after isolating ground reference — electrical noise mattered more than software."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+
+export const aiData = {
+  "models": [
+    {
+      "id": "astra-mini",
+      "name": "Astra-Mini",
+      "type": "Small Language Model",
+      "description": "A lightweight experimental transformer for fast local inference.",
+      "parameters": "220M",
+      "framework": "PyTorch",
+      "strengths": ["fast inference", "low memory", "edge execution"],
+      "weaknesses": ["limited contextual reasoning"],
+      "sample_prompt": "Explain recursion simply.",
+      "sample_output": "Recursion is when a function calls itself to solve smaller parts of a problem.",
+      "tags": ["LLM", "local", "prototype", "edge"]
+    },
+    {
+      "id": "arclight-embed",
+      "name": "Arclight-Embed",
+      "type": "Language Embedding Model",
+      "description": "Model used for vectorization of text into semantic space.",
+      "dim": 768,
+      "framework": "TensorFlow",
+      "usage": ["semantic search", "clustering", "document retrieval"],
+      "tags": ["embeddings", "vectors", "semantic"]
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Prompt Conditioning & Reasoning Depth",
+      "model": "Astra-Mini",
+      "description": "Testing how different prompt styles change the reasoning quality.",
+      "method": "Generated 40 variations of structured, unstructured, and constraint-based prompts.",
+      "observation": "Constraint prompts improved reliability by reducing speculative completions.",
+      "result": "Reasoning coherence improved 33%",
+      "dataset": "custom prompts",
+      "tags": ["prompting", "reasoning", "testing"]
+    },
+    {
+      "title": "Vector-based Semantic Clustering",
+      "model": "Arclight-Embed",
+      "description": "Converting large text samples into embeddings and clustering them by topic.",
+      "method": "Used cosine similarity thresholding and DBSCAN clustering.",
+      "observation": "Distinct topic clusters emerged without supervision.",
+      "result": "92% topic purity",
+      "dataset": "tech articles",
+      "tags": ["embeddings", "vectors", "clustering"]
+    }
+  ],
+  "skills": [
+    "Neural Networks",
+    "Deep Learning",
+    "Transformers",
+    "Embeddings",
+    "Attention Mechanisms",
+    "Model Evaluation",
+    "Gradient Descent",
+    "PyTorch",
+    "TensorFlow",
+    "LangChain",
+    "Vector DBs (Pinecone / Weaviate / Chroma)"
+  ],
+  "thoughtLog": [
+    {
+      "date": "2024-11-12",
+      "entry": "Astra-Mini improves under constrained prompting, indicating weak world modeling but strong instruction following."
+    },
+    {
+      "date": "2024-11-19",
+      "entry": "Semantic embeddings reveal structural meaning that models don't express textually — meaning and representation can diverge."
+    }
+  ]
+};

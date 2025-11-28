@@ -1,0 +1,84 @@
+
+{
+  "header": {
+    "title": "Engineer DevMahnX",
+    "subtitle": "Systems Engineer • AI Experimenter • Hardware Builder",
+    "statement": "I build end-to-end systems that merge software, hardware, and machine intelligence. My focus is solving real-world problems through scalable, elegant, and future-proof engineering."
+  },
+  "expertise": {
+    "coreSkills": [
+      "Full-stack engineering",
+      "Embedded systems",
+      "Machine learning & model experimentation",
+      "Systems architecture",
+      "Cloud & edge computing",
+      "Hardware-software integration"
+    ],
+    "languages": [
+      "Python",
+      "C / C++",
+      "JavaScript",
+      "TypeScript",
+      "Rust",
+      "Go"
+    ],
+    "frameworks": [
+      "React",
+      "Next.js",
+      "TensorFlow",
+      "PyTorch",
+      "Node.js",
+      "Arduino / STM32 toolchains"
+    ],
+    "tools": [
+      "Git",
+      "Docker",
+      "Linux",
+      "Vercel & Netlify",
+      "Firebase",
+      "NVIDIA CUDA"
+    ]
+  },
+  "experience": [
+    {
+      "title": "Independent Systems & AI Engineer",
+      "period": "2021 — Present",
+      "description": "Engineering complete ecosystems: neural models, simulation frameworks, control interfaces, and microcontroller-based systems."
+    },
+    {
+      "title": "Hardware Prototype Developer",
+      "period": "2020 — 2021",
+      "description": "Building and testing lightweight robotics, microcontroller-based data devices, and sensor fusion rigs."
+    }
+  ],
+  "projectsHighlight": [
+    {
+      "name": "Astreaus Portfolio",
+      "role": "Architect & Engineer",
+      "impact": "Designed and built a multi-domain interactive portfolio serving as a live demonstration of engineering, design, and digital identity."
+    },
+    {
+      "name": "ModelVision",
+      "role": "Lead AI Experimenter",
+      "impact": "Developed and tested transformer-based experiments for vision-language-mechanical interfaces."
+    }
+  ],
+  "education": {
+    "mode": "Hybrid self-directed & academic learning",
+    "notes": "Deep research into control systems, computational design, AI theory, and electronic engineering."
+  },
+  "recognition": [
+    "Known for fast-iteration prototyping",
+    "Cross-domain engineering ability",
+    "Hands-on scientific curiosity",
+    "Strong communication of complex concepts"
+  ],
+  "contact": {
+    "availability": "Available for collaboration and research partnerships",
+    "preferredChannels": ["GitHub", "Email", "Direct technical correspondence"]
+  },
+  "downloadable": {
+    "label": "Download Formal Resume",
+    "file": "/static/DevMahnX_resume.pdf"
+  }
+}

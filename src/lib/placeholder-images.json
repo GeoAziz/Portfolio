@@ -1,0 +1,70 @@
+{
+  "placeholderImages": [
+    {
+      "id": "distributed-threat-analyzer",
+      "description": "Abstract visualization of a network security analysis.",
+      "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxuZXR3b3JrJTIwc2VjdXJpdHl8ZW58MHx8fHwxNzY0MjY4NzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "network security"
+    },
+    {
+      "id": "modular-ai-assistant",
+      "description": "A friendly robot interacting with a human.",
+      "imageUrl": "https://images.unsplash.com/photo-1716637644831-e046c73be197?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxBSSUyMGFzc2lzdGFudHxlbnwwfHx8fDE3NjQyNTM4NDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "AI assistant"
+    },
+    {
+      "id": "real-time-data-pipeline",
+      "description": "Flowchart representing a data pipeline.",
+      "imageUrl": "https://images.unsplash.com/photo-1613690168541-992f5e5d9ae0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkYXRhJTIwcGlwZWxpbmV8ZW58MHx8fHwxNzY0MjY4MTMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data pipeline"
+    },
+    {
+      "id": "contextual-chat-ai",
+      "description": "Abstract representation of a conversation.",
+      "imageUrl": "https://images.unsplash.com/photo-1594035519981-62c9cef33ca9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaGF0JTIwYnViYmxlc3xlbnwwfHx8fDE3NjQyNjg3MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chat bubbles"
+    },
+    {
+      "id": "cv-object-detector",
+      "description": "Image with bounding boxes around objects.",
+      "imageUrl": "https://images.unsplash.com/photo-1599350686877-382a54114d2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxvYmplY3QlMjBkZXRlY3Rpb258ZW58MHx8fHwxNzY0MjY4NzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "object detection"
+    },
+    {
+      "id": "ai-experiment-dashboard",
+      "description": "A dashboard with charts and graphs.",
+      "imageUrl": "https://images.unsplash.com/photo-1599658880436-c61792e70672?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkYXRhJTIwZGFzaGJvYXJkfGVufDB8fHx8MTc2NDIyMjI1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data dashboard"
+    },
+    {
+      "id": "iot-sensor-hub",
+      "description": "A close-up of a circuit board with sensors.",
+      "imageUrl": "https://images.unsplash.com/photo-1536369212193-d7af891df5c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzZW5zb3IlMjBodWJ8ZW58MHx8fHwxNzY0MjY4NzIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sensor hub"
+    },
+    {
+      "id": "robotic-arm",
+      "description": "A 3D render of a robotic arm.",
+      "imageUrl": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cm9ib3RpYyUyMGFybXxlbnwwfHx8fDE3NjQyMTA5Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "robotic arm"
+    },
+    {
+      "id": "iot-kit",
+      "description": "A kit with various electronic components.",
+      "imageUrl": "https://images.unsplash.com/photo-1621173425760-24b37d0137f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxlbGVjdHJvbmljcyUyMGtpdHxlbnwwfHx8fDE3NjQyNjg3MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "electronics kit"
+    },
+    {
+      "id": "openai-plugin-hub",
+      "description": "A grid of logos for different plugins.",
+      "imageUrl": "https://images.unsplash.com/photo-1641350625112-3b1d73c71418?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwbHVnaW4lMjBsb2dvc3xlbnwwfHx8fDE3NjQyNjg3MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "plugin logos"
+    },
+    {
+      "id": "iot-sensor-community",
+      "description": "A group of people collaborating on a project.",
+      "imageUrl": "https://images.unsplash.com/photo-1566140967404-b8b3932483f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWFtJTIwY29sbGFib3JhdGlvbnxlbnwwfHx8fDE3NjQyMDI4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team collaboration"
+    }
+  ]
+}

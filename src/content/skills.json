@@ -1,0 +1,13 @@
+
+[
+  {"name": "Next.js", "level": "Advanced", "category": "frontend" },
+  {"name": "Tailwind CSS", "level": "Advanced", "category": "frontend" },
+  {"name": "Three.js", "level": "Intermediate", "category": "frontend" },
+  {"name": "Framer Motion", "level": "Intermediate", "category": "frontend" },
+  {"name": "Python", "level": "Advanced", "category": "backend" },
+  {"name": "Arduino", "level": "Intermediate", "category": "tools" },
+  {"name": "Machine Learning", "level": "Intermediate", "category": "backend" },
+  {"name": "Distributed Systems", "level": "Advanced", "category": "backend" },
+  {"name": "Docker", "level": "Advanced", "category": "tools" },
+  {"name": "Git", "level": "Advanced", "category": "tools" }
+]

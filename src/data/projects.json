@@ -1,0 +1,76 @@
+
+[
+  {
+    "name": "CYGNUS",
+    "description": "Exploring multi-node model execution and orchestration.",
+    "tech": ["Python", "PySpark", "Docker", "Kafka"],
+    "link": "https://github.com/GeoAziz/jarvis-cyber-daemon",
+    "interactive": true,
+    "category": "Systems",
+    "image": "distributed-threat-analyzer"
+  },
+  {
+    "name": "NEURA-LINK",
+    "description": "Investigating long-term context persistence in reasoning.",
+    "tech": ["Next.js", "Node.js", "OpenAI API", "Framer Motion"],
+    "link": "#",
+    "interactive": true,
+    "category": "AI",
+    "image": "modular-ai-assistant"
+  },
+  {
+    "name": "QUANTUM CORE",
+    "description": "Rapid inference using reconfigurable hardware acceleration.",
+    "tech": ["Verilog", "FPGA", "Python"],
+    "link": "#",
+    "interactive": true,
+    "category": "Hardware",
+    "image": "real-time-data-pipeline"
+  },
+  {
+    "name": "Contextual Chat AI",
+    "description": "Maintains multi-turn conversation memory and context.",
+    "tech": ["Python", "OpenAI GPT-4", "FastAPI"],
+    "link": "#",
+    "interactive": true,
+    "category": "AI",
+    "image": "contextual-chat-ai"
+  },
+  {
+    "name": "Computer Vision Object Detector",
+    "description": "Prototype for detecting objects in real-time video streams.",
+    "tech": ["Python", "PyTorch", "YOLOv8"],
+    "link": "#",
+    "interactive": true,
+    "category": "AI",
+    "image": "cv-object-detector"
+  },
+  {
+    "name": "AI Experiment Dashboard",
+    "description": "Centralized dashboard for running and visualizing AI experiments.",
+    "tech": ["Next.js", "React", "D3.js"],
+    "link": "#",
+    "interactive": true,
+    "category": "AI",
+    "image": "ai-experiment-dashboard"
+  },
+  {
+    "name": "OpenAI Plugin Hub",
+    "description": "Community-driven repository for AI plugin examples.",
+    "tech": ["Node.js", "Next.js", "React"],
+    "link": "https://github.com/GeoAziz/openai-plugin-hub",
+    "openSource": true,
+    "category": "Open Source",
+    "image": "openai-plugin-hub"
+  },
+  {
+    "name": "IoT Sensor Community",
+    "description": "Open-source Arduino and Raspberry Pi sensor projects.",
+    "tech": ["Arduino", "Python", "MQTT"],
+    "link": "#",
+    "openSource": true,
+    "category": "Open Source",
+    "image": "iot-sensor-community"
+  }
+]
+

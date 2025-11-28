@@ -1,0 +1,21 @@
+
+[
+  {
+    "title": "OpenAI Plugin Hub",
+    "summary": "Community-driven repository for AI plugin examples.",
+    "stack": ["Node.js", "Next.js", "React"],
+    "architecture": "A community-driven hub for discovering and sharing OpenAI plugins. The platform is built with Next.js and Node.js, providing a space for developers to contribute and find new tools.",
+    "responsibilities": "Created the initial concept, built the platform using Next.js and Node.js, and managed community contributions.",
+    "link": "https://github.com/GeoAziz/openai-plugin-hub",
+    "image": "openai-plugin-hub"
+  },
+  {
+    "title": "IoT Sensor Community",
+    "summary": "Open-source Arduino and Raspberry Pi sensor projects.",
+    "stack": ["Arduino", "Python", "MQTT"],
+    "architecture": "An open-source collection of projects for IoT sensors using Arduino and Raspberry Pi. The projects use MQTT for communication and include Python scripts for data processing.",
+    "responsibilities": "Contributed several projects to the collection, wrote documentation, and helped other community members with their implementations.",
+    "link": "#",
+    "image": "iot-sensor-community"
+  }
+]

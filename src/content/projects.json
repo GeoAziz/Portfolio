@@ -1,0 +1,30 @@
+
+[
+  {
+    "title": "Distributed Threat Analyzer",
+    "summary": "Multi-node system for monitoring and predicting network anomalies.",
+    "stack": ["Python", "PySpark", "Docker", "Kafka"],
+    "architecture": "A multi-node system that ingests network traffic data, processes it in real-time using PySpark, and uses a machine learning model to detect and predict threats. Kafka is used for message queuing between nodes.",
+    "responsibilities": "Led the architecture design, developed the data processing modules with PySpark, and containerized the application with Docker for deployment.",
+    "link": "https://github.com/GeoAziz/jarvis-cyber-daemon",
+    "image": "distributed-threat-analyzer"
+  },
+  {
+    "title": "Modular AI Assistant",
+    "summary": "Conversational AI with memory, task automation, and plugin support.",
+    "stack": ["Next.js", "Node.js", "OpenAI API", "Framer Motion"],
+    "architecture": "A web-based conversational AI with a modular plugin system. The backend is built with Node.js and integrates with the OpenAI API for language understanding. The frontend is a responsive Next.js app with animations by Framer Motion.",
+    "responsibilities": "Developed the plugin architecture, integrated the OpenAI API, and built the user interface with Next.js and Framer Motion.",
+    "link": "#",
+    "image": "modular-ai-assistant"
+  },
+  {
+    "title": "Real-Time Data Pipeline",
+    "summary": "Streaming system for processing IoT sensor data in real-time.",
+    "stack": ["Python", "Apache Flink", "Docker", "AWS"],
+    "architecture": "A scalable, real-time data pipeline built with Apache Flink for stream processing. The system is deployed on AWS using Docker containers, allowing it to handle high-velocity data from IoT sensors.",
+    "responsibilities": "Designed the pipeline architecture, implemented the Flink processing jobs, and set up the deployment infrastructure on AWS.",
+    "link": "#",
+    "image": "real-time-data-pipeline"
+  }
+]

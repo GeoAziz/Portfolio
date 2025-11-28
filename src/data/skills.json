@@ -1,0 +1,19 @@
+
+[
+  {"name": "Next.js", "level": "Advanced"},
+  {"name": "Python", "level": "Advanced"},
+  {"name": "TensorFlow", "level": "Intermediate"},
+  {"name": "Rust", "level": "Intermediate"},
+  {"name": "C++", "level": "Advanced"},
+  {"name": "Node.js", "level": "Advanced"},
+  {"name": "React", "level": "Advanced"},
+  {"name": "Verilog", "level": "Intermediate"},
+  {"name": "Embedded Systems", "level": "Advanced"},
+  {"name": "PCB Design", "level": "Intermediate"},
+  {"name": "Docker", "level": "Advanced"},
+  {"name": "Distributed Systems", "level": "Advanced"},
+  {"name": "Linux", "level": "Advanced"},
+  {"name": "Bash", "level": "Advanced"},
+  {"name": "Firebase", "level": "Intermediate"},
+  {"name": "OpenAI API", "level": "Intermediate"}
+]

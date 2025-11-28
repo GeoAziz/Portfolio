@@ -1,0 +1,35 @@
+
+{
+  "education": [
+    {
+      "school": "University of Nairobi",
+      "degree": "BSc Computer Science",
+      "year": "2021",
+      "details": "Focused on AI, distributed systems, and embedded hardware."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Hardware Prototype Engineer",
+      "company": "Innovate Labs",
+      "period": "2023 – Present",
+      "description": [
+        "Designed and built IoT multi-sensor devices for real-time monitoring."
+      ]
+    },
+    {
+      "role": "Software Engineer Intern",
+      "company": "TechCorp",
+      "period": "2022 – 2023",
+      "description": [
+        "Developed AI modules for predictive analytics and automated data pipelines."
+      ]
+    }
+  ],
+  "skills": ["Next.js", "Tailwind CSS", "Three.js", "Python", "Arduino", "Machine Learning"],
+  "achievements": [
+    "Published research paper on distributed AI systems",
+    "Built IoT multi-sensor platform for real-time monitoring",
+    "Contributed to 5+ open-source AI & hardware projects"
+  ]
+}
