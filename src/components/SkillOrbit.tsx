@@ -9,23 +9,19 @@ import { useIsMobile } from '@/hooks/use-mobile';
 type Skill = typeof skillsData[0];
 
 const orbitConfig = {
-  frontend: { radius: 120, duration: 60 },
-  backend: { radius: 220, duration: 90 },
-  tools: { radius: 320, duration: 120 },
+  frontend: { radius: 100, duration: 60 },
+  backend: { radius: 180, duration: 90 },
 };
 
 const mobileOrbitConfig = {
-  frontend: { radius: 80, duration: 60 },
-  backend: { radius: 140, duration: 90 },
-  tools: { radius: 200, duration: 120 },
+  frontend: { radius: 60, duration: 60 },
+  backend: { radius: 120, duration: 90 },
 };
 
 // Simple categorization for demo
 function getCategory(skillName: string): keyof typeof orbitConfig {
-    const backendSkills = ['Python', 'Distributed Systems', 'Machine Learning'];
-    const toolSkills = ['Docker', 'Git', 'Arduino'];
+    const backendSkills = ['Python', 'Distributed Systems', 'Machine Learning', 'Docker', 'Git', 'Arduino'];
     if (backendSkills.includes(skillName)) return 'backend';
-    if (toolSkills.includes(skillName)) return 'tools';
     return 'frontend';
 }
 
@@ -40,7 +36,7 @@ export function SkillOrbit() {
 
   const orbits = useMemo(() => {
     const config = isMobile ? mobileOrbitConfig : orbitConfig;
-    const categories: (keyof typeof config)[] = ['frontend', 'backend', 'tools'];
+    const categories: (keyof typeof config)[] = ['frontend', 'backend'];
     
     return categories.map((category, i) => ({
       category,
@@ -52,17 +48,17 @@ export function SkillOrbit() {
 
   if (!isMounted) {
     return (
-      <div className="w-full h-[400px] md:h-[640px] flex items-center justify-center">
+      <div className="w-full h-[320px] md:h-[480px] flex items-center justify-center">
         <p className="text-muted-foreground">Loading skill orbit...</p>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full flex items-center justify-center h-[400px] md:h-[640px]">
+    <div className="relative w-full flex items-center justify-center h-[320px] md:h-[480px]">
       {/* Central Point */}
-      <div className="absolute w-4 h-4 rounded-full bg-accent/50"></div>
-      <div className="absolute w-2 h-2 rounded-full bg-accent"></div>
+      <div className="absolute w-3 h-3 rounded-full bg-accent/50"></div>
+      <div className="absolute w-1.5 h-1.5 rounded-full bg-accent"></div>
 
       {orbits.map((orbit, orbitIndex) => (
         <div key={orbit.category}>
@@ -80,7 +76,7 @@ export function SkillOrbit() {
           <div
             className="absolute w-full h-full"
             style={{
-              animation: `spin-slow ${orbit.duration}s linear infinite ${orbitIndex % 2 === 0 ? '' : 'reverse'}`,
+              animation: `spin-slow ${orbit.duration}s linear infinite`,
             }}
           >
             {orbit.skills.map((skill: Skill, skillIndex: number) => {
@@ -101,26 +97,22 @@ export function SkillOrbit() {
                 >
                   <div
                     className={cn(
-                      'w-3 h-3 rounded-full transition-all duration-300 cursor-pointer',
-                      'group-hover:scale-150',
+                      'w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer',
                       skill.level === 'Advanced' ? 'bg-accent' : 'bg-accent-2'
                     )}
-                    style={{
-                      animation: `spin-slow ${orbit.duration}s linear infinite ${orbitIndex % 2 === 0 ? 'reverse' : ''}`,
-                    }}
                   ></div>
                   <span
                     className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-card text-foreground text-xs rounded-md
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap"
                   >
-                    {skill.name} ({skill.level})
+                    {skill.name}
                   </span>
                 </div>
               );
             })}
           </div>
         </div>
-      ))}
+      ))}\
     </div>
   );
 }

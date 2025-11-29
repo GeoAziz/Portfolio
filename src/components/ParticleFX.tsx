@@ -2,11 +2,15 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function ParticleFX() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -21,7 +25,7 @@ export function ParticleFX() {
     });
 
     const particles: Particle[] = [];
-    const particleCount = Math.floor((width * height) / 10000);
+    const particleCount = Math.floor((width * height) / 15000);
 
     class Particle {
       x: number;
@@ -33,9 +37,9 @@ export function ParticleFX() {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = (Math.random() - 0.5) * 0.3;
+        this.size = Math.random() * 1.5 + 0.5;
       }
 
       update() {
@@ -47,7 +51,7 @@ export function ParticleFX() {
       }
 
       draw() {
-        ctx!.fillStyle = 'hsla(196, 100%, 70%, 0.3)';
+        ctx!.fillStyle = 'hsla(196, 100%, 70%, 0.2)';
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx!.fill();
@@ -72,7 +76,11 @@ export function ParticleFX() {
     init();
     animate();
 
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return <canvas ref={canvasRef} className="fixed top-0 left-0 -z-10" />;
 }
