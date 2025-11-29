@@ -15,27 +15,13 @@ export function ParticleFX() {
 
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    let animationFrameId: number;
-
-    const handleResize = () => {
+    window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
-      createParticles(); // Re-create particles on resize
-    };
-    
-    window.addEventListener('resize', handleResize);
+    });
 
-    let particles: Particle[] = [];
-    
-    // Adjust particle count based on screen size for performance
-    const getParticleCount = () => {
-        if (typeof window === 'undefined') return 100;
-        const screenArea = window.innerWidth * window.innerHeight;
-        // Use a lower density for smaller screens
-        const density = window.innerWidth < 768 ? 40000 : 20000;
-        return Math.floor(screenArea / density);
-    }
-
+    const particles: Particle[] = [];
+    const particleCount = Math.floor((width * height) / 10000);
 
     class Particle {
       x: number;
@@ -47,9 +33,9 @@ export function ParticleFX() {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.2; // Slower speed
-        this.vy = (Math.random() - 0.5) * 0.2;
-        this.size = Math.random() * 1.2 + 0.5; // Smaller particles
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2 + 1;
       }
 
       update() {
@@ -61,39 +47,30 @@ export function ParticleFX() {
       }
 
       draw() {
-        if (!ctx) return;
-        ctx.fillStyle = 'hsla(196, 100%, 70%, 0.15)'; // Even more subtle
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+        ctx!.fillStyle = 'hsla(196, 100%, 70%, 0.3)';
+        ctx!.beginPath();
+        ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx!.fill();
       }
     }
 
-    function createParticles() {
-        particles = [];
-        const particleCount = getParticleCount();
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
+    function init() {
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
     }
 
     function animate() {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, width, height);
+      ctx!.clearRect(0, 0, width, height);
       particles.forEach(p => {
         p.update();
         p.draw();
       });
-      animationFrameId = requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     }
 
-    createParticles();
+    init();
     animate();
-
-    return () => {
-        window.removeEventListener('resize', handleResize);
-        cancelAnimationFrame(animationFrameId);
-    }
 
   }, []);
 

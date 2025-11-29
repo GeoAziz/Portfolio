@@ -50,17 +50,10 @@ export function SkillOrbit() {
     }));
   }, [isMobile]);
 
-  if (!isMounted || isMobile) {
+  if (!isMounted) {
     return (
       <div className="w-full h-[400px] md:h-[640px] flex items-center justify-center">
-        <div className="relative w-full flex items-center justify-center h-[240px]">
-            <div className="absolute w-2 h-2 rounded-full bg-accent"></div>
-            <div className="absolute rounded-full border border-dashed border-border/30" style={{ width: 160, height: 160 }}></div>
-             <div className="absolute rounded-full border border-dashed border-border/30" style={{ width: 280, height: 280 }}></div>
-            <p className="text-muted-foreground text-center text-sm">
-                Interactive skill orbit visible on desktop.
-            </p>
-        </div>
+        <p className="text-muted-foreground">Loading skill orbit...</p>
       </div>
     );
   }
