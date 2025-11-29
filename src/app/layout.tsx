@@ -25,7 +25,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased bg-background text-foreground min-h-screen flex flex-col')}>
+      <body className={cn('font-body antialiased bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden')}>
         <ParticleFX />
         <div className="relative z-10 flex flex-col flex-grow">
           <Navigation />
