@@ -5,6 +5,8 @@ import { useState, useMemo, useEffect } from 'react';
 import { skillsData } from '@/lib/content';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
 
 type Skill = typeof skillsData[0];
 
@@ -49,9 +51,26 @@ export function SkillOrbit() {
   if (!isMounted) {
     return (
       <div className="w-full h-[320px] md:h-[480px] flex items-center justify-center">
-        <p className="text-muted-foreground">Loading skill orbit...</p>
+        <p className="text-muted-foreground">Loading cognitive map...</p>
       </div>
     );
+  }
+
+  if (isMobile) {
+      return (
+          <Card className="w-full max-w-md mx-auto bg-card border-border">
+              <CardHeader>
+                  <CardTitle className="text-center font-headline text-2xl">Cognitive Skill Map</CardTitle>
+              </CardHeader>
+              <CardContent>
+                  <div className="flex flex-wrap justify-center gap-2">
+                      {skillsData.map((skill) => (
+                          <Badge key={skill.name} variant="secondary" className="text-sm py-1 px-3 font-mono">{skill.name}</Badge>
+                      ))}
+                  </div>
+              </CardContent>
+          </Card>
+      )
   }
 
   return (

@@ -60,9 +60,9 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden">
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={title} className="border-b-0">
-                <div className="p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 text-left">
+                <div className="p-4 md:p-6 flex flex-col md:flex-row items-start gap-4 text-left">
                     {image && (
-                    <div className="relative w-24 h-16 rounded-md overflow-hidden flex-shrink-0">
+                    <div className="relative w-full md:w-24 h-32 md:h-16 rounded-md overflow-hidden flex-shrink-0">
                         <Image
                         src={image.imageUrl}
                         alt={title}
@@ -72,11 +72,11 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                         />
                     </div>
                     )}
-                    <div className="flex-grow">
+                    <div className="flex-grow w-full">
                         <h3 className="text-lg md:text-xl font-headline mb-1 md:mb-2">{title}</h3>
                         <p className="text-muted-foreground text-sm">{shortDescription}</p>
                     </div>
-                    <div className='flex gap-2 items-center self-end md:self-center'>
+                    <div className='flex gap-2 items-center self-start md:self-center flex-shrink-0'>
                         { link && link !== "#" && (
                             <Button asChild variant="outline" size="sm">
                                 <a
