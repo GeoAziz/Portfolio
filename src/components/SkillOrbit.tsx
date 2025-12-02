@@ -22,10 +22,10 @@ export function SkillOrbit() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useTransform(mouseY, [0, 600], [10, -10]);
-  const rotateY = useTransform(mouseX, [0, 600], [-10, 10]);
+  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
 
-  const handleMouseMove = (event: React.MouseEvent) => {
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (containerRef.current) {
       const { left, top, width, height } = containerRef.current.getBoundingClientRect();
       mouseX.set(event.clientX - left - width / 2);
@@ -35,16 +35,7 @@ export function SkillOrbit() {
 
   useEffect(() => {
     setIsMounted(true);
-    const currentRef = containerRef.current;
-    if (currentRef) {
-      currentRef.addEventListener('mousemove', handleMouseMove as any);
-    }
-    return () => {
-      if (currentRef) {
-        currentRef.removeEventListener('mousemove', handleMouseMove as any);
-      }
-    };
-  }, [handleMouseMove]);
+  }, []);
 
   if (!isMounted) {
     return (
@@ -104,7 +95,7 @@ export function SkillOrbit() {
   // Desktop: Orbital visualization
   const radius = 250;
   const centerSize = 140;
-  const nodeSize = 8;
+  const nodeSize = 12;
 
   return (
     <motion.div
@@ -116,7 +107,7 @@ export function SkillOrbit() {
       style={{ perspective: 1000 }}
       onMouseMove={handleMouseMove}
     >
-      <motion.div style={{ rotateX, rotateY }}>
+      <motion.div className="relative w-full h-full" style={{ rotateX, rotateY }}>
         {/* Central Node */}
         <TooltipProvider>
           <Tooltip>
@@ -154,7 +145,10 @@ export function SkillOrbit() {
         </TooltipProvider>
 
         {/* Orbit path */}
-        <motion.div className="absolute rounded-full border border-dashed border-border/20" style={{ width: radius * 2, height: radius * 2, top: '50%', left: '50%', x: '-50%', y: '-50%' }} />
+        <motion.div 
+          className="absolute rounded-full border border-dashed border-border/20 z-0" 
+          style={{ width: radius * 2, height: radius * 2, top: '50%', left: '50%', x: '-50%', y: '-50%' }} 
+        />
 
         {/* Connecting lines from center to hovered node */}
         <AnimatePresence>
@@ -190,7 +184,19 @@ export function SkillOrbit() {
         </AnimatePresence>
 
         {/* Rotating container */}
-        <motion.div className="absolute w-full h-full" style={{ top: '50%', left: '50%' }} animate={{ rotate: 360 }} transition={{ duration: orbitSpeed, repeat: Infinity, ease: "linear" }}>
+        <motion.div 
+          className="absolute" 
+          style={{ 
+            width: radius * 2, 
+            height: radius * 2, 
+            top: '50%', 
+            left: '50%', 
+            x: '-50%', 
+            y: '-50%' 
+          }} 
+          animate={{ rotate: 360 }} 
+          transition={{ duration: orbitSpeed, repeat: Infinity, ease: "linear" }}
+        >
           {domains.map((domain, index) => {
             const angle = (index / domains.length) * 2 * Math.PI - Math.PI / 2;
             const x = radius * Math.cos(angle);
@@ -200,8 +206,13 @@ export function SkillOrbit() {
             return (
               <motion.div
                 key={domain.name}
-                className="absolute cursor-pointer group"
-                style={{ transform: `translate(${x}px, ${y}px)` }}
+                className="absolute cursor-pointer group z-10"
+                style={{ 
+                  top: '50%',
+                  left: '50%',
+                  x: x,
+                  y: y,
+                }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + index * 0.15 }}
@@ -245,12 +256,11 @@ export function SkillOrbit() {
                   </motion.div>
                   {/* Label - hidden on hover to prevent overlap */}
                   <motion.div 
-                    className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none" 
-                    initial={{ opacity: 0, y: -5 }} 
-                    animate={{ opacity: isHovered ? 0 : 1, y: 0 }} 
-                    transition={{ delay: isHovered ? 0 : 1 + index * 0.1, duration: 0.2 }}
+                    className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none" 
+                    animate={{ opacity: isHovered ? 0 : 1 }} 
+                    transition={{ duration: 0.2 }}
                   >
-                    <span className="text-xs font-light text-muted-foreground px-2 py-1 rounded-md bg-card/60 backdrop-blur-sm border border-transparent">{domain.name}</span>
+                    <span className="text-xs font-medium text-foreground/70 px-2 py-1 rounded-md bg-card/80 backdrop-blur-sm border border-border/30">{domain.name}</span>
                   </motion.div>
                   <AnimatePresence>
                     {isHovered && (
