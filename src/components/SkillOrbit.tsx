@@ -3,11 +3,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { cognitiveMap } from '@/data/cognitive-map.json';
+import cognitiveData from '@/data/cognitive-map.json';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useRouter } from 'next/navigation';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+
+const { cognitiveMap } = cognitiveData;
 
 export function SkillOrbit() {
   const isMobile = useIsMobile();
