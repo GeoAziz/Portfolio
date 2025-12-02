@@ -1,0 +1,23 @@
+{
+  "landing": {
+    "hero": {
+      "preface": "Welcome to my engineering domain",
+      "name": "Engineer DevMahnX",
+      "title": "Building systems for the future.",
+      "subtitle": "Full-stack engineer exploring AI, distributed systems, and hardware-driven computing. I build solutions that connect computation with the physical world.",
+      "buttons": [
+        {
+          "label": "Explore the Work",
+          "action": "/systems",
+          "variant": "default"
+        },
+        {
+          "label": "View Resume",
+          "action": "/resume",
+          "variant": "outline"
+        }
+      ]
+    },
+    "footerNote": "Designed & coded by DevMahnX — 2025"
+  }
+}

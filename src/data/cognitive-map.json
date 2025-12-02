@@ -1,0 +1,95 @@
+{
+  "cognitiveMap": {
+    "centerNode": "Cognitive Domains",
+    "domains": [
+      {
+        "name": "Systems Thinking",
+        "subskills": [
+          "Stateflow modeling",
+          "Component interaction",
+          "Emergent behavior analysis",
+          "Failure boundaries"
+        ],
+        "color": "hsl(210, 100%, 60%)",
+        "linkedPage": "/systems"
+      },
+      {
+        "name": "Algorithmic Reasoning",
+        "subskills": [
+          "Time-space tradeoffs",
+          "Optimization heuristics",
+          "Pattern discovery",
+          "Computational logic"
+        ],
+        "color": "hsl(270, 90%, 70%)",
+        "linkedPage": "/ai"
+      },
+      {
+        "name": "Abstraction & Modeling",
+        "subskills": [
+          "Layered representation",
+          "Data modeling",
+          "Protocol design",
+          "Conceptual compression"
+        ],
+        "color": "hsl(196, 100%, 70%)",
+        "linkedPage": "/systems"
+      },
+      {
+        "name": "Debugging Psychology",
+        "subskills": [
+          "Hypothesis tracing",
+          "Failure pattern recognition",
+          "Stepwise isolation",
+          "Assumption scrutiny"
+        ],
+        "color": "hsl(355, 100%, 63%)",
+        "linkedPage": "/systems"
+      },
+      {
+        "name": "Architectural Foresight",
+        "subskills": [
+          "Scalability prediction",
+          "Future-proofing",
+          "Complexity budgeting",
+          "Risk prioritization"
+        ],
+        "color": "hsl(210, 100%, 60%)",
+        "linkedPage": "/systems"
+      },
+      {
+        "name": "Hardware-informed Thinking",
+        "subskills": [
+          "Memory hierarchy awareness",
+          "CPU vs GPU decisions",
+          "Bus & bandwidth intuition",
+          "Real-world physical constraints"
+        ],
+        "color": "hsl(135, 90%, 55%)",
+        "linkedPage": "/hardware"
+      },
+      {
+        "name": "Scientific Curiosity",
+        "subskills": [
+          "Experimental mindset",
+          "Hypothesis-driven testing",
+          "Empirical iteration",
+          "Cross-domain synthesis"
+        ],
+        "color": "hsl(45, 100%, 60%)",
+        "linkedPage": "/research"
+      },
+      {
+        "name": "Human-centered Engineering",
+        "subskills": [
+          "UX empathy",
+          "Interface cognitive load",
+          "User mental models",
+          "Accessible design"
+        ],
+        "color": "hsl(25, 95%, 65%)",
+        "linkedPage": "/open-source"
+      }
+    ]
+  }
+}

@@ -9,6 +9,8 @@ import systems from '@/data/systems.json';
 import { aiData as ai } from '@/content/ai';
 import hardware from '@/data/hardware.json';
 import opensource from '@/data/opensource.json';
+import landing from '@/data/landing.json';
+import cognitiveMapData from '@/data/cognitive-map.json';
 
 export interface Project {
   name: string;
@@ -31,7 +33,7 @@ export interface OldHardwareProject {
 
 export interface Skill {
   name: string;
-  level: 'Advanced' | 'Intermediate';
+  level: string;
   category: string;
 }
 
@@ -40,7 +42,7 @@ export interface ResearchEntry {
   title: string;
   question: string;
   summary: string;
-  status: 'ongoing' | 'concluded' | 'in revision';
+  status: string;
   tags: string[];
 }
 
@@ -142,9 +144,9 @@ export interface AiExperiment {
     result: string;
     dataset: string;
     tags: string[];
-    interactive: boolean;
-    name: string; // To match ProjectInspector prop
-    tech: string[]; // To match ProjectInspector prop
+    interactive?: boolean;
+    name?: string; // To match ProjectInspector prop
+    tech?: string[]; // To match ProjectInspector prop
 }
 
 export interface AiThought {
@@ -191,7 +193,7 @@ export interface OpenSourceProject {
     tags: string[];
     repo: string;
     status: string;
-    version: string;
+    version?: string;
     license: string;
     interactive?: boolean;
     title?: string;
@@ -213,8 +215,30 @@ export interface OpenSourceData {
     philosophy: Philosophy;
 }
 
+export interface LandingData {
+    landing: {
+        hero: {
+            preface: string;
+            name: string;
+            title: string;
+            subtitle: string;
+            buttons: Array<{
+                label: string;
+                action: string;
+                variant: string;
+            }>;
+        };
+        footerNote: string;
+    };
+}
 
-export const projectsData: Project[] = projects;
+
+export const projectsData: Project[] = projects.map(p => ({
+  ...p,
+  interactive: typeof (p as any).interactive === 'boolean' ? (p as any).interactive : false,
+  link: (p as any).link === undefined ? null : (p as any).link,
+}));
+
 export const skillsData: Skill[] = skills.map(skill => ({ ...skill, category: getCategory(skill.name) }));
 
 function getCategory(skillName: string): 'frontend' | 'backend' | 'tools' {
@@ -233,6 +257,23 @@ export const systemsData: SystemsData = systems;
 export const aiData: AiData = ai;
 export const hardwareData: HardwareData = hardware;
 export const openSourceData: OpenSourceData = opensource;
+export const landingData: LandingData = landing;
+
+export interface CognitiveDomain {
+    name: string;
+    subskills: string[];
+    color: string;
+    linkedPage: string;
+}
+
+export interface CognitiveMapData {
+    cognitiveMap: {
+        centerNode: string;
+        domains: CognitiveDomain[];
+    };
+}
+
+export const cognitiveMap: CognitiveMapData = cognitiveMapData;
     
 // Add interactive flag to AI experiments for ProjectInspector
 if (aiData && aiData.experiments) {

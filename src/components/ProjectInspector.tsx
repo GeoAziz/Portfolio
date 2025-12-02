@@ -42,7 +42,8 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
   const isHardware = isHardwareProject(project);
   const isOpenSource = isOpenSourceProject(project);
 
-  const title = 'name' in project ? project.name : project.title;
+    const rawTitle = 'name' in project ? project.name : project.title;
+    const title = rawTitle ?? ('title' in project ? (project as any).title : 'Project');
   let shortDescription = '';
   if (isSystem) shortDescription = project.short_description;
   else if ('description' in project) shortDescription = project.description;
@@ -70,13 +71,13 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
   return (
     <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden group">
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value={title} className="border-b-0">
+            <AccordionItem value={String(title)} className="border-b-0">
                 <div className="p-4 md:p-6 flex flex-col md:flex-row items-start gap-4 text-left">
                     {image && (
                     <div className="relative w-full md:w-24 h-32 md:h-16 rounded-md overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
                         <Image
                         src={image.imageUrl}
-                        alt={title}
+                        alt={String(title)}
                         fill
                         className="object-cover"
                         data-ai-hint={image.imageHint}
