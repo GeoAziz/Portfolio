@@ -128,8 +128,19 @@ export function SkillOrbit() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <motion.div className="absolute inset-0 rounded-full border-2 border-cyan-400/30" animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
-                <div className="relative z-10 bg-card border-2 border-cyan-400/80 rounded-full w-full h-full flex items-center justify-center shadow-lg shadow-cyan-500/10">
+                {/* Outer breathing glow ring */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full border-2 border-cyan-400/30" 
+                  animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.6, 0.3] }} 
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} 
+                />
+                {/* Inner glow effect */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full bg-cyan-400/5 blur-xl" 
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.4, 0.7, 0.4] }} 
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} 
+                />
+                <div className="relative z-10 bg-card border-2 border-cyan-400/80 rounded-full w-full h-full flex items-center justify-center shadow-lg shadow-cyan-500/20">
                   <div className="text-center px-4">
                     <h3 className="text-lg font-headline font-bold text-foreground leading-tight">{centerNode}</h3>
                   </div>
@@ -144,6 +155,39 @@ export function SkillOrbit() {
 
         {/* Orbit path */}
         <motion.div className="absolute rounded-full border border-dashed border-border/20" style={{ width: radius * 2, height: radius * 2, top: '50%', left: '50%', x: '-50%', y: '-50%' }} />
+
+        {/* Connecting lines from center to hovered node */}
+        <AnimatePresence>
+          {hoveredDomain && domains.map((domain, index) => {
+            if (domain.name !== hoveredDomain) return null;
+            const angle = (index / domains.length) * 2 * Math.PI - Math.PI / 2;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+            const lineLength = Math.sqrt(x * x + y * y);
+            const lineAngle = Math.atan2(y, x) * (180 / Math.PI);
+
+            return (
+              <motion.div
+                key={`line-${domain.name}`}
+                className="absolute"
+                style={{
+                  width: lineLength - 70,
+                  height: 1,
+                  background: 'linear-gradient(to right, hsl(196, 100%, 70%, 0.3), hsl(196, 100%, 70%, 0))',
+                  top: '50%',
+                  left: '50%',
+                  transformOrigin: '0 0',
+                  transform: `rotate(${lineAngle}deg)`,
+                  marginLeft: '70px',
+                }}
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                exit={{ scaleX: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            );
+          })}
+        </AnimatePresence>
 
         {/* Rotating container */}
         <motion.div className="absolute w-full h-full" style={{ top: '50%', left: '50%' }} animate={{ rotate: 360 }} transition={{ duration: orbitSpeed, repeat: Infinity, ease: "linear" }}>
@@ -168,16 +212,50 @@ export function SkillOrbit() {
               >
                 <motion.div animate={{ rotate: -360 }} transition={{ duration: orbitSpeed, repeat: Infinity, ease: "linear" }}>
                   <motion.div className="relative flex items-center justify-center" whileHover={{ scale: 1.2 }} transition={{ duration: 0.3 }}>
-                    <motion.div className="absolute rounded-full blur-md -z-10 bg-cyan-400" style={{ width: nodeSize, height: nodeSize }} animate={{ opacity: isHovered ? [0.6, 0.9, 0.6] : [0.3, 0.5, 0.3], scale: isHovered ? [1.2, 1.5, 1.2] : [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-                    <motion.div className="relative rounded-full border bg-cyan-500 border-cyan-400" style={{ width: nodeSize, height: nodeSize, boxShadow: isHovered ? `0 0 12px hsla(196, 100%, 70%, 0.7)` : `0 0 8px hsla(196, 100%, 70%, 0.4)` }} />
+                    {/* Outer glow ring */}
+                    <motion.div 
+                      className="absolute rounded-full blur-lg -z-10 bg-cyan-400" 
+                      style={{ width: nodeSize * 3, height: nodeSize * 3 }} 
+                      animate={{ 
+                        opacity: isHovered ? [0.5, 0.8, 0.5] : [0.2, 0.4, 0.2], 
+                        scale: isHovered ? [1, 1.3, 1] : [1, 1.15, 1] 
+                      }} 
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
+                    />
+                    {/* Inner glow */}
+                    <motion.div 
+                      className="absolute rounded-full blur-md -z-10 bg-cyan-300" 
+                      style={{ width: nodeSize * 1.5, height: nodeSize * 1.5 }} 
+                      animate={{ 
+                        opacity: isHovered ? [0.7, 1, 0.7] : [0.4, 0.6, 0.4], 
+                      }} 
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} 
+                    />
+                    {/* Core node */}
+                    <motion.div 
+                      className="relative rounded-full border bg-cyan-500 border-cyan-400" 
+                      style={{ 
+                        width: nodeSize, 
+                        height: nodeSize, 
+                        boxShadow: isHovered 
+                          ? `0 0 16px hsla(196, 100%, 70%, 0.8), 0 0 8px hsla(196, 100%, 70%, 0.6)` 
+                          : `0 0 10px hsla(196, 100%, 70%, 0.5), 0 0 4px hsla(196, 100%, 70%, 0.3)` 
+                      }} 
+                    />
                   </motion.div>
-                  <motion.div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap" initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 + index * 0.1 }}>
-                    <span className="text-xs font-medium px-2 py-1 rounded-md bg-card/80 backdrop-blur-sm border border-transparent group-hover:border-border">{domain.name}</span>
+                  {/* Label - hidden on hover to prevent overlap */}
+                  <motion.div 
+                    className="absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none" 
+                    initial={{ opacity: 0, y: -5 }} 
+                    animate={{ opacity: isHovered ? 0 : 1, y: 0 }} 
+                    transition={{ delay: isHovered ? 0 : 1 + index * 0.1, duration: 0.2 }}
+                  >
+                    <span className="text-xs font-light text-muted-foreground px-2 py-1 rounded-md bg-card/60 backdrop-blur-sm border border-transparent">{domain.name}</span>
                   </motion.div>
                   <AnimatePresence>
                     {isHovered && (
-                      <motion.div className="absolute top-full mt-8 left-1/2 -translate-x-1/2 w-56 z-30" initial={{ opacity: 0, y: -10, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.9 }} transition={{ duration: 0.3 }}>
-                        <div className="bg-card/90 backdrop-blur-md border border-cyan-400/50 rounded-lg p-4 shadow-xl shadow-black/20">
+                      <motion.div className="absolute top-full mt-10 left-1/2 -translate-x-1/2 w-56 z-30 pointer-events-none" initial={{ opacity: 0, y: -10, scale: 0.9 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -10, scale: 0.9 }} transition={{ duration: 0.3 }}>
+                        <div className="bg-card/95 backdrop-blur-md border border-cyan-400/50 rounded-lg p-4 shadow-2xl shadow-cyan-500/10">
                           <ul className="space-y-2">
                             {domain.subskills.map((skill, idx) => (
                               <motion.li key={idx} className="text-xs text-muted-foreground flex items-start gap-2" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.05 }}>
@@ -194,6 +272,16 @@ export function SkillOrbit() {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        {/* Subtle hint text */}
+        <motion.div 
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: hoveredDomain ? 0 : 0.5 }}
+          transition={{ duration: 0.5, delay: 2 }}
+        >
+          <p className="text-xs text-muted-foreground/60 font-light">Hover nodes to explore • Click to navigate</p>
         </motion.div>
       </motion.div>
     </motion.div>
