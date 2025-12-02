@@ -10,7 +10,6 @@
           "Emergent behavior analysis",
           "Failure boundaries"
         ],
-        "color": "hsl(210, 100%, 60%)",
         "linkedPage": "/systems"
       },
       {
@@ -21,7 +20,6 @@
           "Pattern discovery",
           "Computational logic"
         ],
-        "color": "hsl(270, 90%, 70%)",
         "linkedPage": "/ai"
       },
       {
@@ -32,7 +30,6 @@
           "Protocol design",
           "Conceptual compression"
         ],
-        "color": "hsl(196, 100%, 70%)",
         "linkedPage": "/systems"
       },
       {
@@ -43,7 +40,6 @@
           "Stepwise isolation",
           "Assumption scrutiny"
         ],
-        "color": "hsl(355, 100%, 63%)",
         "linkedPage": "/systems"
       },
       {
@@ -54,18 +50,16 @@
           "Complexity budgeting",
           "Risk prioritization"
         ],
-        "color": "hsl(210, 100%, 60%)",
         "linkedPage": "/systems"
       },
       {
-        "name": "Hardware-informed Computation",
+        "name": "Hardware-informed Thinking",
         "subskills": [
           "Memory hierarchy awareness",
           "CPU vs GPU decisions",
           "Bus & bandwidth intuition",
           "Real-world physical constraints"
         ],
-        "color": "hsl(135, 90%, 55%)",
         "linkedPage": "/hardware"
       },
       {
@@ -76,18 +70,16 @@
           "Empirical iteration",
           "Cross-domain synthesis"
         ],
-        "color": "hsl(45, 100%, 60%)",
         "linkedPage": "/research"
       },
       {
-        "name": "Human-centered Design Thinking",
+        "name": "Human-centered Engineering",
         "subskills": [
           "UX empathy",
           "Interface cognitive load",
           "User mental models",
           "Accessible design"
         ],
-        "color": "hsl(25, 95%, 65%)",
         "linkedPage": "/open-source"
       }
     ]

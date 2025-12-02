@@ -1,3 +1,4 @@
+
 'use client';
 
 import { motion } from 'framer-motion';
@@ -131,7 +132,28 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* Section 2: Core Competency Snapshot */}
+      {/* Section 2: SkillOrbit */}
+      <motion.section
+        className="w-full max-w-6xl py-12 md:py-20"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-150px" }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionHeader title="Cognitive Skill Map" />
+        </motion.div>
+        <div className="mt-8">
+          <SkillOrbit />
+        </div>
+      </motion.section>
+
+      {/* Section 3: Core Competency Snapshot */}
       <motion.section
         className="w-full max-w-5xl"
         initial="hidden"
@@ -171,27 +193,6 @@ export default function Home() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </motion.section>
-
-      {/* Section 3: SkillOrbit */}
-      <motion.section
-        className="w-full max-w-6xl"
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as const }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <SectionHeader title="Cognitive Skill Map" />
-        </motion.div>
-        <div className="mt-8">
-          <SkillOrbit />
         </div>
       </motion.section>
 
