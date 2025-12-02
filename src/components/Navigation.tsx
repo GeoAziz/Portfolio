@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Command, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
+import { ThemeToggle } from './ThemeToggle';
 import {
   Sheet,
   SheetContent,
@@ -111,6 +112,7 @@ export function Navigation() {
         </div>
         
         <div className="flex flex-1 items-center justify-end space-x-2">
+          <ThemeToggle />
            <Button variant="outline" size="sm" onClick={openCommandPalette} className="flex items-center gap-2">
             <span className="text-xs">Search...</span>
             <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">

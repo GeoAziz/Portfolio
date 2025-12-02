@@ -4,13 +4,14 @@ import { researchData } from '@/lib/content';
 import { MotionFade } from '@/components/MotionFade';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowUpRight, BookOpen, Lightbulb, TestTube } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Lightbulb, TestTube, Clock } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { getReadTimeText } from '@/lib/readTime';
 
 export default function ResearchPage() {
   const { researchEntries, researchDetails, learningLog } = researchData;
@@ -40,7 +41,17 @@ export default function ResearchPage() {
                     <Card className="bg-card border-border hover:border-accent-research/50 transition-colors duration-300">
                         <AccordionTrigger className="p-6 text-left w-full hover:no-underline">
                              <div className="flex-grow">
-                                <CardTitle className="text-xl font-headline text-left">{item.title}</CardTitle>
+                                <div className="flex items-start justify-between gap-4">
+                                  <CardTitle className="text-xl font-headline text-left">{item.title}</CardTitle>
+                                  {details && (
+                                    <div className="flex items-center gap-1 text-xs text-muted-foreground whitespace-nowrap">
+                                      <Clock className="h-3 w-3" />
+                                      {getReadTimeText(
+                                        `${details.motivation} ${details.experiments.join(' ')} ${details.findings.join(' ')} ${details.future.join(' ')}`
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
                                 <CardDescription className="text-muted-foreground pt-2 text-left italic">
                                     {item.question}
                                 </CardDescription>

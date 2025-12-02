@@ -5,6 +5,7 @@ import { resumeData } from '@/lib/content';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { CopyButton } from '@/components/CopyButton';
 import { Download, Mail, Github } from 'lucide-react';
 
 const Section = ({ title, children, className }: { title: string, children: React.ReactNode, className?: string }) => (
@@ -116,17 +117,18 @@ export default function ResumePage() {
           <Card className="bg-card/50 text-center">
              <CardContent className="p-6 space-y-4">
                 <p className="text-accent font-semibold">{contact.availability}</p>
-                <div className="flex justify-center gap-4">
-                    {contact.preferredChannels.map(channel => {
-                        let icon = null;
-                        if (channel === 'GitHub') icon = <Github className="w-4 h-4 mr-2"/>;
-                        if (channel === 'Email') icon = <Mail className="w-4 h-4 mr-2"/>
-                        return (
-                             <Button variant="secondary" key={channel} asChild>
-                                <a href="#">{icon}{channel}</a>
-                            </Button>
-                        )
-                    })}
+                <div className="flex flex-wrap justify-center gap-3">
+                    <Button variant="secondary" asChild>
+                      <a href="https://github.com/GeoAziz" target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-2"/>
+                        GitHub
+                      </a>
+                    </Button>
+                    <CopyButton 
+                      text="dev@devmahnx.com" 
+                      label="Copy Email"
+                      variant="secondary"
+                    />
                 </div>
                 <div className="pt-6">
                     <Button asChild>

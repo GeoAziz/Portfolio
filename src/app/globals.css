@@ -120,3 +120,27 @@
 .animate-spin-slow {
   animation: spin-slow 120s linear infinite;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(78, 205, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(78, 205, 255, 0.5);
+  }
+}

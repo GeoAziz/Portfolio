@@ -89,9 +89,12 @@ export default function Home() {
         <SectionHeader title="Featured Projects" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {featuredProjects.map((project) => (
-             <Card key={project.name} className="bg-card border-border text-left hover:border-accent/50 transition-colors">
+             <Card 
+                key={project.name} 
+                className="bg-card border-border text-left hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 hover:-translate-y-1 group"
+              >
                 <CardHeader>
-                  <CardTitle className="text-xl font-headline">{project.name}</CardTitle>
+                  <CardTitle className="text-xl font-headline group-hover:text-accent transition-colors">{project.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>{project.description}</CardDescription>

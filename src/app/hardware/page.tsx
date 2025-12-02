@@ -1,5 +1,6 @@
 
 import { ProjectInspector } from '@/components/ProjectInspector';
+import { ProjectFilter } from '@/components/ProjectFilter';
 import { SectionHeader } from '@/components/SectionHeader';
 import { hardwareData } from '@/lib/content';
 import { MotionFade } from '@/components/MotionFade';
@@ -23,10 +24,19 @@ export default function HardwarePage() {
 
         <section>
           <SectionHeader title="Hardware Projects" />
-          <div className="grid gap-6 md:gap-8 mt-8">
-            {hardwareProjects.map(project => (
-              <ProjectInspector key={project.id} project={project} />
-            ))}
+          <div className="mt-8">
+            <ProjectFilter 
+              projects={hardwareProjects}
+              searchKeys={['title', 'description']}
+            >
+              {(filteredProjects) => (
+                <div className="grid gap-6 md:gap-8 mt-6">
+                  {filteredProjects.map(project => (
+                    <ProjectInspector key={project.id} project={project} />
+                  ))}
+                </div>
+              )}
+            </ProjectFilter>
           </div>
         </section>
 

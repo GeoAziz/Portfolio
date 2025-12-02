@@ -4,6 +4,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { BackToTop } from '@/components/BackToTop';
 import { Toaster } from '@/components/ui/toaster';
 import { CommandPalette } from '@/components/CommandPalette';
 import { ParticleFX } from '@/components/ParticleFX';
@@ -34,6 +35,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <BackToTop />
         <CommandPalette />
         <Toaster />
       </body>

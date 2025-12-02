@@ -1,5 +1,6 @@
 
 import { ProjectInspector } from '@/components/ProjectInspector';
+import { ProjectFilter } from '@/components/ProjectFilter';
 import { SectionHeader } from '@/components/SectionHeader';
 import { aiData } from '@/lib/content';
 import { MotionFade } from '@/components/MotionFade';
@@ -96,10 +97,19 @@ export default function AiPage() {
 
         <section>
           <SectionHeader title="AI Experiments" />
-          <div className="grid gap-6 md:gap-8 mt-8">
-            {experiments.map(project => (
-              <ProjectInspector key={project.title} project={project} />
-            ))}
+          <div className="mt-8">
+            <ProjectFilter 
+              projects={experiments}
+              searchKeys={['title', 'method', 'observation']}
+            >
+              {(filteredProjects) => (
+                <div className="grid gap-6 md:gap-8 mt-6">
+                  {filteredProjects.map(project => (
+                    <ProjectInspector key={project.title} project={project} />
+                  ))}
+                </div>
+              )}
+            </ProjectFilter>
           </div>
         </section>
 
