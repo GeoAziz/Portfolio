@@ -58,7 +58,7 @@
         "linkedPage": "/systems"
       },
       {
-        "name": "Hardware-informed Thinking",
+        "name": "Hardware-informed Computation",
         "subskills": [
           "Memory hierarchy awareness",
           "CPU vs GPU decisions",
@@ -80,7 +80,7 @@
         "linkedPage": "/research"
       },
       {
-        "name": "Human-centered Engineering",
+        "name": "Human-centered Design Thinking",
         "subskills": [
           "UX empathy",
           "Interface cognitive load",
