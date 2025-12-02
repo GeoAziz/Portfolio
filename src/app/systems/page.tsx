@@ -1,7 +1,10 @@
 
+'use client';
+
 import { ProjectInspector } from '@/components/ProjectInspector';
 import { ProjectFilter } from '@/components/ProjectFilter';
 import { SectionHeader } from '@/components/SectionHeader';
+import { LoadingState } from '@/components/LoadingState';
 import { systemsData } from '@/lib/content';
 import { MotionFade } from '@/components/MotionFade';
 import { Badge } from '@/components/ui/badge';
@@ -42,18 +45,20 @@ export default function SystemsPage() {
         <section>
           <SectionHeader title="Systems Projects" />
           <div className="mt-8">
-            <ProjectFilter 
-              projects={systems_projects}
-              searchKeys={['title', 'short_description', 'long_description']}
-            >
-              {(filteredProjects) => (
-                <div className="grid gap-6 md:gap-8 mt-6">
-                  {filteredProjects.map(project => (
-                    <ProjectInspector key={project.id} project={project} />
-                  ))}
-                </div>
-              )}
-            </ProjectFilter>
+            <LoadingState type="list" count={3} delay={200}>
+              <ProjectFilter 
+                projects={systems_projects}
+                searchKeys={['title', 'short_description', 'long_description']}
+              >
+                {(filteredProjects) => (
+                  <div className="grid gap-6 md:gap-8 mt-6">
+                    {filteredProjects.map(project => (
+                      <ProjectInspector key={project.id} project={project} />
+                    ))}
+                  </div>
+                )}
+              </ProjectFilter>
+            </LoadingState>
           </div>
         </section>
       </div>

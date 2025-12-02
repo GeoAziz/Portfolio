@@ -1,4 +1,6 @@
 
+'use client';
+
 import { ProjectInspector } from '@/components/ProjectInspector';
 import { ProjectFilter } from '@/components/ProjectFilter';
 import { SectionHeader } from '@/components/SectionHeader';

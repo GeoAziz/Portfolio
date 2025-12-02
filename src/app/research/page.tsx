@@ -1,4 +1,6 @@
 
+'use client';
+
 import { SectionHeader } from '@/components/SectionHeader';
 import { researchData } from '@/lib/content';
 import { MotionFade } from '@/components/MotionFade';

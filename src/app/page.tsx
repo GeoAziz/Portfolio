@@ -63,12 +63,12 @@ export default function Home() {
       <section className="w-full max-w-5xl">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           {competencies.map((competency) => (
-            <div key={competency.title} className="flex items-start gap-4">
-              <div className="bg-secondary p-3 rounded-full">
+            <div key={competency.title} className="flex items-start gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-all duration-300 group cursor-pointer">
+              <div className="bg-secondary p-3 rounded-full group-hover:scale-110 transition-transform duration-300">
                 <competency.icon className={cn("w-6 h-6", competency.color)} />
               </div>
               <div>
-                <h3 className="text-lg font-headline font-semibold text-foreground">{competency.title}</h3>
+                <h3 className="text-lg font-headline font-semibold text-foreground group-hover:text-accent transition-colors">{competency.title}</h3>
                 <p className="text-muted-foreground mt-1">{competency.description}</p>
               </div>
             </div>

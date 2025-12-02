@@ -71,7 +71,8 @@ export function Navigation() {
         </div>
         
         {/* Mobile Nav */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -79,11 +80,11 @@ export function Navigation() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
+            <SheetContent side="left" className="w-[280px] sm:w-[350px]">
                <SheetHeader>
                 <SheetTitle className="sr-only">Main Menu</SheetTitle>
               </SheetHeader>
-              <Link href="/" className="flex items-center space-x-2 mb-6">
+              <Link href="/" className="flex items-center space-x-2 mb-8 mt-2">
                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 256 256"
@@ -93,20 +94,32 @@ export function Navigation() {
                   </svg>
                 <span className="font-bold font-headline">Personal OS</span>
               </Link>
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-1">
                 {navLinks.map(link => (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      'text-lg',
-                      pathname === link.href ? 'text-foreground' : 'text-muted-foreground'
+                      'text-lg py-3 px-4 rounded-md transition-all duration-200',
+                      pathname === link.href 
+                        ? 'text-foreground bg-accent/10 font-semibold border-l-4 border-accent' 
+                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                     )}
                   >
                     {link.label}
                   </Link>
                 ))}
               </nav>
+              <div className="absolute bottom-8 left-6 right-6">
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={openCommandPalette}
+                >
+                  <Command className="mr-2 h-4 w-4" />
+                  Quick Search
+                </Button>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

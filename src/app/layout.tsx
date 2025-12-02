@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { BackToTop } from '@/components/BackToTop';
+import { ScrollProgress } from '@/components/ScrollProgress';
+import { KeyboardHints } from '@/components/KeyboardHints';
 import { Toaster } from '@/components/ui/toaster';
 import { CommandPalette } from '@/components/CommandPalette';
 import { ParticleFX } from '@/components/ParticleFX';
@@ -27,6 +29,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden')}>
+        <ScrollProgress />
         <ParticleFX />
         <div className="relative z-10 flex flex-col flex-grow">
           <Navigation />
@@ -36,6 +39,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <BackToTop />
+        <KeyboardHints />
         <CommandPalette />
         <Toaster />
       </body>
