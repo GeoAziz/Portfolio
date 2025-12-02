@@ -1,0 +1,33 @@
+
+{
+  "philosophies": [
+    {
+      "title": "Modularity Over Monolith",
+      "description": "Building systems as a collection of independent, interchangeable components."
+    },
+    {
+      "title": "Composability",
+      "description": "Designing components that can be easily combined and recombined to create new functionality."
+    },
+    {
+      "title": "Transparency",
+      "description": "Ensuring that the internal state and logic of the system are observable and understandable."
+    },
+    {
+      "title": "Efficiency",
+      "description": "Optimizing for performance and resource utilization at every layer of the stack."
+    },
+    {
+      "title": "Human-Assisted Automation",
+      "description": "Automating processes while keeping the human in the loop for critical decisions and oversight."
+    },
+    {
+      "title": "Security by Default",
+      "description": "Integrating security considerations into the architecture and development process from the start."
+    },
+    {
+      "title": "Evolvability",
+      "description": "Designing systems that can adapt and evolve over time to meet new requirements and challenges."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+
+{
+  "techStack": [
+    {
+      "name": "Next.js",
+      "usage": "UI Engine & Application Host",
+      "competency": "Mastered"
+    },
+    {
+      "name": "Node.js",
+      "usage": "Primary Backend Runtime",
+      "competency": "Mastered"
+    },
+    {
+      "name": "Python",
+      "usage": "Scripting, Automation & ML",
+      "competency": "Mastered"
+    },
+    {
+      "name": "PyTorch / TF",
+      "usage": "AI & Machine Learning Models",
+      "competency": "Proficient"
+    },
+    {
+      "name": "Docker",
+      "usage": "Environment Consistency",
+      "competency": "Proficient"
+    },
+    {
+      "name": "Linux",
+      "usage": "Preferred OS Layer for Servers",
+      "competency": "Mastered"
+    },
+    {
+      "name": "PostgreSQL",
+      "usage": "Primary Persistence Layer",
+      "competency": "Proficient"
+    },
+    {
+      "name": "WebSockets",
+      "usage": "Real-time Event-driven Comms",
+      "competency": "Proficient"
+    },
+    {
+      "name": "C / C++",
+      "usage": "Low-level & Hardware-adjacent Ops",
+      "competency": "Learning"
+    },
+    {
+      "name": "Rust",
+      "usage": "Memory-safe, High-performance Tasks",
+      "competency": "Learning"
+    }
+  ]
+}

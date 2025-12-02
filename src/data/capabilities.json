@@ -1,0 +1,40 @@
+
+{
+  "capabilities": [
+    {
+      "title": "Local AI Inference",
+      "description": "Run lightweight AI models locally on ARM-based boards for offline intelligence and rapid prototyping.",
+      "icon": "Cpu"
+    },
+    {
+      "title": "Microservice Management",
+      "description": "Deploy and manage containerized microservices, ensuring scalability and system resilience.",
+      "icon": "Container"
+    },
+    {
+      "title": "Real-time Event Handling",
+      "description": "Process and respond to real-time events using WebSockets for dynamic, interactive applications.",
+      "icon": "Zap"
+    },
+    {
+      "title": "Embedded Systems Communication",
+      "description": "Interface with microcontrollers and IoT devices using protocols like MQTT for data exchange.",
+      "icon": "Router"
+    },
+    {
+      "title": "Hardware I/O Control",
+      "description": "Directly control hardware peripherals and sensors for building physical-digital systems.",
+      "icon": "GitBranch"
+    },
+    {
+      "title": "Automated ML Pipelines",
+      "description": "Establish and manage automated pipelines for model training, fine-tuning, and evaluation.",
+      "icon": "IterationCw"
+    },
+    {
+      "title": "System Health Monitoring",
+      "description": "Track and visualize system health and performance metrics for proactive maintenance.",
+      "icon": "HeartPulse"
+    }
+  ]
+}
