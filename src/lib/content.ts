@@ -262,7 +262,6 @@ export const landingData: LandingData = landing;
 export interface CognitiveDomain {
     name: string;
     subskills: string[];
-    color: string;
     linkedPage: string;
 }
 
@@ -293,5 +292,5 @@ hardwareData.hardwareProjects.forEach(proj => {
 // Add interactive flag to Open Source projects for ProjectInspector
 openSourceData.openSourceProjects.forEach(proj => {
     proj.interactive = true;
-    proj.title = proj.name;
+//     proj.title = proj.name;
 });

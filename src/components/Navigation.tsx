@@ -21,6 +21,7 @@ const navLinks = [
   { href: '/hardware', label: 'Hardware' },
   { href: '/research', label: 'Research' },
   { href: '/open-source', label: 'Open Source' },
+  { href: '/blog', label: 'Blog' },
   { href: '/resume', label: 'Resume' },
 ];
 
@@ -61,7 +62,7 @@ export function Navigation() {
                 href={link.href}
                 className={cn(
                   'relative transition-colors hover:text-accent nav-link',
-                  pathname === link.href ? 'text-foreground active' : 'text-muted-foreground'
+                  pathname?.startsWith(link.href) ? 'text-foreground active' : 'text-muted-foreground'
                 )}
               >
                 {link.label}
@@ -72,10 +73,9 @@ export function Navigation() {
         
         {/* Mobile Nav */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="w-10 h-10">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
@@ -101,7 +101,7 @@ export function Navigation() {
                     href={link.href}
                     className={cn(
                       'text-lg py-3 px-4 rounded-md transition-all duration-200',
-                      pathname === link.href 
+                      pathname?.startsWith(link.href) 
                         ? 'text-foreground bg-accent/10 font-semibold border-l-4 border-accent' 
                         : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                     )}
@@ -126,7 +126,7 @@ export function Navigation() {
         
         <div className="flex flex-1 items-center justify-end space-x-2">
           <ThemeToggle />
-           <Button variant="outline" size="sm" onClick={openCommandPalette} className="flex items-center gap-2">
+           <Button variant="outline" size="sm" onClick={openCommandPalette} className="hidden md:flex items-center gap-2">
             <span className="text-xs">Search...</span>
             <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
               <span className="text-xs">⌘</span>K

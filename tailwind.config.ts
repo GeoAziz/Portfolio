@@ -1,4 +1,3 @@
-
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -7,6 +6,7 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './content/**/*.mdx',
   ],
   theme: {
     container: {
@@ -18,8 +18,8 @@ export default {
     },
     extend: {
        fontSize: {
-        'xs': '.75rem',
-        'sm': '.875rem',
+        'xs': '.8rem',
+        'sm': '.9rem',
         'base': '1rem',
         'lg': '1.125rem',
         'xl': '1.25rem',
@@ -132,7 +132,48 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-in-out forwards',
       },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.foreground'),
+            a: {
+              color: theme('colors.accent.DEFAULT'),
+              '&:hover': {
+                color: theme('colors.accent.DEFAULT'),
+              },
+            },
+            h1: {
+              color: theme('colors.foreground'),
+            },
+            h2: {
+              color: theme('colors.foreground'),
+            },
+            h3: {
+              color: theme('colors.foreground'),
+            },
+            h4: {
+              color: theme('colors.foreground'),
+            },
+            strong: {
+              color: theme('colors.foreground'),
+            },
+            code: {
+              color: theme('colors.accent.foreground'),
+              backgroundColor: theme('colors.accent.DEFAULT'),
+              padding: '0.2em 0.4em',
+              borderRadius: '0.3em',
+            },
+            pre: {
+              backgroundColor: theme('colors.secondary.DEFAULT'),
+            },
+            blockquote: {
+              color: theme('colors.muted.foreground'),
+              borderLeftColor: theme('colors.border'),
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 } satisfies Config;
