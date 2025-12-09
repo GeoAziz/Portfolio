@@ -1,33 +1,13 @@
 ---
-title: "Building the Systems Journal: A Foundation"
+title: "Building the Systems Journal: Foundation"
 date: "2024-01-15"
-summary: "Documenting the architecture of our collaborative engineering blog—why we're building it this way, and what principles guide its design."
+summary: "Architecture of our engineering documentation system"
 systemType: ["software", "infrastructure"]
-keyInsight: "The most effective documentation systems emerge from actual use, not from perfect upfront planning."
-tags: ["meta", "systems-design", "collaboration", "documentation"]
+keyInsight: "Effective systems emerge from use, not perfect planning"
+tags: ["meta", "systems-design", "collaboration"]
 draft: false
 ---
 
-# Building the Systems Journal
+# Test Post Content
 
-This isn't a traditional blog. It's a **living workshop**—a space where we document engineering decisions, failed experiments, and system insights. 
-
-## Technical Foundation
-
-```typescript
-// This is how we parse posts
-const getPost = async (slug: string) => {
-  const file = await fs.readFile(`content/blog/${slug}.mdx`);
-  const { data, content } = matter(file);
-  return { metadata: data, content };
-};
-```
-
-### Design Principle
-Every technical decision must serve at least one of:
-
-1.  **Clarity** for readers
-2.  **Maintainability** for us
-3.  **Performance** for users
-
-This post will be updated as we build. That's intentional—systems evolve.
+This verifies the MDX pipeline is operational.
