@@ -1,8 +1,10 @@
 import { getBlogPosts } from '@/lib/blog';
-import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { MotionFade } from '@/components/MotionFade';
-import { format } from 'date-fns';
+import BlogList from './BlogList';
+import CorePhilosophies from '@/components/home/CorePhilosophies';
+import ResearchHub from '@/components/home/ResearchHub';
+import philosophies from '@content/philosophy.json';
+import researchAreas from '@content/research.json';
 
 export const metadata = {
   title: 'Blog | Systems Journal',
@@ -14,39 +16,23 @@ export default function BlogPage() {
 
   return (
     <MotionFade>
-       <div className="space-y-16">
-        <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-                Systems Journal
-            </h1>
-            <p className="mt-4 text-lg md:text-xl text-muted-foreground">
-                Field notes, research, and reflections on engineering, AI, and systems thinking.
-            </p>
+      <div className="space-y-12">
+        <div className="text-center max-w-4xl mx-auto pt-8">
+          <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+            Systems Journal
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-muted-foreground">
+            Field notes, research, and reflections on engineering, AI, and systems thinking.
+          </p>
         </div>
 
-        <section className="max-w-3xl mx-auto">
-          <div className="grid gap-8">
-            {allPosts.length > 0 ? (
-              allPosts
-                .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
-                .map((post) => (
-                  <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
-                    <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
-                      <CardHeader>
-                        <CardTitle className="text-xl md:text-2xl font-headline group-hover:text-accent transition-colors">{post.metadata.title}</CardTitle>
-                        <p className="text-sm text-muted-foreground pt-2">{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
-                        <CardDescription className="pt-4">{post.metadata.summary}</CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </Link>
-                ))
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No posts yet. The journal is being written.</p>
-              </div>
-            )}
-          </div>
-        </section>
+        <CorePhilosophies philosophies={philosophies} />
+        <ResearchHub researchAreas={researchAreas} />
+
+        <div className="border-t border-border/50 my-12"></div>
+
+        <h2 className="text-2xl font-headline text-center text-primary">Journal Entries</h2>
+        <BlogList allPosts={allPosts} />
       </div>
     </MotionFade>
   );

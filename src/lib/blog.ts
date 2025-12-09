@@ -20,7 +20,15 @@ export function getBlogPosts() {
 
       return {
         slug,
-        metadata: matterResult.data as { title: string; date: string; summary: string; draft?: boolean },
+        metadata: matterResult.data as { 
+          title: string; 
+          date: string; 
+          summary: string; 
+          draft?: boolean; 
+          tags?: string[];
+          type?: string;
+          keyInsight?: string;
+        },
       };
     })
     .filter(post => process.env.NODE_ENV === 'development' || !post.metadata.draft);
@@ -43,7 +51,15 @@ export function getBlogPost(slug: string) {
     }
     
     return {
-        metadata: data as { title: string; date: string; summary: string; draft?: boolean },
+        metadata: data as { 
+          title: string; 
+          date: string; 
+          summary: string; 
+          draft?: boolean; 
+          tags?: string[];
+          type?: string;
+          keyInsight?: string;
+        },
         content: content,
         slug,
     };
