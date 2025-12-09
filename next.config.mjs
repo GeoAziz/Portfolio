@@ -1,18 +1,15 @@
-
-import createMDX from '@next/mdx';
-import type {NextConfig} from 'next';
+import createMDX from '@next/mdx'
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
-});
+  // Add markdown plugins here if desired
+})
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
   experimental: {
     allowedDevOrigins: [
-        "https://6000-firebase-studio-1764267609947.cluster-cbeiita7rbe7iuwhvjs5zww2i4.cloudworkstations.dev",
-        "https://9000-firebase-studio-1764267609947.cluster-cbeiita7rbe7iuwhvjs5zww2i4.cloudworkstations.dev"
-    ]
+      "https://6000-firebase-studio-1764267609947.cluster-cbeiita7rbe7iuwhvjs5zww2i4.cloudworkstations.dev",
+      "https://9000-firebase-studio-1764267609947.cluster-cbeiita7rbe7iuwhvjs5zww2i4.cloudworkstations.dev",
+    ],
   },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   typescript: {
@@ -43,6 +40,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-};
+}
 
-export default withMDX(nextConfig);
+export default withMDX(nextConfig)
