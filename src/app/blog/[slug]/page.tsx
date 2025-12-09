@@ -7,7 +7,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = getBlogPost(params.slug);
   if (!post) {
-    return;
+    return notFound();
   }
 
   return {

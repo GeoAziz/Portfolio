@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { notFound } from 'next/navigation';
 
-const postsDirectory = path.join(process.cwd(), 'content', 'blog');
+const postsDirectory = path.join(process.cwd(), 'src', 'content', 'blog');
 
 export function getBlogPosts() {
   const fileNames = fs.readdirSync(postsDirectory);
@@ -22,9 +23,11 @@ export function getBlogPosts() {
 
 export function getBlogPost(slug: string) {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+    
     if (!fs.existsSync(fullPath)) {
         return null;
     }
+    
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
     
