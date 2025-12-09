@@ -2,7 +2,6 @@ import { getBlogPosts } from '@/lib/blog';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { MotionFade } from '@/components/MotionFade';
-import { SectionHeader } from '@/components/SectionHeader';
 import { format } from 'date-fns';
 
 export const metadata = {
@@ -27,19 +26,25 @@ export default function BlogPage() {
 
         <section className="max-w-3xl mx-auto">
           <div className="grid gap-8">
-            {allPosts
-              .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
-              .map((post) => (
-                <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
-                  <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
-                    <CardHeader>
-                      <CardTitle className="text-xl md:text-2xl font-headline group-hover:text-accent transition-colors">{post.metadata.title}</CardTitle>
-                      <p className="text-sm text-muted-foreground pt-2">{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
-                      <CardDescription className="pt-4">{post.metadata.summary}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              ))}
+            {allPosts.length > 0 ? (
+              allPosts
+                .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
+                .map((post) => (
+                  <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
+                    <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
+                      <CardHeader>
+                        <CardTitle className="text-xl md:text-2xl font-headline group-hover:text-accent transition-colors">{post.metadata.title}</CardTitle>
+                        <p className="text-sm text-muted-foreground pt-2">{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
+                        <CardDescription className="pt-4">{post.metadata.summary}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  </Link>
+                ))
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No posts yet. The journal is being written.</p>
+              </div>
+            )}
           </div>
         </section>
       </div>
