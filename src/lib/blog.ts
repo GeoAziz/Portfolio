@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 
 const postsDirectory = path.join(process.cwd(), 'content', 'blog');
 
@@ -31,7 +30,7 @@ export function getBlogPost(slug: string) {
     
     return {
         metadata: data as { title: string; date: string; summary: string },
-        content: <MDXRemote source={content} />,
+        content: content,
         slug,
     };
 }

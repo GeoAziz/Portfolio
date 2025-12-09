@@ -2,6 +2,7 @@ import { getBlogPost } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import { MotionFade } from '@/components/MotionFade';
 import { format } from 'date-fns';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = getBlogPost(params.slug);
@@ -32,7 +33,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </p>
         </header>
         <div className="prose-p:text-foreground/90 prose-headings:text-foreground prose-strong:text-foreground">
-            {post.content}
+          <MDXRemote source={post.content} />
         </div>
       </article>
     </MotionFade>
