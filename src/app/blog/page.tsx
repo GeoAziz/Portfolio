@@ -3,7 +3,7 @@ import { MotionFade } from '@/components/MotionFade';
 import BlogList from './BlogList';
 import CorePhilosophies from '@/components/home/CorePhilosophies';
 import ResearchHub from '@/components/home/ResearchHub';
-import philosophies from '@content/philosophy.json';
+import philosophyData from '@/data/philosophy.json';
 import researchAreas from '@content/research.json';
 
 export const metadata = {
@@ -13,6 +13,11 @@ export const metadata = {
 
 export default function BlogPage() {
   const allPosts = getBlogPosts();
+  const mappedResearchAreas = researchAreas.map((r: any) => ({
+    area: r.title,
+    focus: r.summary,
+    keywords: [r.publication || '', r.date || '']
+  }));
 
   return (
     <MotionFade>
@@ -26,8 +31,8 @@ export default function BlogPage() {
           </p>
         </div>
 
-        <CorePhilosophies philosophies={philosophies} />
-        <ResearchHub researchAreas={researchAreas} />
+  <CorePhilosophies philosophies={philosophyData.philosophies} />
+  <ResearchHub researchAreas={mappedResearchAreas} />
 
         <div className="border-t border-border/50 my-12"></div>
 
