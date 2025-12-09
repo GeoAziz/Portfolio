@@ -1,0 +1,20 @@
+{
+  "philosophy": [
+    {
+      "title": "Augmentation, Not Replacement",
+      "text": "AI should be an augmentation of human reasoning, not a replacement of it. The goal is to build tools that amplify our own intelligence and creativity."
+    },
+    {
+      "title": "Models as Tools",
+      "text": "Models are tools — intelligence emerges from the interaction with context. The true power of AI lies in the thoughtful orchestration of these tools to solve complex problems."
+    },
+    {
+      "title": "Optimization Beyond Accuracy",
+      "text": "Optimization is not just about accuracy — it’s about transparency and controllability. A model that is 99% accurate but cannot explain its reasoning is a black box; a model that is 95% accurate and transparent is a partner."
+    },
+    {
+      "title": "The Importance of the Interface",
+      "text": "The interface is the bridge between human and machine intelligence. A well-designed interface can make the difference between a powerful tool and an unusable one."
+    }
+  ]
+}

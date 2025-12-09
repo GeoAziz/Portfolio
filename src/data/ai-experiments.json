@@ -1,0 +1,36 @@
+{
+  "experiments": [
+    {
+      "title": "Embedding Space Visualizer",
+      "description": "Displays clusters of semantic embeddings of text or code."
+    },
+    {
+      "title": "Prompt-Shaping Engine",
+      "description": "Tests and refines system prompts for optimal model performance."
+    },
+    {
+      "title": "Memory Routing / Context Graph",
+      "description": "Tests hierarchical memory loading vs. linear context stitching."
+    },
+    {
+      "title": "Local Model Efficiency Framework",
+      "description": "Testing quantization and CPU-only inference speeds for edge devices."
+    },
+    {
+      "title": "Few-Shot Prompting",
+      "description": "Investigating the impact of n-shot examples on model accuracy and bias."
+    },
+    {
+      "title": "Chain-of-Thought Scaffolding",
+      "description": "Developing structured prompts that guide the model through complex reasoning steps."
+    },
+    {
+      "title": "Retrieval-Augmented Generation",
+      "description": "Integrating external knowledge bases to reduce hallucinations and improve factual accuracy."
+    },
+    {
+      "title": "Hallucination Detection",
+      "description": "Building classifiers to identify and flag model-generated content that is not factually grounded."
+    }
+  ]
+}

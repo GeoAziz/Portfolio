@@ -1,0 +1,88 @@
+{
+  "models": [
+    {
+      "name": "Astreaus-Alpha",
+      "type": "Local Lightweight Model",
+      "scope": "Embedded Inference & Offline Reasoning",
+      "specs": "7B Parameters, 4-bit Quantized",
+      "status": "ACTIVE",
+      "details": {
+        "trainingSources": ["Open-source text corpora", "Instruction-following datasets"],
+        "fineTuning": "LoRA with custom reasoning tasks",
+        "reasoningStyle": "Chain-of-thought, optimized for low latency",
+        "performance": {
+          "accuracy": "89% on internal benchmarks",
+          "latency": "Avg. 35ms on ARM CPU"
+        },
+        "queries": [
+          "Summarize this technical document.",
+          "Extract key entities from this log file."
+        ],
+        "outputs": [
+          "The document describes a new protocol for decentralized data transfer...",
+          "Entities: { timestamp: ..., level: 'ERROR', source: 'billing_service' }"
+        ]
+      }
+    },
+    {
+      "name": "Atlas-32B",
+      "type": "Large External LLM",
+      "scope": "Research & Hypothesis Testing",
+      "specs": "32B Parameters, FP16",
+      "status": "CLOUD LINKED",
+      "details": {
+        "trainingSources": ["Proprietary research datasets", "Web-scale text"],
+        "fineTuning": "Full parameter fine-tuning on domain-specific knowledge",
+        "reasoningStyle": "Multi-shot, complex instruction following",
+        "performance": {
+          "accuracy": "98% on domain-specific benchmarks",
+          "latency": "Variable (cloud-dependent)"
+        },
+        "queries": [
+          "Hypothesize the impact of quantum computing on current encryption standards.",
+          "Generate a python script for protein folding simulation."
+        ],
+        "outputs": [
+          "Quantum computing, particularly with algorithms like Shor's, poses a significant threat to RSA and ECC...",
+          "import numpy as np\n#... (complex simulation code)"
+        ]
+      }
+    },
+    {
+      "name": "Vision-Embedder v2",
+      "type": "Image-to-Embedding Model",
+      "scope": "Similarity Search & Classification",
+      "specs": "ViT-L/14, 768-dim embeddings",
+      "status": "ACTIVE",
+      "details": {
+        "trainingSources": ["ImageNet-21k", "LAION-2B"],
+        "fineTuning": "Contrastive learning on domain-specific image pairs",
+        "reasoningStyle": "N/A (Embedding generation)",
+        "performance": {
+          "accuracy": "99.2% on image classification benchmarks",
+          "latency": "12ms per image on GPU"
+        },
+        "queries": ["Find images similar to this product photo.", "Classify this image into one of the following categories..."],
+        "outputs": ["[embedding_vector_1]", "[embedding_vector_2]"]
+      }
+    },
+    {
+      "name": "Cognitive Agent \"MIND\"",
+      "type": "Dialogue & Reasoning Orchestrator",
+      "scope": "Identity-Aligned Cognition",
+      "specs": "Hybrid (Local + Cloud), Multi-model",
+      "status": "EXPERIMENTAL",
+      "details": {
+        "trainingSources": ["Philosophical texts", "Cognitive science research", "Curated dialogues"],
+        "fineTuning": "Reinforcement Learning from Human Feedback (RLHF) with constitutional AI principles",
+        "reasoningStyle": "Metacognitive reflection, constitutional reasoning",
+        "performance": {
+          "accuracy": "N/A (Qualitative evaluation)",
+          "latency": "Variable"
+        },
+        "queries": ["What are the ethical implications of my current project?", "Help me brainstorm solutions to this complex problem."],
+        "outputs": ["Considering your stated principles of user privacy and data minimization, have you considered...", "An alternative approach could be to reframe the problem from the perspective of..."]
+      }
+    }
+  ]
+}

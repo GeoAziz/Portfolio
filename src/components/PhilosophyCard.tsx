@@ -5,20 +5,20 @@ import { motion } from 'framer-motion';
 
 interface PhilosophyCardProps {
   title: string;
-  description: string;
+  text: string;
 }
 
-export function PhilosophyCard({ title, description }: PhilosophyCardProps) {
+export function PhilosophyCard({ title, text }: PhilosophyCardProps) {
   return (
     <motion.div
-      className="border-l-4 border-accent pl-6 py-2"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
+      className="bg-card/40 backdrop-blur-sm border border-border/10 rounded-lg p-6 text-left"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
     >
       <h3 className="text-lg font-headline text-foreground">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
+      <p className="text-sm text-muted-foreground mt-2">{text}</p>
     </motion.div>
   );
 }
