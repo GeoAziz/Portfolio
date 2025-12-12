@@ -85,28 +85,28 @@ const slideInLeft = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center text-center space-y-24 md:space-y-32">
+    <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 lg:space-y-40 w-full">
       {/* Section 1: Hero */}
       <motion.section
-        className="mt-16 md:mt-24 space-y-6 max-w-4xl mx-auto"
+        className="mt-16 md:mt-24 lg:mt-32 space-y-6 lg:space-y-8 w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h1
-          className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-foreground"
+          className="font-headline text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter text-foreground"
           variants={itemVariants}
         >
           Engineer Dev Mahn X
         </motion.h1>
         <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto"
+          className="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-muted-foreground max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-relaxed"
           variants={itemVariants}
         >
           Building intelligent systems — from silicon to software.
         </motion.p>
         <motion.p
-          className="text-md md:text-lg text-muted-foreground/80 max-w-2xl mx-auto"
+          className="text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-muted-foreground/80 max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-relaxed"
           variants={itemVariants}
         >
           Exploring the boundaries of computation, intelligence, and engineered systems.
@@ -134,7 +134,7 @@ export default function Home() {
 
       {/* Section 2: SkillOrbit */}
       <motion.section
-        className="w-full max-w-6xl py-12 md:py-20"
+        className="w-full max-w-6xl lg:max-w-7xl 2xl:max-w-7xl mx-auto py-12 md:py-20 lg:py-24 xl:py-32 px-4 lg:px-6"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-150px" }}
@@ -155,13 +155,13 @@ export default function Home() {
 
       {/* Section 3: Core Competency Snapshot */}
       <motion.section
-        className="w-full max-w-5xl"
+        className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12">
           {competencies.map((competency, index) => (
             <motion.div
               key={competency.title}
@@ -181,15 +181,15 @@ export default function Home() {
               className="flex items-start gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-all duration-300 group cursor-pointer"
             >
               <motion.div
-                className="bg-secondary p-3 rounded-full"
+                className="bg-secondary p-3 lg:p-4 xl:p-5 rounded-full"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ duration: 0.3 }}
               >
-                <competency.icon className={cn("w-6 h-6", competency.color)} />
+                <competency.icon className={cn("w-6 h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8", competency.color)} />
               </motion.div>
               <div>
-                <h3 className="text-lg font-headline font-semibold text-foreground group-hover:text-accent transition-colors">{competency.title}</h3>
-                <p className="text-muted-foreground mt-1">{competency.description}</p>
+                <h3 className="text-lg lg:text-xl xl:text-2xl font-headline font-semibold text-foreground group-hover:text-accent transition-colors">{competency.title}</h3>
+                <p className="text-sm md:text-base lg:text-base xl:text-lg text-muted-foreground mt-1">{competency.description}</p>
               </div>
             </motion.div>
           ))}
@@ -199,7 +199,7 @@ export default function Home() {
       {/* Section 4: Featured Projects Preview */}
       <motion.section
         id="systems"
-        className="w-full max-w-5xl"
+        className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -209,7 +209,7 @@ export default function Home() {
           <SectionHeader title="Featured Projects" />
         </motion.div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 mt-8 lg:mt-10"
           variants={containerVariants}
         >
           {featuredProjects.map((project) => (
@@ -251,7 +251,7 @@ export default function Home() {
 
       {/* Section 6: Navigation into the Universe */}
       <motion.section
-        className="w-full max-w-5xl text-center"
+        className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -267,7 +267,7 @@ export default function Home() {
           Each section is a domain within my information architecture.
         </motion.p>
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 gap-4"
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 2xl:gap-8"
           variants={containerVariants}
         >
           {[
