@@ -22,13 +22,13 @@ export function TechStackTile({ name, usage, competency }: TechStackTileProps) {
       whileHover={{ y: -8, scale: 1.05 }}
       transition={{ duration: 0.2 }}
     >
-      <Card className="bg-card/60 backdrop-blur-sm border-border/20 h-full hover:border-accent/50 transition-all">
+      <Card className="bg-card/60 backdrop-blur-sm border-border/20 h-full hover:border-accent/50 hover:shadow-lift-md hover:bg-card/90 transition-all duration-300">
         <CardHeader>
-          <CardTitle className="text-lg font-headline">{name}</CardTitle>
+          <CardTitle className="text-lg font-headline text-foreground group-hover:text-accent transition-colors duration-300">{name}</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground mb-4">{usage}</p>
-          <p className={`text-xs font-bold ${competencyColors[competency]}`}>{competency}</p>
+          <p className={`text-xs font-bold transition-all duration-300 ${competencyColors[competency]}`}>{competency}</p>
         </CardContent>
       </Card>
     </motion.div>

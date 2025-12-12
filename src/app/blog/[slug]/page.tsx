@@ -28,9 +28,21 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <article className="prose prose-lg dark:prose-invert mx-auto py-12">
         <header className="mb-8 text-center border-b border-border pb-8">
           <h1 className="!text-4xl md:!text-5xl font-headline !mb-2">{post.metadata.title}</h1>
-          <p className="text-muted-foreground text-base">
-            {format(new Date(post.metadata.date), 'MMMM d, yyyy')}
-          </p>
+          <div className="flex items-center justify-center gap-2 flex-wrap text-muted-foreground text-sm">
+            <p>{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
+            {post.readingTime && (
+              <>
+                <span>•</span>
+                <p>{post.readingTime} min read</p>
+              </>
+            )}
+            {post.metadata.author && (
+              <>
+                <span>•</span>
+                <p>by {post.metadata.author}</p>
+              </>
+            )}
+          </div>
         </header>
         <div className="prose-p:text-foreground/90 prose-headings:text-foreground prose-strong:text-foreground">
           <MDXRemote source={post.content} />

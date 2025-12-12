@@ -10,6 +10,7 @@ import { KeyboardHints } from '@/components/KeyboardHints';
 import { Toaster } from '@/components/ui/toaster';
 import { CommandPalette } from '@/components/CommandPalette';
 import { ParticleFX } from '@/components/ParticleFX';
+import { PageTransition } from '@/components/PageTransition';
 
 export const metadata: Metadata = {
   title: 'Personal OS',
@@ -34,7 +35,9 @@ export default function RootLayout({
         <div className="relative z-10 flex flex-col flex-grow">
           <Navigation />
           <main className="flex-grow container mx-auto px-4 md:px-6 py-12 md:py-16">
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
           </main>
           <Footer />
         </div>

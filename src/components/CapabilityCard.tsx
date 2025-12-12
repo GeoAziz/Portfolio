@@ -33,9 +33,9 @@ export function CapabilityCard({ title, description, icon }: CapabilityCardProps
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="bg-card/50 border-border/20 text-left h-full hover:bg-card/90 transition-colors">
+      <Card className="bg-card/50 border-border/20 text-left h-full hover:bg-card/90 hover:border-accent/40 hover:shadow-lift-sm transition-all duration-300">
         <CardHeader className="flex flex-row items-center gap-4">
-          {Icon && <Icon className="w-8 h-8 text-accent" />}
+          {Icon && <Icon className="w-8 h-8 text-accent-light transition-colors duration-300 group-hover:text-accent" />}
           <CardTitle className="text-lg font-headline">{title}</CardTitle>
         </CardHeader>
         <CardContent>
