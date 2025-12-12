@@ -81,3 +81,31 @@ export function SkeletonList({ count = 3 }: { count?: number }) {
     </div>
   );
 }
+
+/**
+ * SkeletonGrid Component
+ * A grid of skeleton cards for paginated/list content.
+ */
+export function SkeletonGrid({ count = 6, columns = 3 }: { count?: number; columns?: number }) {
+  const colsClass = {
+    1: 'grid-cols-1',
+    2: 'grid-cols-1 md:grid-cols-2',
+    3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+    4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+  }[columns] || 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+
+  return (
+    <div className={`grid gap-6 ${colsClass}`}>
+      {Array.from({ length: count }).map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: i * 0.1 }}
+        >
+          <SkeletonCard />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
