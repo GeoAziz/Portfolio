@@ -1,0 +1,122 @@
+{
+  "systems": [
+    {
+      "id": "gpu-training-rig",
+      "name": "GPU Training Rig",
+      "description": "4x RTX 4090 CUDA cluster for model training",
+      "category": "Hardware",
+      "specifications": {
+        "gpus": "4x NVIDIA RTX 4090",
+        "cpu": "AMD Ryzen 9 9950X",
+        "memory": "256 GB DDR5",
+        "storage": "16 TB NVMe RAID"
+      },
+      "metrics": {
+        "current": {
+          "gpuUtilization": 78,
+          "gpuMemory": 45,
+          "cpuUtilization": 65,
+          "cpuMemory": 120,
+          "systemTemp": 52,
+          "powerDraw": 1240,
+          "networkBandwidth": 8.5,
+          "diskIO": 450
+        },
+        "history": [
+          { "timestamp": 0, "gpuUtilization": 45, "cpuUtilization": 30, "systemTemp": 38, "powerDraw": 800 },
+          { "timestamp": 1, "gpuUtilization": 52, "cpuUtilization": 35, "systemTemp": 40, "powerDraw": 850 },
+          { "timestamp": 2, "gpuUtilization": 58, "cpuUtilization": 42, "systemTemp": 44, "powerDraw": 920 },
+          { "timestamp": 3, "gpuUtilization": 65, "cpuUtilization": 48, "systemTemp": 48, "powerDraw": 1050 },
+          { "timestamp": 4, "gpuUtilization": 71, "cpuUtilization": 55, "systemTemp": 50, "powerDraw": 1180 },
+          { "timestamp": 5, "gpuUtilization": 78, "cpuUtilization": 65, "systemTemp": 52, "powerDraw": 1240 }
+        ]
+      },
+      "status": "healthy",
+      "uptime": "42 days",
+      "lastUpdated": "2025-12-12T10:00:00Z"
+    },
+    {
+      "id": "inference-server",
+      "name": "Inference Server",
+      "description": "Real-time model inference on edge hardware",
+      "category": "Hardware",
+      "specifications": {
+        "gpu": "2x NVIDIA L40",
+        "cpu": "Intel Xeon W9-3595X",
+        "memory": "128 GB DDR5",
+        "storage": "8 TB SSD"
+      },
+      "metrics": {
+        "current": {
+          "gpuUtilization": 34,
+          "gpuMemory": 28,
+          "cpuUtilization": 22,
+          "cpuMemory": 32,
+          "systemTemp": 35,
+          "powerDraw": 450,
+          "requestsPerSecond": 120,
+          "avgLatency": 45
+        },
+        "history": [
+          { "timestamp": 0, "gpuUtilization": 28, "cpuUtilization": 18, "systemTemp": 32, "powerDraw": 380, "requestsPerSecond": 95, "avgLatency": 52 },
+          { "timestamp": 1, "gpuUtilization": 30, "cpuUtilization": 19, "systemTemp": 33, "powerDraw": 400, "requestsPerSecond": 105, "avgLatency": 48 },
+          { "timestamp": 2, "gpuUtilization": 32, "cpuUtilization": 20, "systemTemp": 34, "powerDraw": 420, "requestsPerSecond": 115, "avgLatency": 46 },
+          { "timestamp": 3, "gpuUtilization": 33, "cpuUtilization": 21, "systemTemp": 35, "powerDraw": 435, "requestsPerSecond": 118, "avgLatency": 45 },
+          { "timestamp": 4, "gpuUtilization": 34, "cpuUtilization": 22, "systemTemp": 35, "powerDraw": 448, "requestsPerSecond": 120, "avgLatency": 45 }
+        ]
+      },
+      "status": "healthy",
+      "uptime": "28 days",
+      "lastUpdated": "2025-12-12T10:00:00Z"
+    },
+    {
+      "id": "data-pipeline",
+      "name": "Data Pipeline",
+      "description": "ETL pipeline for data processing and analysis",
+      "category": "Systems",
+      "specifications": {
+        "framework": "Kubernetes + Apache Spark",
+        "storage": "Distributed HDFS + S3",
+        "processing": "MapReduce + Custom Python"
+      },
+      "metrics": {
+        "current": {
+          "cpuUtilization": 55,
+          "cpuMemory": 96,
+          "diskUtilization": 72,
+          "jobsRunning": 8,
+          "jobsQueued": 3,
+          "errorRate": 0.2,
+          "throughputMBps": 250,
+          "avgProcessingTime": 5.2
+        },
+        "history": [
+          { "timestamp": 0, "cpuUtilization": 40, "cpuMemory": 72, "diskUtilization": 55, "jobsRunning": 5, "throughputMBps": 180, "errorRate": 0.3 },
+          { "timestamp": 1, "cpuUtilization": 45, "cpuMemory": 78, "diskUtilization": 60, "jobsRunning": 6, "throughputMBps": 200, "errorRate": 0.25 },
+          { "timestamp": 2, "cpuUtilization": 50, "cpuMemory": 85, "diskUtilization": 65, "jobsRunning": 7, "throughputMBps": 225, "errorRate": 0.22 },
+          { "timestamp": 3, "cpuUtilization": 52, "cpuMemory": 90, "diskUtilization": 68, "jobsRunning": 8, "throughputMBps": 240, "errorRate": 0.21 },
+          { "timestamp": 4, "cpuUtilization": 55, "cpuMemory": 96, "diskUtilization": 72, "jobsRunning": 8, "throughputMBps": 250, "errorRate": 0.2 }
+        ]
+      },
+      "status": "healthy",
+      "uptime": "15 days",
+      "lastUpdated": "2025-12-12T10:00:00Z"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert-1",
+      "severity": "warning",
+      "message": "GPU Training Rig approaching 80% utilization",
+      "timestamp": "2025-12-12T09:55:00Z",
+      "system": "gpu-training-rig"
+    },
+    {
+      "id": "alert-2",
+      "severity": "info",
+      "message": "Data Pipeline: New job submitted",
+      "timestamp": "2025-12-12T09:45:00Z",
+      "system": "data-pipeline"
+    }
+  ]
+}

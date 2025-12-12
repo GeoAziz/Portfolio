@@ -1,0 +1,94 @@
+{
+  "common": {
+    "home": "الرئيسية",
+    "about": "نبذة",
+    "blog": "المدونة",
+    "projects": "المشاريع",
+    "research": "الأبحاث",
+    "contact": "اتصل",
+    "search": "بحث",
+    "analytics": "التحليلات",
+    "language": "اللغة",
+    "theme": "المظهر",
+    "menu": "القائمة",
+    "close": "إغلاق",
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "readMore": "اقرأ المزيد",
+    "viewProject": "عرض المشروع",
+    "download": "تحميل",
+    "share": "مشاركة"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "projects": "المشاريع",
+    "blog": "المدونة",
+    "research": "الأبحاث",
+    "contact": "اتصل",
+    "caseStudies": "دراسات الحالة",
+    "resume": "السيرة الذاتية",
+    "admin": "الإدارة"
+  },
+  "pages": {
+    "home": {
+      "title": "مهندس برمجيات وباحث",
+      "description": "بناء الأنظمة الذكية في تقاطع الهندسة والذكاء الاصطناعي"
+    },
+    "projects": {
+      "title": "المشاريع",
+      "description": "مجموعة من مشاريع الهندسة والذكاء الاصطناعي والأنظمة"
+    },
+    "blog": {
+      "title": "المدونة",
+      "description": "رؤى عن الهندسة والأنظمة والتكنولوجيا"
+    },
+    "research": {
+      "title": "الأبحاث",
+      "description": "الأبحاث المنشورة والعمل الأكاديمي"
+    },
+    "contact": {
+      "title": "اتصل",
+      "description": "تواصل معي"
+    },
+    "search": {
+      "title": "بحث",
+      "description": "ابحث في جميع المحتويات"
+    },
+    "analytics": {
+      "title": "التحليلات",
+      "description": "أداء المحتوى والقياسات"
+    }
+  },
+  "content": {
+    "featured": "مميز",
+    "readingTime": "دقيقة قراءة",
+    "published": "نشر في",
+    "views": "مشاهدات",
+    "engagement": "التفاعل",
+    "trending": "رائج",
+    "topContent": "أفضل المحتوى",
+    "relatedContent": "محتوى ذي صلة"
+  },
+  "forms": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "message": "الرسالة",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "required": "هذا الحقل مطلوب",
+    "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح"
+  },
+  "errors": {
+    "notFound": "لم يتم العثور على الصفحة",
+    "serverError": "حدث خطأ في الخادم",
+    "loadingError": "خطأ في تحميل المحتوى",
+    "contactError": "خطأ في إرسال الرسالة"
+  }
+}

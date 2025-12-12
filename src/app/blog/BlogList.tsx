@@ -18,7 +18,9 @@ interface BlogListProps {
       tags?: string[];
       type?: string;
       keyInsight?: string;
+      author?: string;
     };
+    readingTime?: number;
   }>;
 }
 
@@ -65,16 +67,22 @@ export default function BlogList({ allPosts }: BlogListProps) {
               <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
                 <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
                   <CardHeader>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 flex-wrap">
                         {post.metadata.type && (
                             <Badge variant="default" className="font-mono text-xs">
                                 {post.metadata.type}
                             </Badge>
                         )}
-                        <p className="text-sm text-muted-foreground">{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground">{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
+                        {post.readingTime && (
+                            <p className="text-xs md:text-sm text-muted-foreground">•</p>
+                        )}
+                        {post.readingTime && (
+                            <p className="text-xs md:text-sm text-muted-foreground">{post.readingTime} min read</p>
+                        )}
                     </div>
-                    <CardTitle className="text-xl md:text-2xl font-headline group-hover:text-accent transition-colors pt-2">{post.metadata.title}</CardTitle>
-                    <CardDescription className="pt-4 font-body text-base text-muted-foreground">
+                    <CardTitle className="text-lg md:text-2xl font-headline group-hover:text-accent transition-colors pt-2">{post.metadata.title}</CardTitle>
+                    <CardDescription className="pt-4 font-body text-sm md:text-base text-muted-foreground">
                         <span className='font-semibold text-foreground'>Key Insight:</span> {post.metadata.keyInsight || post.metadata.summary}
                     </CardDescription>
                     <div className="flex flex-wrap gap-2 pt-4">

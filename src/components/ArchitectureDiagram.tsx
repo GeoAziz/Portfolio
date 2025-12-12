@@ -75,9 +75,9 @@ export function ArchitectureDiagram() {
   const selectedLayer = layers.find(l => l.id === selectedId);
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 w-full">
+    <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full overflow-hidden">
       {/* Left side: The stack */}
-      <div className="w-full md:w-1/2">
+      <div className="w-full md:w-1/2 overflow-x-auto">
         {layers.map(layer => (
           <Layer
             key={layer.id}
@@ -96,19 +96,19 @@ export function ArchitectureDiagram() {
           {selectedLayer ? (
             <motion.div
               key={selectedLayer.id}
-              className="p-6 border rounded-lg bg-card/80 sticky top-24"
+              className="p-4 md:p-6 border rounded-lg bg-card/80 sticky top-24"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-xl font-headline text-accent mb-3">{selectedLayer.name}</h3>
-              <p className="text-muted-foreground mb-4">{selectedLayer.description}</p>
-              <p className="font-mono text-sm text-foreground/80">{selectedLayer.tech}</p>
+              <h3 className="text-lg md:text-xl font-headline text-accent mb-3">{selectedLayer.name}</h3>
+              <p className="text-sm md:text-base text-muted-foreground mb-4">{selectedLayer.description}</p>
+              <p className="font-mono text-xs md:text-sm text-foreground/80">{selectedLayer.tech}</p>
             </motion.div>
           ) : (
-            <div className="flex items-center justify-center h-full text-muted-foreground p-6 border border-dashed rounded-lg sticky top-24">
-              <p>Click on a layer to see details</p>
+            <div className="flex items-center justify-center h-full text-muted-foreground p-4 md:p-6 border border-dashed rounded-lg sticky top-24">
+              <p className="text-center text-sm md:text-base">Click on a layer to see details</p>
             </div>
           )}
         </AnimatePresence>

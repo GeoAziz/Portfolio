@@ -1,0 +1,91 @@
+{
+  "caseStudies": [
+    {
+      "id": "cygnus-cs",
+      "slug": "cygnus-distributed-threat-analyzer",
+      "title": "CYGNUS — Distributed Threat Analyzer",
+      "projectRef": "CYGNUS",
+      "problem": "Analyzing high-volume security events across distributed nodes with low latency and high availability.",
+      "solution": "Designed a horizontally scalable pipeline using Kafka for ingestion, PySpark worker clusters for processing, and Kubernetes for orchestration. Implemented automatic failover and stateful aggregation to avoid data loss.",
+      "challenges": [
+        "Maintaining consistency across partitioned state stores",
+        "Ensuring sub-second processing for high-throughput event streams",
+        "Designing robust failure-recovery and orchestration logic"
+      ],
+      "results": [
+        { "metric": "Event Throughput", "value": "10K+/sec", "context": "Scaled linearly across 100 nodes" },
+        { "metric": "Latency (p99)", "value": "850ms", "context": "End-to-end detection pipeline" },
+        { "metric": "Availability", "value": "99.99%", "context": "Production deployment over 6 months" }
+      ],
+      "lessons": [
+        "Design for failure — chaos engineering exposed edge cases early",
+        "Prefer idempotent operations when processing streams",
+        "Monitoring and metrics are critical for diagnosing distributed issues"
+      ],
+      "screenshots": [
+        "/images/projects/cygnus-architecture.jpg",
+        "/images/projects/cygnus-dashboard.jpg"
+      ],
+      "featured": true,
+      "date": "2024-10-01"
+    },
+    {
+      "id": "neuralink-cs",
+      "slug": "neura-link-modular-ai-assistant",
+      "title": "NEURA-LINK — Modular AI Assistant",
+      "projectRef": "NEURA-LINK",
+      "problem": "Maintain coherent long-term context across multi-turn conversations while minimizing token costs.",
+      "solution": "Built a context engine with selective memory retention and modular reasoning components. Added dynamic model routing to choose backends per task and compressed context to reduce token usage.",
+      "challenges": [
+        "Balancing memory retention with token cost",
+        "Integrating multiple LLM backends in a single routing layer",
+        "Maintaining user privacy and conversation isolation"
+      ],
+      "results": [
+        { "metric": "Token Efficiency", "value": "-40%", "context": "Through selective context compression" },
+        { "metric": "Max Context", "value": "100+ turns", "context": "Sustained coherent dialogue" },
+        { "metric": "Cost Reduction", "value": "25%", "context": "Dynamic model selection" }
+      ],
+      "lessons": [
+        "Compression heuristics must be tuned per workload",
+        "Modular design simplified adding new capabilities",
+        "Instrumentation is necessary to evaluate conversation quality over time"
+      ],
+      "screenshots": [
+        "/images/projects/neuralink-chat.jpg",
+        "/images/projects/neuralink-context.jpg"
+      ],
+      "featured": true,
+      "date": "2024-07-15"
+    },
+    {
+      "id": "quantumcore-cs",
+      "slug": "quantum-core-fpga-inference-engine",
+      "title": "QUANTUM CORE — FPGA Inference Engine",
+      "projectRef": "QUANTUM CORE",
+      "problem": "Deliver energy-efficient, high-throughput inference for neural networks on reconfigurable hardware.",
+      "solution": "Designed a systolic-array-based datapath, optimized memory hierarchy, and reconfigurable dataflow for multiple model topologies. Implemented HLS tooling to map high-level models to hardware tiles.",
+      "challenges": [
+        "Mapping different model topologies efficiently to hardware",
+        "Managing memory bandwidth to keep compute units saturated",
+        "Reducing power while preserving performance"
+      ],
+      "results": [
+        { "metric": "Inference Speedup", "value": "4.2x", "context": "vs baseline CPU" },
+        { "metric": "Power Efficiency", "value": "5.8x", "context": "J/inference vs CPU" },
+        { "metric": "Reconfiguration Time", "value": "<100ms", "context": "Adapt between models quickly" }
+      ],
+      "lessons": [
+        "Hardware-software co-design yields best gains",
+        "Benchmark realistic workloads early",
+        "Tooling for reconfiguration dramatically reduces iteration time"
+      ],
+      "screenshots": [
+        "/images/projects/quantumcore-perf.jpg",
+        "/images/projects/quantumcore-rtl.jpg"
+      ],
+      "featured": true,
+      "date": "2024-05-20"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+@import '../styles/prism-dark.css';
 
 @tailwind base;
 @tailwind components;
