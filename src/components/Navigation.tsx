@@ -7,6 +7,7 @@ import { Command, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 import { ThemeToggle } from './ThemeToggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import {
   Sheet,
   SheetContent,
@@ -125,8 +126,9 @@ export function Navigation() {
         </div>
         
         <div className="flex flex-1 items-center justify-end space-x-2">
+          <LanguageSwitcher />
           <ThemeToggle />
-           <Button variant="outline" size="sm" onClick={openCommandPalette} className="hidden md:flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={openCommandPalette} className="hidden md:flex items-center gap-2">
             <span className="text-xs">Search...</span>
             <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
               <span className="text-xs">⌘</span>K

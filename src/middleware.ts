@@ -43,6 +43,21 @@ function detectLocaleFromHeader(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // Don't redirect API routes, static files, or special routes
+  if (
+    pathname.startsWith('/api/') ||
+    pathname.startsWith('/_next/') ||
+    pathname.startsWith('/static/') ||
+    pathname.includes('.') || // Ignore files with extensions
+    pathname === '/robots.txt' ||
+    pathname === '/sitemap.xml' ||
+    pathname === '/favicon.ico' ||
+    pathname === '/manifest.json' ||
+    pathname === '/sw.js'
+  ) {
+    return NextResponse.next();
+  }
+
   // Check if locale is in pathname
   const localeFromPathname = getLocaleFromPathname(pathname);
 
@@ -51,29 +66,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Check for locale preference in cookie
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  let locale: string = defaultLocale;
-
-  if (cookieLocale && locales.includes(cookieLocale as any)) {
-    locale = cookieLocale;
-  } else {
-    // Detect from Accept-Language header
-    locale = detectLocaleFromHeader(request);
-  }
-
-  // Redirect to locale-prefixed path
-  const response = NextResponse.redirect(
-    new URL(`/${locale}${pathname}`, request.url)
-  );
-
-  // Store locale preference in cookie
-  response.cookies.set('NEXT_LOCALE', locale, {
-    maxAge: 31536000, // 1 year
-    path: '/',
-  });
-
-  return response;
+  // For now, don't redirect - keep routes as-is for backward compatibility
+  // Locale switching will be handled via LanguageSwitcher component instead
+  return NextResponse.next();
 }
 
 // Configure which routes use the middleware
