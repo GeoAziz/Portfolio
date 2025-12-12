@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "rm -f ./next.config.ts || true && next dev -p 9002",
+    "dev": "next dev -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-  "build": "rm -f ./next.config.ts || true && NODE_ENV=production next build",
+    "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
@@ -49,7 +49,7 @@
     "framer-motion": "^12.23.25",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.475.0",
-    "next": "14.2.5",
+    "next": "14.2.35",
     "next-mdx-remote": "^5.0.0",
     "patch-package": "^8.0.0",
     "react": "^18.3.1",
