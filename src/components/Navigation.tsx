@@ -43,6 +43,7 @@ export function Navigation() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
+        {/* Desktop Navigation */}
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <svg
@@ -72,8 +73,8 @@ export function Navigation() {
           </nav>
         </div>
         
-        {/* Mobile Nav */}
-        <div className="md:hidden flex items-center gap-2">
+        {/* Mobile Navigation Trigger */}
+        <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="w-10 h-10">
