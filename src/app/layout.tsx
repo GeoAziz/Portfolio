@@ -8,7 +8,7 @@ import { BackToTop } from '@/components/BackToTop';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { KeyboardHints } from '@/components/KeyboardHints';
 import { Toaster } from '@/components/ui/toaster';
-import { CommandPalette } from '@/components/CommandPalette';
+import { CommandPaletteWrapper } from '@/components/CommandPaletteWrapper';
 import { ParticleFX } from '@/components/ParticleFX';
 import { PageTransition } from '@/components/PageTransition';
 
@@ -43,7 +43,7 @@ export default function RootLayout({
         </div>
         <BackToTop />
         <KeyboardHints />
-        <CommandPalette />
+        <CommandPaletteWrapper />
         <Toaster />
       </body>
     </html>

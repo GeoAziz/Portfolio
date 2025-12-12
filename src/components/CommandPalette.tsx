@@ -1,105 +1,243 @@
+/**
+ * Command Palette / Global Search Component
+ * 
+ * Keyboard-accessible search with Cmd/Ctrl+K shortcut
+ */
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from '@/components/ui/command';
-import { FileText, Laptop, Cpu, FlaskConical, Github, User, Home, HardDrive } from 'lucide-react';
-import { projectsData, hardwareData, aiData, systemsData, researchData, openSourceData } from '@/lib/content';
+  SearchableItem,
+  createSearchIndex,
+  searchItems,
+  groupResultsByType,
+  getTypeLabel,
+  getTypeIcon,
+  truncateText,
+} from '@/lib/search';
+import Fuse from 'fuse.js';
 
-const pages = [
-  { name: 'Home', path: '/', icon: Home },
-  { name: 'Systems', path: '/systems', icon: Laptop },
-  { name: 'AI', path: '/ai', icon: Cpu },
-  { name: 'Hardware', path: '/hardware', icon: HardDrive },
-  { name: 'Research', path: '/research', icon: FlaskConical },
-  { name: 'Open Source', path: '/open-source', icon: Github },
-  { name: 'Resume', path: '/resume', icon: User },
-];
+interface CommandPaletteProps {
+  items: SearchableItem[];
+  onSelect?: (item: SearchableItem) => void;
+}
 
-const allProjects = [
-  ...projectsData.map(p => ({ name: p.name, group: p.category, path: `/${p.category.toLowerCase().replace(' ', '-')}` })),
-  ...hardwareData.hardwareProjects.map(p => ({ name: p.title, group: 'Hardware', path: '/hardware' })),
-  ...(aiData?.experiments || []).map(p => ({ name: p.title, group: 'AI', path: '/ai' })),
-  ...systemsData.systems_projects.map(p => ({ name: p.title, group: 'Systems', path: '/systems'})),
-  ...researchData.researchEntries.map(p => ({ name: p.title, group: 'Research', path: '/research'})),
-  ...openSourceData.openSourceProjects.map(p => ({ name: p.name, group: 'Open Source', path: '/open-source'}))
-];
+export function CommandPalette({ items, onSelect }: CommandPaletteProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const searchIndexRef = useRef<Fuse<SearchableItem> | null>(null);
+  const [results, setResults] = useState<(SearchableItem & { score: number })[]>([]);
 
-export function CommandPalette() {
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
-
+  // Initialize search index
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+    searchIndexRef.current = createSearchIndex(items);
+  }, [items]);
+
+  // Handle keyboard shortcut (Cmd/Ctrl+K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        setOpen(open => !open);
+        setIsOpen(true);
+      }
+
+      // Close with Escape
+      if (e.key === 'Escape') {
+        setIsOpen(false);
       }
     };
 
-    document.addEventListener('keydown', down);
-    return () => document.removeEventListener('keydown', down);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const runCommand = (command: () => unknown) => {
-    setOpen(false);
-    command();
+  // Focus input when palette opens
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  }, [isOpen]);
+
+  // Perform search
+  useEffect(() => {
+    if (!searchIndexRef.current) return;
+
+    if (query.trim()) {
+      const searchResults = searchItems(searchIndexRef.current, query);
+      setResults(searchResults.slice(0, 20)); // Limit to 20 results
+      setSelectedIndex(0);
+    } else {
+      setResults([]);
+      setSelectedIndex(0);
+    }
+  }, [query]);
+
+  // Handle keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setSelectedIndex(prev => (prev + 1) % results.length || 0);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setSelectedIndex(prev => (prev - 1 + results.length) % results.length || 0);
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (results[selectedIndex]) {
+          handleSelectResult(results[selectedIndex]);
+        }
+        break;
+    }
   };
 
+  const handleSelectResult = (item: SearchableItem) => {
+    onSelect?.(item);
+    // Navigate to the item
+    window.location.href = item.url;
+    setIsOpen(false);
+    setQuery('');
+  };
+
+  const grouped = groupResultsByType(results);
+  const allTypes = Object.keys(grouped);
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="overflow-hidden p-0 shadow-lg bg-card border-border">
-        <DialogHeader className="sr-only">
-          <DialogTitle>Command Palette</DialogTitle>
-        </DialogHeader>
-        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
-          <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Pages">
-              {pages.map(page => (
-                <CommandItem
-                  key={page.path}
-                  onSelect={() => runCommand(() => router.push(page.path))}
-                  value={`page-${page.path}`}
-                >
-                  <page.icon className="mr-2 h-4 w-4" />
-                  <span>{page.name}</span>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-            <CommandSeparator />
-            <CommandGroup heading="Projects & Research">
-              {allProjects.map(project => (
-                <CommandItem
-                  key={`${project.group}-${project.name}`}
-                  onSelect={() => runCommand(() => router.push(project.path))}
-                  value={`project-${project.name}`}
-                >
-                  <FileText className="mr-2 h-4 w-4" />
-                  <span>{project.name}</span>
-                  <span className="ml-auto text-xs text-muted-foreground">{project.group}</span>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </DialogContent>
-    </Dialog>
+    <>
+      {/* Keyboard Shortcut Button */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(true)}
+        className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-400 hover:border-slate-600 hover:text-slate-300 transition-colors text-sm"
+        title="Search (Cmd+K)"
+      >
+        <span>🔍</span>
+        <span className="hidden lg:inline">Search...</span>
+        <span className="text-xs px-1.5 py-0.5 rounded bg-slate-700 ml-auto">
+          {typeof window !== 'undefined' && navigator.platform.includes('Mac') ? '⌘' : 'Ctrl'}+K
+        </span>
+      </motion.button>
+
+      {/* Search Modal */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/50 z-40"
+            />
+
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-1/4 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50"
+            >
+              <div className="mx-4 rounded-lg bg-slate-900 border border-slate-700/50 shadow-2xl overflow-hidden">
+                {/* Search Input */}
+                <div className="flex items-center gap-3 px-4 py-3 border-b border-slate-700/50">
+                  <span className="text-xl">🔍</span>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder="Search projects, blog posts, and more..."
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className="flex-1 bg-transparent border-none text-white placeholder-slate-500 focus:outline-none text-sm"
+                  />
+                  <span className="text-xs text-slate-500">
+                    {results.length > 0 && `${selectedIndex + 1}/${results.length}`}
+                  </span>
+                </div>
+
+                {/* Results */}
+                {results.length > 0 ? (
+                  <div className="max-h-96 overflow-y-auto">
+                    {allTypes.map(type => (
+                      <div key={type}>
+                        {/* Type Header */}
+                        <div className="px-4 py-2 text-xs font-semibold text-slate-500 uppercase tracking-wider bg-slate-800/50 border-t border-slate-700/50">
+                          {getTypeLabel(type)}
+                        </div>
+
+                        {/* Type Results */}
+                        {grouped[type].map((item, idx) => {
+                          const globalIdx = results.indexOf(item);
+                          const isSelected = selectedIndex === globalIdx;
+
+                          return (
+                            <motion.button
+                              key={item.id}
+                              onClick={() => handleSelectResult(item)}
+                              onMouseEnter={() => setSelectedIndex(globalIdx)}
+                              className={`w-full px-4 py-3 text-left transition-colors border-b border-slate-700/30 last:border-b-0 ${
+                                isSelected
+                                  ? 'bg-cyan-500/20 text-white'
+                                  : 'hover:bg-slate-800/50 text-slate-300'
+                              }`}
+                              whileHover={{ x: 4 }}
+                            >
+                              <div className="flex items-start gap-3">
+                                <span className="text-lg mt-0.5">{getTypeIcon(item.type)}</span>
+                                <div className="flex-1 min-w-0">
+                                  <div className="font-medium text-sm text-white truncate">
+                                    {item.title}
+                                  </div>
+                                  <div className="text-xs text-slate-400 mt-1 truncate">
+                                    {truncateText(item.description, 100)}
+                                  </div>
+                                  {item.category && (
+                                    <div className="text-xs text-slate-500 mt-1">
+                                      📁 {item.category}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </motion.button>
+                          );
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                ) : query.trim() ? (
+                  <div className="px-4 py-8 text-center text-slate-400">
+                    <div className="text-2xl mb-2">🔍</div>
+                    <p className="text-sm">No results found for "{query}"</p>
+                    <p className="text-xs text-slate-500 mt-2">Try different keywords</p>
+                  </div>
+                ) : (
+                  <div className="px-4 py-8 text-center text-slate-400">
+                    <div className="text-2xl mb-2">✨</div>
+                    <p className="text-sm">Start typing to search</p>
+                  </div>
+                )}
+
+                {/* Footer */}
+                <div className="px-4 py-2 border-t border-slate-700/50 bg-slate-800/30 text-xs text-slate-500 flex items-center justify-between">
+                  <div className="flex gap-3">
+                    <span>↑↓ Navigate</span>
+                    <span>↵ Select</span>
+                    <span>Esc Close</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
