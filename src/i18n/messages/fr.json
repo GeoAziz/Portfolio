@@ -1,0 +1,94 @@
+{
+  "common": {
+    "home": "Accueil",
+    "about": "À propos",
+    "blog": "Blog",
+    "projects": "Projets",
+    "research": "Recherche",
+    "contact": "Contact",
+    "search": "Rechercher",
+    "analytics": "Analytique",
+    "language": "Langue",
+    "theme": "Thème",
+    "menu": "Menu",
+    "close": "Fermer",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "readMore": "En savoir plus",
+    "viewProject": "Voir le projet",
+    "download": "Télécharger",
+    "share": "Partager"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "blog": "Blog",
+    "research": "Recherche",
+    "contact": "Contact",
+    "caseStudies": "Études de cas",
+    "resume": "CV",
+    "admin": "Admin"
+  },
+  "pages": {
+    "home": {
+      "title": "Ingénieur logiciel et chercheur",
+      "description": "Construire des systèmes intelligents à l'intersection de l'ingénierie et de l'IA"
+    },
+    "projects": {
+      "title": "Projets",
+      "description": "Une collection de projets en ingénierie, IA et systèmes"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Idées sur l'ingénierie, les systèmes et la technologie"
+    },
+    "research": {
+      "title": "Recherche",
+      "description": "Recherche publiée et travail académique"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Prenez contact avec moi"
+    },
+    "search": {
+      "title": "Rechercher",
+      "description": "Rechercher dans tous les contenus"
+    },
+    "analytics": {
+      "title": "Analytique",
+      "description": "Performance et métriques du contenu"
+    }
+  },
+  "content": {
+    "featured": "À la une",
+    "readingTime": "min de lecture",
+    "published": "Publié",
+    "views": "vues",
+    "engagement": "engagement",
+    "trending": "Tendance",
+    "topContent": "Contenu populaire",
+    "relatedContent": "Contenu connexe"
+  },
+  "forms": {
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "submit": "Envoyer",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "required": "Ce champ est obligatoire",
+    "invalidEmail": "Veuillez entrer une adresse e-mail valide"
+  },
+  "errors": {
+    "notFound": "Page non trouvée",
+    "serverError": "Une erreur serveur s'est produite",
+    "loadingError": "Erreur lors du chargement du contenu",
+    "contactError": "Erreur lors de l'envoi du message"
+  }
+}

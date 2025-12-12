@@ -1,0 +1,94 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "projects": "Projects",
+    "research": "Research",
+    "contact": "Contact",
+    "search": "Search",
+    "analytics": "Analytics",
+    "language": "Language",
+    "theme": "Theme",
+    "menu": "Menu",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "readMore": "Read More",
+    "viewProject": "View Project",
+    "download": "Download",
+    "share": "Share"
+  },
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "research": "Research",
+    "contact": "Contact",
+    "caseStudies": "Case Studies",
+    "resume": "Resume",
+    "admin": "Admin"
+  },
+  "pages": {
+    "home": {
+      "title": "Software Engineer & Researcher",
+      "description": "Building intelligent systems at the intersection of engineering and AI"
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "A collection of engineering, AI, and systems projects"
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Insights on engineering, systems, and technology"
+    },
+    "research": {
+      "title": "Research",
+      "description": "Published research and academic work"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with me"
+    },
+    "search": {
+      "title": "Search",
+      "description": "Search across all content"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "description": "Content performance and metrics"
+    }
+  },
+  "content": {
+    "featured": "Featured",
+    "readingTime": "min read",
+    "published": "Published",
+    "views": "views",
+    "engagement": "engagement",
+    "trending": "Trending",
+    "topContent": "Top Content",
+    "relatedContent": "Related Content"
+  },
+  "forms": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email"
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "serverError": "Server error occurred",
+    "loadingError": "Error loading content",
+    "contactError": "Error sending message"
+  }
+}
