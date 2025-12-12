@@ -1,5 +1,5 @@
 import { getAllProjects, getAllProjectTechs, getAllProjectCategories } from '@/lib/projects';
-import ProjectsPageClient from './ProjectsPageClient';
+import ProjectsPageClient from '@/app/projects/ProjectsPageClient';
 
 export const metadata = {
   title: 'Projects | Portfolio',

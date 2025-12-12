@@ -295,3 +295,176 @@ export const defaultSitemapRoutes: SitemapEntry[] = [
   { url: '/resume', priority: 0.7, changeFrequency: 'monthly' },
   { url: '/newsletter', priority: 0.7, changeFrequency: 'weekly' },
 ];
+
+/**
+ * Breadcrumb schema generator
+ */
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export function generateBreadcrumbSchema(items: BreadcrumbItem[]): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+  
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url.startsWith('http') ? item.url : `${baseUrl}${item.url}`,
+    })),
+  };
+
+  return JSON.stringify(schema);
+}
+
+/**
+ * Project schema generator (CreativeWork)
+ */
+export function generateProjectSchema(project: {
+  name: string;
+  description: string;
+  summary?: string;
+  category?: string;
+  keywords?: string[];
+  image?: string;
+  slug: string;
+  github?: string;
+  liveDemo?: string;
+  featured?: boolean;
+}): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.name,
+    description: project.description || project.summary,
+    keywords: project.keywords?.join(', ') || '',
+    inLanguage: 'en',
+    url: `${baseUrl}/projects/${project.slug}`,
+    ...(project.image && {
+      image: {
+        '@type': 'ImageObject',
+        url: project.image.startsWith('http') ? project.image : `${baseUrl}${project.image}`,
+      },
+    }),
+    ...(project.github && {
+      codeRepository: project.github,
+    }),
+    ...(project.category && {
+      category: project.category,
+    }),
+    author: {
+      '@type': 'Person',
+      name: 'Geo Aziz',
+    },
+  };
+
+  return JSON.stringify(schema);
+}
+
+/**
+ * Organization schema generator
+ */
+export function generateOrganizationSchema(): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Geo Aziz',
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
+    description:
+      'Systems engineer, AI researcher, and open-source developer focused on distributed systems, hardware design, and AI ethics.',
+    sameAs: [
+      'https://twitter.com/geoaziz',
+      'https://github.com/GeoAziz',
+      'https://linkedin.com/in/geoaziz',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'General',
+      email: 'hello@geoaziz.com',
+    },
+  };
+
+  return JSON.stringify(schema);
+}
+
+/**
+ * Person schema generator
+ */
+export function generatePersonSchema(): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Geo Aziz',
+    url: baseUrl,
+    image: `${baseUrl}/avatar.jpg`,
+    jobTitle: 'Systems Engineer & AI Researcher',
+    description:
+      'Systems engineer, AI researcher, and open-source developer focused on distributed systems, hardware design, and AI ethics.',
+    sameAs: [
+      'https://twitter.com/geoaziz',
+      'https://github.com/GeoAziz',
+      'https://linkedin.com/in/geoaziz',
+    ],
+  };
+
+  return JSON.stringify(schema);
+}
+
+/**
+ * FAQ schema generator
+ */
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export function generateFAQSchema(items: FAQItem[]): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+
+  return JSON.stringify(schema);
+}
+
+/**
+ * Website schema with search action
+ */
+export function generateWebSiteSchema(): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Geo Aziz - Systems Journal',
+    url: baseUrl,
+    description:
+      'Systems engineering, AI research, distributed systems, and hardware design.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${baseUrl}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  return JSON.stringify(schema);
+}

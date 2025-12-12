@@ -26,24 +26,39 @@ export async function generateMetadata({
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+  const canonicalUrl = `${baseUrl}/projects/${project.slug}`;
   const description = project.summary || project.overview.substring(0, 160);
+  const ogImage = project.image 
+    ? `${baseUrl}/api/og?title=${encodeURIComponent(project.title)}&description=${encodeURIComponent(description)}`
+    : undefined;
 
   return {
     title: `${project.title} | Projects`,
     description,
-    keywords: project.keywords || project.tech,
+    keywords: [...(project.keywords || []), ...project.tech],
+    alternates: { canonical: canonicalUrl },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
     openGraph: {
       title: project.title,
       description,
       type: 'website',
-      url: `/projects/${project.slug}`,
-      images: project.image ? [`/images/projects/${project.image}.jpg`] : undefined,
+      url: canonicalUrl,
+      images: ogImage ? [ogImage] : undefined,
+      siteName: 'Geo Aziz - Systems Journal',
     },
     twitter: {
       card: 'summary_large_image',
       title: project.title,
       description,
-      images: project.image ? [`/images/projects/${project.image}.jpg`] : undefined,
+      creator: '@geoaziz',
+      images: ogImage ? [ogImage] : undefined,
     },
   };
 }
@@ -65,9 +80,65 @@ export default function ProjectDetailPage({
   }
 
   const related = getRelatedProjects(params.slug, 3);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+  const canonicalUrl = `${baseUrl}/projects/${project.slug}`;
+
+  // Generate Project schema
+  const projectSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.overview,
+    keywords: project.tech.join(', '),
+    inLanguage: 'en',
+    url: canonicalUrl,
+    ...(project.github && {
+      codeRepository: project.github,
+    }),
+    author: {
+      '@type': 'Person',
+      name: 'Geo Aziz',
+    },
+  };
+
+  // Generate Breadcrumb schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Projects',
+        item: `${baseUrl}/projects`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: project.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
 
   return (
     <MotionFade>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        suppressHydrationWarning
+      />
       <div className="space-y-12">
         {/* Header with Back Button */}
         <div className="space-y-4">
