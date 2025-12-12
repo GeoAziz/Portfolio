@@ -36,7 +36,7 @@ const WebhookUpdateSchema = z.object({
  * Verify user authentication
  */
 async function verifyAuth(request: NextRequest) {
-  const authHeader = request.headers.get('authorization');
+  const authHeader = request.headers.get('authorization') ?? undefined;
   const token = extractTokenFromHeader(authHeader);
 
   if (!token) {

@@ -202,7 +202,6 @@ async function deliverWebhook(webhook: Webhook, payload: WebhookPayload) {
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
-
     const response = await fetch(webhook.url, {
       method: 'POST',
       headers: {
@@ -214,7 +213,6 @@ async function deliverWebhook(webhook: Webhook, payload: WebhookPayload) {
       body: JSON.stringify(signedPayload),
       signal: controller.signal,
     });
-
     clearTimeout(timeoutId);
 
     // Log webhook delivery

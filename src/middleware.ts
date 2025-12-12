@@ -53,7 +53,7 @@ export function middleware(request: NextRequest) {
 
   // Check for locale preference in cookie
   const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  let locale = defaultLocale;
+  let locale: string = defaultLocale;
 
   if (cookieLocale && locales.includes(cookieLocale as any)) {
     locale = cookieLocale;

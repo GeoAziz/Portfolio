@@ -3,6 +3,8 @@
  * Supports: English (en), Arabic (ar), French (fr)
  */
 
+// JSON module declarations moved to src/types/json.d.ts to avoid module augmentation errors
+
 export type Locale = 'en' | 'ar' | 'fr';
 
 export const locales: Locale[] = ['en', 'ar', 'fr'];
@@ -27,20 +29,8 @@ export const isRTL: Record<Locale, boolean> = {
 };
 
 /**
- * Get all messages for a locale
- * This function dynamically loads translation files
- */
-export async function getMessages(locale: Locale) {
-  try {
-    return (await import(`@/i18n/messages/${locale}.json`)).default;
-  } catch (error) {
-    console.error(`Failed to load messages for locale ${locale}:`, error);
-    return (await import('@/i18n/messages/en.json')).default;
-  }
-}
-
-/**
  * i18n configuration object for use in middleware and other utilities
+ * Note: Message loading is handled separately in lib/i18n-messages.ts
  */
 export const i18nConfig = {
   locales,

@@ -120,7 +120,8 @@ export function GlobalSearch() {
   const handleTypeFilter = (type: 'blog' | 'research' | 'project' | null) => {
     setActiveFilters((prev) => ({
       ...prev,
-      type: type === prev.type ? undefined : type,
+      // ensure we never set `type` to null (state only allows undefined for "no type")
+      type: type === prev.type ? undefined : (type ?? undefined),
     }));
   };
 

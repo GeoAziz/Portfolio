@@ -21,7 +21,6 @@ export interface User {
   bio?: string;
   createdAt: string;
   updatedAt: string;
-  lastLogin?: string;
 }
 
 export interface AuthToken {
@@ -61,7 +60,8 @@ export async function createJWTToken(user: User): Promise<string> {
 export async function verifyJWTToken(token: string): Promise<AuthToken | null> {
   try {
     const verified = await jwtVerify(token, JWT_SECRET);
-    return verified.payload as AuthToken;
+    const payload = verified.payload as unknown as AuthToken;
+    return payload;
   } catch (error) {
     console.error('JWT verification failed:', error);
     return null;
