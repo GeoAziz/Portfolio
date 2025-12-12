@@ -78,13 +78,13 @@ export function getAllProjects(): ProjectDetail[] {
     const projects = JSON.parse(fileContents);
     
     return projects.map((project: any) => ({
-      slug: generateSlug(project.name),
-      name: project.name || '',
+      slug: generateSlug(project.name || project.title || ''),
+      name: project.name || project.title || '',
       title: project.title || project.name || '',
       summary: project.summary || project.description || '',
       description: project.description,
       overview: project.overview || project.description || '',
-      tech: project.tech || [],
+      tech: (project.tech || project.stack || []).filter((t: any) => t && typeof t === 'string'),
       category: project.category || 'General',
       image: project.image,
       link: project.link,
@@ -147,7 +147,11 @@ export function getAllProjectTechs(): string[] {
   projects.forEach(project => {
     (project.tech || [])
       .filter(tech => tech && typeof tech === 'string')
-      .forEach(tech => techs.add(tech));
+      .forEach(tech => {
+        if (tech && typeof tech === 'string') {
+          techs.add(tech);
+        }
+      });
   });
   
   return Array.from(techs).sort();
@@ -175,7 +179,7 @@ export function getProjectsByTech(tech: string): ProjectDetail[] {
   return projects.filter(p => 
     (p.tech || [])
       .filter(t => t && typeof t === 'string')
-      .some(t => t.toLowerCase() === tech.toLowerCase())
+      .some(t => t && t.toLowerCase && t.toLowerCase() === tech.toLowerCase())
   );
 }
 
@@ -202,7 +206,7 @@ export function getRelatedProjects(slug: string, limit = 3): ProjectDetail[] {
         .filter(tech =>
           (currentProject.tech || [])
             .filter(t => t && typeof t === 'string')
-            .some(t => t.toLowerCase() === tech.toLowerCase())
+            .some(t => t && t.toLowerCase && t.toLowerCase() === tech.toLowerCase())
         );
       score += sharedTechs.length * 3;
 
