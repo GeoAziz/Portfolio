@@ -2,7 +2,13 @@ import { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/lib/blog';
 import { getAllProjects } from '@/lib/projects';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// NOTE: This metadata sitemap was disabled to avoid a routing conflict
+// with the explicit `/sitemap.xml` app route at `src/app/sitemap.xml/route.ts`.
+// The route-based implementation is the active sitemap provider.
+// If you want to use the metadata-based sitemap instead, remove
+// `src/app/sitemap.xml/route.ts` and re-enable the default export below.
+
+export function sitemap_disabled(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
 
   // Static routes with fixed priorities and change frequency
