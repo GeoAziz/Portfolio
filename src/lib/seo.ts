@@ -468,3 +468,53 @@ export function generateWebSiteSchema(): string {
 
   return JSON.stringify(schema);
 }
+
+/**
+ * Research article/entry schema generator
+ */
+export function generateResearchSchema(research: {
+  title: string;
+  abstract: string;
+  date: string;
+  authors: string[];
+  keywords: string[];
+  publication: string;
+  doi?: string;
+  pdfLink?: string;
+  slug: string;
+}): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://geoaziz.com';
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ScholarlyArticle',
+    headline: research.title,
+    description: research.abstract,
+    keywords: research.keywords.join(', '),
+    datePublished: research.date,
+    inLanguage: 'en',
+    url: `${baseUrl}/research/${research.slug}`,
+    author: research.authors.map(author => ({
+      '@type': 'Person',
+      name: author,
+    })),
+    ...(research.publication && {
+      publication: {
+        '@type': 'PublicationIssue',
+        name: research.publication,
+      },
+    }),
+    ...(research.doi && {
+      identifier: research.doi,
+    }),
+    ...(research.pdfLink && {
+      encoding: {
+        '@type': 'MediaObject',
+        encodingFormat: 'application/pdf',
+        url: research.pdfLink,
+      },
+    }),
+  };
+
+  return JSON.stringify(schema);
+}

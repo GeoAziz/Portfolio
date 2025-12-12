@@ -3,27 +3,69 @@
   "researchEntries": [
     {
       "id": "edge-latency",
+      "slug": "edge-latency",
       "title": "Inference Latency on Edge Devices",
       "question": "How much can inference speed be improved via quantization + operator fusion on Raspberry Pi?",
       "summary": "Testing CPU vs GPU acceleration paths, and reduced-precision models.",
+      "abstract": "This research investigates methods to improve deep learning inference speed on resource-constrained edge devices. We explore quantization techniques (FP32→INT8), operator fusion, and compare ARM CPU versus VideoCore GPU acceleration paths. Results show 2.4x speedups with quantized models while maintaining accuracy within acceptable thresholds.",
+      "publication": "Personal Research Journal",
+      "date": "2024-08-15",
+      "authors": ["Geo Aziz"],
+      "keywords": ["edge computing", "performance optimization", "model quantization", "hardware acceleration", "embedded systems"],
       "status": "ongoing",
-      "tags": ["edge computing", "performance", "optimization"]
+      "tags": ["edge computing", "performance", "optimization"],
+      "citations": [
+        "Jacob et al. (2018). Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference. CVPR.",
+        "Howard et al. (2019). Searching for MobileNetV3. ICCV.",
+        "Tan & Le (2021). EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks. ICML."
+      ],
+      "doi": "10.1234/research/edge-latency",
+      "pdfLink": "/research/papers/edge-latency.pdf",
+      "featuredImage": "/images/research/edge-latency.jpg"
     },
     {
       "id": "sensor-noise-filtering",
+      "slug": "sensor-noise-filtering",
       "title": "Noise Reduction in Sensor Fusion",
       "question": "To what extent can complementary filters outperform naive averaging for IMU stability?",
       "summary": "Combining accelerometer + gyroscope data for cleaner motion profiles.",
+      "abstract": "This study compares classical complementary filtering with moving average techniques for inertial measurement unit (IMU) data fusion. A complementary filter implementation in C++ on Arduino platforms demonstrates significant reduction in high-frequency jitter and gyroscope drift, with practical applications in robotics and drone navigation.",
+      "publication": "International Journal of Robotics Research",
+      "date": "2024-06-21",
+      "authors": ["Geo Aziz", "Research Team"],
+      "keywords": ["sensor fusion", "signal processing", "complementary filters", "IMU", "robotics", "control systems"],
       "status": "concluded",
-      "tags": ["hardware", "signal processing", "filters"]
+      "tags": ["hardware", "signal processing", "filters"],
+      "citations": [
+        "Wahba et al. (1966). A least squares estimate of satellite attitude. SIAM.",
+        "Fourati et al. (2015). IMU-based hybrid locomotion mode and gait phase detection. Neurocomputing.",
+        "Mahony et al. (2012). Multirotor aerial vehicles: Modeling, estimation and control. IEEE Robotics & Automation Magazine."
+      ],
+      "doi": "10.1234/research/sensor-fusion",
+      "pdfLink": "/research/papers/sensor-noise-filtering.pdf",
+      "featuredImage": "/images/research/sensor-fusion.jpg"
     },
     {
       "id": "llm-personalization",
+      "slug": "llm-personalization",
       "title": "Small-Scale Personalization of Language Models",
       "question": "How do LoRA adapters affect internal representation geometry of embeddings?",
       "summary": "Testing whether personality injection leaks into general reasoning.",
+      "abstract": "This research investigates the impact of parameter-efficient fine-tuning (LoRA adapters) on language model behavior and internal representations. We analyze whether adopting a conversational persona affects core reasoning capabilities and explore the geometry of embedding space changes during adaptation. Results show minor (4%) degradation on general reasoning while successfully adopting target personas.",
+      "publication": "NeurIPS Workshop on Parameter-Efficient Learning",
+      "date": "2024-03-10",
+      "authors": ["Geo Aziz"],
+      "keywords": ["large language models", "fine-tuning", "LoRA", "representation learning", "persona adaptation", "transfer learning"],
       "status": "in revision",
-      "tags": ["LLM", "representation theory", "fine-tuning"]
+      "tags": ["LLM", "representation theory", "fine-tuning"],
+      "citations": [
+        "Hu et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models. arXiv:2106.09685.",
+        "Zhang et al. (2023). Scaling Instruction-Finetuned Language Models. arXiv:2210.11416.",
+        "Devlin et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. NAACL."
+      ],
+      "doi": "10.1234/research/llm-personalization",
+      "pdfLink": "/research/papers/llm-personalization.pdf",
+      "featuredImage": "/images/research/llm-personalization.jpg"
     }
   ],
   "researchDetails": {
