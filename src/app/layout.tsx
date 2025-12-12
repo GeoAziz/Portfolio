@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
 import { cn } from '@/lib/utils';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
@@ -45,6 +46,7 @@ export default function RootLayout({
         <KeyboardHints />
         <CommandPaletteWrapper />
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );

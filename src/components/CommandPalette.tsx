@@ -17,6 +17,7 @@ import {
   getTypeIcon,
   truncateText,
 } from '@/lib/search';
+import { trackSearch, trackInteraction } from '@/lib/analytics';
 import Fuse from 'fuse.js';
 
 interface CommandPaletteProps {
@@ -70,6 +71,8 @@ export function CommandPalette({ items, onSelect }: CommandPaletteProps) {
       const searchResults = searchItems(searchIndexRef.current, query);
       setResults(searchResults.slice(0, 20)); // Limit to 20 results
       setSelectedIndex(0);
+      // Track search analytics
+      trackSearch(query, searchResults.length);
     } else {
       setResults([]);
       setSelectedIndex(0);
@@ -98,6 +101,8 @@ export function CommandPalette({ items, onSelect }: CommandPaletteProps) {
 
   const handleSelectResult = (item: SearchableItem) => {
     onSelect?.(item);
+    // Track analytics
+    trackInteraction('search', `selected_${item.type}`);
     // Navigate to the item
     window.location.href = item.url;
     setIsOpen(false);
