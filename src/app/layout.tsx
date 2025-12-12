@@ -12,10 +12,27 @@ import { Toaster } from '@/components/ui/toaster';
 import { CommandPaletteWrapper } from '@/components/CommandPaletteWrapper';
 import { ParticleFX } from '@/components/ParticleFX';
 import { PageTransition } from '@/components/PageTransition';
+import { PWAInitializer } from '@/components/PWAInitializer';
 
 export const metadata: Metadata = {
   title: 'Personal OS',
   description: 'A personal portfolio designed as an operating system.',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Personal OS',
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  icons: {
+    icon: [
+      { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' }],
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +48,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden')}>
+        <PWAInitializer />
         <ScrollProgress />
         <ParticleFX />
         <div className="relative z-10 flex flex-col flex-grow">
