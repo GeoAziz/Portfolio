@@ -31,9 +31,13 @@ export function Navigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Detect if screen is mobile on mount and on resize
+  // `mounted` ensures server and initial client render are identical (preventing hydration mismatch)
   useEffect(() => {
+    setMounted(true);
+    
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768); // md breakpoint is 768px
     };
@@ -108,7 +112,7 @@ export function Navigation() {
         </div>
         
         {/* Mobile Logo */}
-        {isMobile && (
+        {mounted && isMobile && (
           <Link href="/" className="flex items-center space-x-2 flex-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +126,7 @@ export function Navigation() {
         )}
         
         {/* Mobile Menu Button */}
-        {isMobile && (
+        {mounted && isMobile && (
           <Sheet open={isOpen} onOpenChange={handleOpenChange}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="w-10 h-10">
