@@ -29,7 +29,6 @@ const navLinks = [
 
 export function Navigation() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -47,7 +46,7 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="flex justify-center px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
+      <div className="flex justify-center px-4 sm:px-6 md:px-8">
         <div className="w-full max-w-[1800px] flex h-14 items-center justify-between">
           
           <div className="flex items-center gap-3 shrink-0">
@@ -65,13 +64,13 @@ export function Navigation() {
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-center px-12">
+          <nav className="flex items-center gap-4 lg:gap-6 flex-1 justify-center px-4 overflow-x-auto">
             {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative text-sm font-normal transition-colors nav-link',
+                  'relative text-sm font-normal transition-colors nav-link whitespace-nowrap',
                   pathname?.startsWith(link.href) 
                     ? 'text-foreground/95 active' 
                     : 'text-foreground/60 hover:text-foreground/80'
@@ -98,50 +97,15 @@ export function Navigation() {
               </div>
             </div>
             
-            {mounted && (
-              <div className="flex md:hidden">
-                <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                  <SheetTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-foreground/5">
-                      <Menu className="h-4 w-4 text-foreground/70" />
-                      <span className="sr-only">Toggle Menu</span>
-                    </Button>
-                  </SheetTrigger>
-                  <SheetContent side="left" className="w-[280px] sm:w-[350px]">
-                    <SheetHeader>
-                      <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                    </SheetHeader>
-                    <Link href="/" className="flex items-center gap-2 mb-8 mt-2" onClick={() => setIsOpen(false)}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 256 256"
-                        className="h-6 w-6 fill-foreground"
-                      >
-                        <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
-                      </svg>
-                      <span className="font-normal text-sm">Personal OS</span>
-                    </Link>
-                    <nav className="flex flex-col gap-1">
-                      {navLinks.map(link => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          onClick={() => setIsOpen(false)}
-                          className={cn(
-                            'text-sm py-2.5 px-3 rounded transition-colors',
-                            pathname?.startsWith(link.href) 
-                              ? 'text-foreground bg-foreground/5' 
-                              : 'text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03]'
-                          )}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </nav>
-                  </SheetContent>
-                </Sheet>
-              </div>
-            )}
+            <div className="flex md:hidden">
+              <button
+                  onClick={openCommandPalette}
+                  className="flex items-center justify-center h-9 w-9 hover:bg-foreground/5 rounded-md"
+                  aria-label="Open search"
+                >
+                <Command className="h-4 w-4 text-foreground/70" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
