@@ -51,17 +51,15 @@ export default function RootLayout({
         <PWAInitializer />
         <ScrollProgress />
         <ParticleFX />
-        <div className="relative z-10 flex flex-col flex-grow">
-          <Navigation />
-          <main className="flex-grow w-full flex justify-center px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12">
-            <div className="w-full max-w-[1600px]">
-              <PageTransition>
-                {children}
-              </PageTransition>
-            </div>
-          </main>
-          <Footer />
-        </div>
+        <Navigation />
+        <main className="flex-grow w-full flex justify-center px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 pt-14">
+          <div className="w-full max-w-[1600px]">
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </div>
+        </main>
+        <Footer />
         <BackToTop />
         <KeyboardHints />
         <CommandPaletteWrapper />
