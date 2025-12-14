@@ -86,50 +86,52 @@ const slideInLeft = {
 export default function Home() {
   return (
     <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 lg:space-y-40 w-full">
-      {/* Section 1: Hero */}
+      {/* Section 1: Hero - Vertically centered with breathing room */}
       <motion.section
-        className="mt-16 md:mt-24 lg:mt-32 space-y-6 lg:space-y-8 w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
+        className="w-full px-4 sm:px-6 md:px-8 lg:px-10 2xl:px-12 flex items-center justify-center min-h-[calc(100vh-120px)]"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.h1
-          className="font-headline text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter text-foreground"
-          variants={itemVariants}
-        >
-          Engineer Dev Mahn X
-        </motion.h1>
-        <motion.p
-          className="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-muted-foreground max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-relaxed"
-          variants={itemVariants}
-        >
-          Building intelligent systems — from silicon to software.
-        </motion.p>
-        <motion.p
-          className="text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-muted-foreground/80 max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-relaxed"
-          variants={itemVariants}
-        >
-          Exploring the boundaries of computation, intelligence, and engineered systems.
-        </motion.p>
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
-          variants={itemVariants}
-        >
-          {[
-            { href: '#systems', label: 'Explore the Work', variant: 'outline' },
-            { href: '/resume', label: 'Contact / Collaborate', variant: 'default' },
-          ].map((btn) => (
-            <motion.div
-              key={btn.href}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button asChild size="lg" variant={btn.variant as any}>
-                <Link href={btn.href}>{btn.label}</Link>
-              </Button>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="space-y-6 lg:space-y-8 max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-5xl 2xl:max-w-6xl w-full">
+          <motion.h1
+            className="font-headline text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter leading-[1.1] text-foreground"
+            variants={itemVariants}
+          >
+            Engineer Dev Mahn X
+          </motion.h1>
+          <motion.p
+            className="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl text-muted-foreground max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-snug"
+            variants={itemVariants}
+          >
+            Building intelligent systems — from silicon to software.
+          </motion.p>
+          <motion.p
+            className="text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-muted-foreground/80 max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-relaxed"
+            variants={itemVariants}
+          >
+            Exploring the boundaries of computation, intelligence, and engineered systems.
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+            variants={itemVariants}
+          >
+            {[
+              { href: '#systems', label: 'Explore the Work', variant: 'outline' },
+              { href: '/resume', label: 'Contact / Collaborate', variant: 'default' },
+            ].map((btn) => (
+              <motion.div
+                key={btn.href}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button asChild size="lg" variant={btn.variant as any}>
+                  <Link href={btn.href}>{btn.label}</Link>
+                </Button>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </motion.section>
 
       {/* Section 2: SkillOrbit */}

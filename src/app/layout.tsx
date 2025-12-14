@@ -53,10 +53,12 @@ export default function RootLayout({
         <ParticleFX />
         <div className="relative z-10 flex flex-col flex-grow">
           <Navigation />
-          <main className="flex-grow w-full max-w-7xl xl:max-w-full 2xl:max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 py-12 md:py-16 lg:py-20 xl:py-24">
-            <PageTransition>
-              {children}
-            </PageTransition>
+          <main className="flex-grow w-full flex justify-center px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 py-12 md:py-16 lg:py-20 xl:py-24">
+            <div className="w-full max-w-[1600px]">
+              <PageTransition>
+                {children}
+              </PageTransition>
+            </div>
           </main>
           <Footer />
         </div>

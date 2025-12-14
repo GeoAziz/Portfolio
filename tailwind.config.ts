@@ -30,6 +30,8 @@ export default {
         '5xl': typography.size['5xl'],
         '6xl': typography.size['6xl'],
         '7xl': typography.size['7xl'],
+        '8xl': typography.size['8xl'],
+        '9xl': typography.size['9xl'],
       },
       fontFamily: {
         body: typography.font.body.split(',').map(f => f.trim()),
@@ -166,6 +168,9 @@ export default {
         md: `${breakpoints.md}px`,
         lg: `${breakpoints.lg}px`,
         xl: `${breakpoints.xl}px`,
+        '2xl': '1536px',
+        '3xl': '1920px',
+        '4xl': '2560px',
       },
       typography: (theme: any) => ({
         DEFAULT: {
