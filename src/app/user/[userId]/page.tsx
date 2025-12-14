@@ -158,7 +158,7 @@ export default async function UserProfilePage({ params }: PageProps) {
         {/* Last Login Info */}
         {profile.displayLastLogin && (
           <div className="text-sm text-gray-500 dark:text-gray-400">
-            Last active: {new Date(user.lastLogin).toLocaleDateString()}
+            Last active: {new Date(user.lastLogin ?? user.updatedAt).toLocaleDateString()}
           </div>
         )}
       </div>
