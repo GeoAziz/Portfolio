@@ -1,5 +1,64 @@
 import fs from 'fs';
 import path from 'path';
+
+const CONTENT_DIR = path.join(process.cwd(), 'src', 'content');
+const BLOG_JSON = path.join(CONTENT_DIR, 'blog-posts.json');
+
+export interface StoredBlogPost {
+  slug: string;
+  title: string;
+  summary?: string;
+  date?: string;
+  tags?: string[];
+  featured?: boolean;
+  contentPath?: string; // optional path to MDX file
+}
+
+/**
+ * Read blog posts from the JSON store. Falls back to an empty array when missing.
+ */
+export function getAllPosts(): StoredBlogPost[] {
+  try {
+    if (!fs.existsSync(BLOG_JSON)) return [];
+    const raw = fs.readFileSync(BLOG_JSON, 'utf8');
+    return JSON.parse(raw) as StoredBlogPost[];
+  } catch (err) {
+    console.error('Failed to read blog posts:', err);
+    return [];
+  }
+}
+
+export function getPostBySlug(slug: string): StoredBlogPost | undefined {
+  const posts = getAllPosts();
+  return posts.find((p) => p.slug === slug);
+}
+
+/**
+ * Load MDX content for a post if present at src/content/blog/<slug>.mdx
+ */
+export function loadPostContent(slug: string): string | null {
+  const mdxPath = path.join(CONTENT_DIR, 'blog', `${slug}.mdx`);
+  try {
+    if (!fs.existsSync(mdxPath)) return null;
+    return fs.readFileSync(mdxPath, 'utf8');
+  } catch (err) {
+    console.error('Failed to load MDX for', slug, err);
+    return null;
+  }
+}
+
+export function savePosts(posts: StoredBlogPost[]) {
+  try {
+    if (!fs.existsSync(CONTENT_DIR)) fs.mkdirSync(CONTENT_DIR, { recursive: true });
+    fs.writeFileSync(BLOG_JSON, JSON.stringify(posts, null, 2), 'utf8');
+    return true;
+  } catch (err) {
+    console.error('Failed to save blog posts:', err);
+    return false;
+  }
+}
+
+export default { getAllPosts, getPostBySlug, loadPostContent, savePosts };
 import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
 
