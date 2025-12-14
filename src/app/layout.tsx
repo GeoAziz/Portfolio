@@ -52,7 +52,7 @@ export default function RootLayout({
         <ScrollProgress />
         <ParticleFX />
         <Navigation />
-        <main className="flex-grow w-full flex justify-center px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 pt-14">
+        <main className="flex-grow w-full flex justify-center px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 pt-16">
           <div className="w-full max-w-[1600px]">
             <PageTransition>
               {children}

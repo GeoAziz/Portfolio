@@ -58,24 +58,23 @@ export function Navigation() {
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center gap-4 lg:gap-6 flex-1 justify-center px-4 overflow-x-auto">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative text-sm font-normal transition-colors whitespace-nowrap',
-                  pathname?.startsWith(link.href)
-                    ? 'text-foreground/95'
-                    : 'text-foreground/60 hover:text-foreground/80'
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center justify-end flex-1 md:flex-initial gap-2 lg:gap-4 shrink-0">
+          <div className="flex items-center justify-end flex-1 gap-2 lg:gap-6 shrink-0">
+            <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+              {navLinks.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative text-sm font-normal transition-colors whitespace-nowrap',
+                    pathname?.startsWith(link.href)
+                      ? 'text-foreground/95'
+                      : 'text-foreground/60 hover:text-foreground/80'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
             <div className="flex items-center gap-4">
               <ThemeToggle />
               <div
