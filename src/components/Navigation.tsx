@@ -30,9 +30,11 @@ const navLinks = [
 export function Navigation() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [isMac, setIsMac] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    setIsMac(navigator.platform.toUpperCase().indexOf('MAC') >= 0);
   }, []);
 
   if (pathname === '/splash') {
@@ -82,22 +84,26 @@ export function Navigation() {
           </nav>
 
           <div className="flex items-center justify-end flex-1 md:flex-initial gap-2 lg:gap-4 shrink-0">
-            <div className="flex items-center gap-2 lg:gap-4">
+            <div className="hidden md:flex items-center gap-2 lg:gap-4">
               <ThemeToggle />
               <LanguageSwitcher />
               
-              <div className="hidden md:flex">
-                <button
-                  onClick={openCommandPalette}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-colors"
-                >
-                  <span className="text-xs text-foreground/60">Search</span>
-                  <kbd className="font-mono text-[11px] text-foreground/50">⌘K</kbd>
-                </button>
-              </div>
+              <button
+                onClick={openCommandPalette}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-colors"
+              >
+                <span className="text-xs text-foreground/60">Search</span>
+                {mounted && (
+                  <kbd className="font-mono text-[11px] text-foreground/50">
+                    {isMac ? '⌘' : 'Ctrl'}+K
+                  </kbd>
+                )}
+              </button>
             </div>
             
-            <div className="flex md:hidden">
+            <div className="flex md:hidden items-center gap-1">
+              <ThemeToggle />
+              <LanguageSwitcher />
                <Sheet>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-foreground/5" aria-label="Toggle Menu">
