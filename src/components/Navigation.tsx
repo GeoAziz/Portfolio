@@ -30,59 +30,27 @@ const navLinks = [
 export function Navigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Detect if screen is mobile on mount and on resize
   useEffect(() => {
     setMounted(true);
-    
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // md breakpoint is 768px
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    // Close sheet when resizing to desktop
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsOpen(false);
-      }
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
-  // Don't show navigation on the splash page
   if (pathname === '/splash') {
     return null;
   }
 
   const openCommandPalette = () => {
-    // Simulate Ctrl+K or Cmd+K
     const event = new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, metaKey: true });
     document.dispatchEvent(event);
-  };
-
-  // Only render the drawer on mobile screens
-  const handleOpenChange = (open: boolean) => {
-    if (window.innerWidth < 768) {
-      setIsOpen(open);
-    }
   };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="flex justify-center px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24">
         <div className="w-full max-w-[1800px] flex h-14 items-center justify-between">
-          {/* Left Section: Brand */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          
+          <div className="flex items-center gap-3 shrink-0">
             <Link href="/" className="flex items-center gap-2.5">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,22 +59,21 @@ export function Navigation() {
               >
                 <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
               </svg>
-              <span className="text-sm font-normal text-foreground/90 tracking-normal">
+              <span className="text-sm font-normal text-foreground/90 tracking-normal hidden sm:inline">
                 Personal OS
               </span>
             </Link>
           </div>
 
-          {/* Center Section: Primary Navigation */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-9 flex-1 justify-center px-12">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10 flex-1 justify-center px-12">
             {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-sm font-normal transition-colors',
+                  'relative text-sm font-normal transition-colors nav-link',
                   pathname?.startsWith(link.href) 
-                    ? 'text-foreground/95 border-b border-foreground/40' 
+                    ? 'text-foreground/95 active' 
                     : 'text-foreground/60 hover:text-foreground/80'
                 )}
               >
@@ -115,41 +82,25 @@ export function Navigation() {
             ))}
           </nav>
 
-          {/* Mobile Logo */}
-          {mounted && isMobile && (
-            <Link href="/" className="flex items-center gap-2 flex-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 256"
-                className="h-5 w-5 fill-foreground"
-              >
-                <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
-              </svg>
-              <span className="text-sm font-normal text-foreground">Personal OS</span>
-            </Link>
-          )}
-
-          {/* Right Section: Utilities */}
-          <div className="flex items-center gap-2 lg:gap-4 shrink-0">
-            {/* Desktop Utilities */}
-            <div className="hidden md:flex items-center gap-4">
+          <div className="flex items-center justify-end flex-1 md:flex-initial gap-2 lg:gap-4 shrink-0">
+            <div className="flex items-center gap-2 lg:gap-4">
               <ThemeToggle />
               <LanguageSwitcher />
-              <button
-                onClick={openCommandPalette}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-colors"
-              >
-                <span className="text-xs text-foreground/60">Search</span>
-                <kbd className="font-mono text-[11px] text-foreground/50">⌘K</kbd>
-              </button>
+              
+              <div className="hidden md:flex">
+                <button
+                  onClick={openCommandPalette}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-colors"
+                >
+                  <span className="text-xs text-foreground/60">Search</span>
+                  <kbd className="font-mono text-[11px] text-foreground/50">⌘K</kbd>
+                </button>
+              </div>
             </div>
             
-            {/* Mobile Utilities */}
-            <div className="flex md:hidden items-center gap-2">
-              <ThemeToggle />
-              <LanguageSwitcher />
-              {mounted && isMobile && (
-                <Sheet open={isOpen} onOpenChange={handleOpenChange}>
+            {mounted && (
+              <div className="flex md:hidden">
+                <Sheet open={isOpen} onOpenChange={setIsOpen}>
                   <SheetTrigger asChild>
                     <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-foreground/5">
                       <Menu className="h-4 w-4 text-foreground/70" />
@@ -160,7 +111,7 @@ export function Navigation() {
                     <SheetHeader>
                       <SheetTitle className="sr-only">Main Menu</SheetTitle>
                     </SheetHeader>
-                    <Link href="/" className="flex items-center gap-2 mb-8 mt-2">
+                    <Link href="/" className="flex items-center gap-2 mb-8 mt-2" onClick={() => setIsOpen(false)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 256 256"
@@ -175,6 +126,7 @@ export function Navigation() {
                         <Link
                           key={link.href}
                           href={link.href}
+                          onClick={() => setIsOpen(false)}
                           className={cn(
                             'text-sm py-2.5 px-3 rounded transition-colors',
                             pathname?.startsWith(link.href) 
@@ -188,8 +140,8 @@ export function Navigation() {
                     </nav>
                   </SheetContent>
                 </Sheet>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
