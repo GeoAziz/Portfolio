@@ -1,4 +1,4 @@
-import { getBlogPosts } from '@/lib/blog';
+import { getAllPosts } from '@/lib/blog';
 import { MotionFade } from '@/components/MotionFade';
 import BlogList from './BlogList';
 import CorePhilosophies from '@/components/home/CorePhilosophies';
@@ -12,11 +12,29 @@ export const metadata = {
 };
 
 export default function BlogPage() {
-  const allPosts = getBlogPosts();
+  // Use the JSON-backed posts (seeded at src/content/blog-posts.json)
+  const rawPosts = getAllPosts();
+
+  // Map to the shape expected by BlogList (metadata wrapper)
+  const allPosts = rawPosts.map((p) => ({
+    slug: p.slug,
+    metadata: {
+      title: p.title || '',
+      date: p.date || '',
+      summary: p.summary || '',
+      draft: false,
+      tags: p.tags || [],
+      type: '',
+      keyInsight: p.summary || '',
+      author: 'GeoAziz',
+    },
+    readingTime: undefined,
+  }));
+
   const mappedResearchAreas = researchAreas.map((r: any) => ({
     area: r.title,
     focus: r.summary,
-    keywords: [r.publication || '', r.date || '']
+    keywords: [r.publication || '', r.date || ''],
   }));
 
   return (
@@ -31,8 +49,8 @@ export default function BlogPage() {
           </p>
         </div>
 
-  <CorePhilosophies philosophies={philosophyData.philosophies} />
-  <ResearchHub researchAreas={mappedResearchAreas} />
+        <CorePhilosophies philosophies={philosophyData.philosophies} />
+        <ResearchHub researchAreas={mappedResearchAreas} />
 
         <div className="border-t border-border/50 my-12"></div>
 
@@ -42,3 +60,4 @@ export default function BlogPage() {
     </MotionFade>
   );
 }
+
