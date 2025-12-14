@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+// This route uses request.url and must be treated as dynamic so Next doesn't
+// attempt to prerender it during static collection.
+export const dynamic = 'force-dynamic';
 import { searchContent, getAllContentTags, getTagStats, getSearchSuggestions } from '@/lib/content-search';
 
 /**

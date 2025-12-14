@@ -5,12 +5,6 @@ const withMDX = createMDX({
 })
 
 const nextConfig = {
-  experimental: {
-    allowedDevOrigins: [
-      "https://6000-firebase-studio-1764267609947.cluster-cbeiita7rbe7iuwhvjs5zww2i4.cloudworkstations.dev",
-      "https://9000-firebase-studio-1764267609947.cluster-cbeiita7rbe7iuwhvjs5zww2i4.cloudworkstations.dev",
-    ],
-  },
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   typescript: {
     ignoreBuildErrors: true,
