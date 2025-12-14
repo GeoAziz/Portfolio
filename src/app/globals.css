@@ -246,3 +246,13 @@
   background-size: 1000px 100%;
   animation: shimmer 3s infinite;
 }
+
+/* Temporary visual fallback: if client-side JS fails to hydrate or run animations,
+   many client components render with inline `opacity:0` styles which leaves the
+   page visually blank. This rule forces those elements to be visible so the
+   site is presentable while we diagnose hydration/runtime errors. Remove this
+   override after the root cause is fixed. */
+main [style*="opacity:0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}

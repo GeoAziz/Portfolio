@@ -12,9 +12,12 @@ export function MotionFade({
   delay?: number;
 }) {
   return (
-    <div 
-      className={cn("animate-fade-in-up opacity-0", className)} 
-      style={{ 
+    <div
+      // Do not force `opacity-0` here — rely on the animation keyframes to handle
+      // the fade-in. Keeping an explicit opacity:0 class can leave content hidden
+      // if client animations/hydration fail, which makes the page appear blank.
+      className={cn("animate-fade-in-up", className)}
+      style={{
         animationFillMode: 'forwards',
         animationDelay: delay ? `${delay}s` : undefined,
       }}
