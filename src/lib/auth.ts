@@ -19,6 +19,8 @@ export interface User {
   role: 'user' | 'admin' | 'contributor';
   avatar?: string;
   bio?: string;
+  // ISO timestamp of the user's last login — optional because older records may not have it
+  lastLogin?: string;
   createdAt: string;
   updatedAt: string;
 }

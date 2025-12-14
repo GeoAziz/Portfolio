@@ -27,6 +27,7 @@ interface CommandPaletteProps {
 
 export function CommandPalette({ items, onSelect }: CommandPaletteProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,6 +55,15 @@ export function CommandPalette({ items, onSelect }: CommandPaletteProps) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Detect platform on client after hydration to avoid SSR/client mismatch
+  useEffect(() => {
+    try {
+      setIsMac(typeof window !== 'undefined' && navigator.platform?.toLowerCase().includes('mac'));
+    } catch (e) {
+      setIsMac(false);
+    }
   }, []);
 
   // Focus input when palette opens
@@ -124,9 +134,9 @@ export function CommandPalette({ items, onSelect }: CommandPaletteProps) {
       >
         <span>🔍</span>
         <span className="hidden lg:inline">Search...</span>
-        <span className="text-xs px-1.5 py-0.5 rounded bg-slate-700 ml-auto">
-          {typeof window !== 'undefined' && navigator.platform.includes('Mac') ? '⌘' : 'Ctrl'}+K
-        </span>
+                  <span className="text-xs px-1.5 py-0.5 rounded bg-slate-700 ml-auto">
+                    {isMac ? '⌘' : 'Ctrl'}+K
+                  </span>
       </motion.button>
 
       {/* Search Modal */}

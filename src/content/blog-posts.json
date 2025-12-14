@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "cygnus",
+    "title": "CYGNUS: Distributed Threat Analysis",
+    "summary": "An enterprise-grade platform for processing high-volume security events across distributed nodes.",
+    "date": "2025-11-01T10:00:00.000Z",
+    "tags": ["security", "distributed", "systems"],
+    "featured": true
+  },
+  {
+    "slug": "neura-link",
+    "title": "NEURA-LINK: Context-Preserving AI Assistant",
+    "summary": "A modular AI assistant designed to maintain context over long conversations and support tool integration.",
+    "date": "2025-10-15T08:00:00.000Z",
+    "tags": ["ai", "assistant", "nlp"],
+    "featured": true
+  },
+  {
+    "slug": "quantum-core",
+    "title": "QUANTUM CORE: FPGA Inference Engine",
+    "summary": "Custom FPGA-based accelerator for neural inference with reconfigurable pipelines.",
+    "date": "2025-09-20T12:00:00.000Z",
+    "tags": ["hardware", "fpga", "acceleration"],
+    "featured": false
+  },
+  {
+    "slug": "distributed-threat-analyzer",
+    "title": "Distributed Threat Analyzer: Architecture and Lessons",
+    "summary": "Design notes, trade-offs, and operational lessons from building a horizontally-scalable threat analyzer.",
+    "date": "2025-08-05T09:30:00.000Z",
+    "tags": ["security", "architecture"],
+    "featured": false
+  },
+  {
+    "slug": "modular-ai-assistant",
+    "title": "Modular AI Assistant Patterns",
+    "summary": "Patterns for composing capabilities into modular AI assistants with safe extensibility.",
+    "date": "2025-07-11T07:45:00.000Z",
+    "tags": ["ai", "architecture", "design"],
+    "featured": false
+  },
+  {
+    "slug": "real-time-data-pipeline",
+    "title": "Real-time Data Pipeline for Low-latency Analytics",
+    "summary": "Building a resilient, low-latency pipeline for processing event streams at scale.",
+    "date": "2025-06-02T11:20:00.000Z",
+    "tags": ["data", "streaming", "systems"],
+    "featured": false
+  },
+  {
+    "slug": "optimizing-inference",
+    "title": "Optimizing Inference: Latency vs Throughput",
+    "summary": "Approaches for balancing latency and throughput in model serving systems.",
+    "date": "2025-05-18T14:00:00.000Z",
+    "tags": ["mlops", "performance"],
+    "featured": false
+  },
+  {
+    "slug": "scaling-streams",
+    "title": "Scaling Stream Processing: Backpressure and Recovery",
+    "summary": "Techniques for handling backpressure and graceful recovery in stream processors.",
+    "date": "2025-04-01T09:00:00.000Z",
+    "tags": ["streaming", "resilience"],
+    "featured": false
+  }
+]
