@@ -65,7 +65,7 @@ export function Navigation() {
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10 flex-1 justify-center px-12">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-center px-12">
             {navLinks.map(link => (
               <Link
                 key={link.href}
