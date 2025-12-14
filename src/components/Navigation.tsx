@@ -80,11 +80,11 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex justify-center px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12">
-        <div className="w-full max-w-[1600px] flex h-14 items-center justify-between">
+      <div className="flex justify-center px-4 sm:px-8 md:px-10 lg:px-12 xl:px-16 2xl:px-20">
+        <div className="w-full max-w-[1600px] flex h-16 items-center justify-between">
           {/* Desktop Logo + Nav */}
-          <div className="hidden md:flex items-center space-x-8 lg:space-x-10 xl:space-x-12">
-            <Link href="/" className="flex items-center space-x-2">
+          <div className="hidden md:flex items-center gap-12 lg:gap-16">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 256 256"
@@ -92,25 +92,25 @@ export function Navigation() {
               >
                 <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
               </svg>
-              <span className="font-bold font-headline">
+              <span className="font-semibold text-sm tracking-wide">
                 Personal OS
               </span>
             </Link>
-            <nav className="flex items-center space-x-6 lg:space-x-8 xl:space-x-10 text-sm lg:text-base font-medium">
+            <nav className="flex items-center gap-8 lg:gap-10">
               {navLinks.map(link => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'relative transition-colors hover:text-accent nav-link',
-                    pathname?.startsWith(link.href) ? 'text-foreground active' : 'text-muted-foreground'
+                    'text-sm tracking-wide transition-colors hover:text-accent nav-link',
+                    pathname?.startsWith(link.href) ? 'text-foreground font-medium' : 'text-muted-foreground'
                   )}
                 >
                   {link.label}
                 </Link>
               ))}
-          </nav>
-        </div>
+            </nav>
+          </div>
         
         {/* Mobile Logo */}
         {mounted && isMobile && (
@@ -180,13 +180,13 @@ export function Navigation() {
         )}
         
         {/* Desktop Controls */}
-        <div className="flex items-center space-x-3">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <LanguageSwitcher />
           <ThemeToggle />
-          <Button variant="outline" size="sm" onClick={openCommandPalette} className="hidden md:flex items-center gap-2">
-            <span className="text-xs">Search...</span>
-            <kbd className="pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-              <span className="text-xs">⌘</span>K
+          <Button variant="ghost" size="sm" onClick={openCommandPalette} className="flex items-center gap-3 text-xs text-muted-foreground hover:text-foreground">
+            <span>Search...</span>
+            <kbd className="pointer-events-none flex items-center gap-1 rounded border border-muted-foreground/30 bg-muted/50 px-2 py-1 font-mono text-[10px] font-medium">
+              <span>⌘</span>K
             </kbd>
           </Button>
         </div>
