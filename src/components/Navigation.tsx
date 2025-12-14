@@ -34,7 +34,6 @@ export function Navigation() {
   const [mounted, setMounted] = useState(false);
 
   // Detect if screen is mobile on mount and on resize
-  // `mounted` ensures server and initial client render are identical (preventing hydration mismatch)
   useEffect(() => {
     setMounted(true);
     
