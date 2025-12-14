@@ -99,8 +99,22 @@ code[class*='language-'] {
   border-right: 1px solid rgb(71 84 103 / 0.3) !important;
 }
 
+/* Ensure the wrapper is positioned so the copy button can sit inside the code block */
+.line-numbers-wrapper {
+  position: relative;
+  padding-top: 2.25rem; /* space for the language label / copy button */
+}
+
 .line-numbers-rows {
   color: rgb(107 114 128 / 0.8) !important;
+}
+
+/* Make the visible gutter (line numbers) slightly muted and right-aligned */
+.line-numbers-rows {
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  text-align: right !important;
+  padding-right: 0.75rem !important;
 }
 
 .line-numbers-rows > span:before {
@@ -132,6 +146,25 @@ code[class*='language-'] {
 .copy-to-clipboard-button.copied {
   background: rgb(16 185 129 / 0.2) !important;
   color: rgb(16 185 129) !important;
+}
+
+/* Position the copy button and language label inside the code block at top-right */
+.line-numbers-wrapper > .copy-to-clipboard-button,
+.line-numbers-wrapper > .code-meta {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  z-index: 10;
+}
+
+/* language label: small muted pill on the left of the button */
+.line-numbers-wrapper > .code-meta {
+  left: 0.5rem;
+  right: auto;
+  background: transparent !important;
+  color: rgb(203 213 225 / 0.75) !important;
+  border: none !important;
+  font-size: 0.75rem !important;
 }
 
 /* Scrollbar styling for code blocks */
