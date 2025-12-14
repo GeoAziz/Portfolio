@@ -1,7 +1,8 @@
 import React from 'react';
-import { highlightCode, isSupportedLanguage, getLanguageLabel } from '@/lib/prism-config';
+import { highlightCode, isSupportedLanguage } from '@/lib/prism-config';
 // Ensure Prism languages/plugins are loaded (side-effect import in prism-config)
 import '@/lib/prism-config';
+import CodeBlockClient from './CodeBlockClient';
 
 interface CodeProps {
   children: React.ReactNode;
@@ -22,9 +23,8 @@ function CodeBlock({ children, className }: CodeProps) {
           dangerouslySetInnerHTML={{ __html: highlighted }}
         />
       </pre>
-      <div style={{ fontSize: '0.75rem', color: 'var(--muted-foreground)', marginTop: '0.25rem' }}>
-        {getLanguageLabel(safeLang)}
-      </div>
+      {/* Client component will hydrate and provide copy button + language label and initialize Prism plugins */}
+      <CodeBlockClient code={code} language={safeLang} />
     </div>
   );
 }
