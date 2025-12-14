@@ -86,14 +86,14 @@ const slideInLeft = {
 export default function Home() {
   return (
     <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 lg:space-y-40 w-full">
-      {/* Section 1: Hero - Vertically centered with breathing room */}
+      {/* Section 1: Hero */}
       <motion.section
-        className="w-full px-4 sm:px-6 md:px-8 lg:px-10 2xl:px-12 flex items-center justify-center min-h-[calc(100vh-120px)]"
+        className="mt-24 md:mt-32 lg:mt-40 xl:mt-48 2xl:mt-56 mb-16 md:mb-24 lg:mb-32 w-full px-4 sm:px-6 md:px-8 lg:px-10 2xl:px-12"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="space-y-6 lg:space-y-8 max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-5xl 2xl:max-w-6xl w-full">
+        <div className="space-y-6 lg:space-y-8 max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-6xl 2xl:max-w-7xl mx-auto">
           <motion.h1
             className="font-headline text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter leading-[1.1] text-foreground"
             variants={itemVariants}
@@ -101,13 +101,13 @@ export default function Home() {
             Engineer Dev Mahn X
           </motion.h1>
           <motion.p
-            className="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl text-muted-foreground max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-snug"
+            className="text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-4xl text-muted-foreground max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto leading-snug"
             variants={itemVariants}
           >
             Building intelligent systems — from silicon to software.
           </motion.p>
           <motion.p
-            className="text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-muted-foreground/80 max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mx-auto leading-relaxed"
+            className="text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-muted-foreground/80 max-w-2xl lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto leading-relaxed"
             variants={itemVariants}
           >
             Exploring the boundaries of computation, intelligence, and engineered systems.
