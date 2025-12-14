@@ -130,68 +130,66 @@ export function Navigation() {
           )}
 
           {/* Right Section: Utilities */}
-          <div className="flex items-center gap-5 lg:gap-6 shrink-0">
-            <div className="hidden md:flex items-center gap-5">
+          <div className="flex items-center gap-2 lg:gap-4 shrink-0">
+            {/* Desktop Utilities */}
+            <div className="hidden md:flex items-center gap-4">
               <ThemeToggle />
               <LanguageSwitcher />
+              <button
+                onClick={openCommandPalette}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-colors"
+              >
+                <span className="text-xs text-foreground/60">Search</span>
+                <kbd className="font-mono text-[11px] text-foreground/50">⌘K</kbd>
+              </button>
             </div>
-            <button
-              onClick={openCommandPalette}
-              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md border border-foreground/10 bg-foreground/[0.02] hover:bg-foreground/[0.05] transition-colors"
-            >
-              <span className="text-xs text-foreground/60">Search</span>
-              <kbd className="font-mono text-[11px] text-foreground/50">⌘K</kbd>
-            </button>
-
-            {/* Mobile Menu Button */}
-            {mounted && isMobile && (
-              <Sheet open={isOpen} onOpenChange={handleOpenChange}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-foreground/5">
-                    <Menu className="h-4 w-4 text-foreground/70" />
-                    <span className="sr-only">Toggle Menu</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-[280px] sm:w-[350px]">
-                  <SheetHeader>
-                    <SheetTitle className="sr-only">Main Menu</SheetTitle>
-                  </SheetHeader>
-                  <Link href="/" className="flex items-center gap-2 mb-8 mt-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 256 256"
-                      className="h-6 w-6 fill-foreground"
-                    >
-                      <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
-                    </svg>
-                    <span className="font-normal text-sm">Personal OS</span>
-                  </Link>
-                  <nav className="flex flex-col gap-1">
-                    {navLinks.map(link => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={cn(
-                          'text-sm py-2.5 px-3 rounded transition-colors',
-                          pathname?.startsWith(link.href) 
-                            ? 'text-foreground bg-foreground/5' 
-                            : 'text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03]'
-                        )}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </nav>
-                </SheetContent>
-              </Sheet>
-            )}
             
-            {mounted && !isMobile && (
-              <div className="md:hidden flex items-center gap-3">
-                <ThemeToggle />
-                <LanguageSwitcher />
-              </div>
-            )}
+            {/* Mobile Utilities */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              <LanguageSwitcher />
+              {mounted && isMobile && (
+                <Sheet open={isOpen} onOpenChange={handleOpenChange}>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-foreground/5">
+                      <Menu className="h-4 w-4 text-foreground/70" />
+                      <span className="sr-only">Toggle Menu</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="left" className="w-[280px] sm:w-[350px]">
+                    <SheetHeader>
+                      <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                    </SheetHeader>
+                    <Link href="/" className="flex items-center gap-2 mb-8 mt-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256"
+                        className="h-6 w-6 fill-foreground"
+                      >
+                        <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
+                      </svg>
+                      <span className="font-normal text-sm">Personal OS</span>
+                    </Link>
+                    <nav className="flex flex-col gap-1">
+                      {navLinks.map(link => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={cn(
+                            'text-sm py-2.5 px-3 rounded transition-colors',
+                            pathname?.startsWith(link.href) 
+                              ? 'text-foreground bg-foreground/5' 
+                              : 'text-foreground/70 hover:text-foreground hover:bg-foreground/[0.03]'
+                          )}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </nav>
+                  </SheetContent>
+                </Sheet>
+              )}
+            </div>
           </div>
         </div>
       </div>
