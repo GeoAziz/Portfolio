@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { MotionFade } from '@/components/MotionFade';
 import { format } from 'date-fns';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import MDXComponents from '@/components/mdx/MDXComponents';
 import { generateArticleSchema, generateBreadcrumbSchema, generateCanonicalUrl } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
@@ -137,7 +138,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </header>
         <div className="prose-p:text-foreground/90 prose-headings:text-foreground prose-strong:text-foreground">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} components={MDXComponents as any} />
         </div>
       </article>
     </MotionFade>
