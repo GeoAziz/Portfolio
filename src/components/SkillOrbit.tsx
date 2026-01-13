@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -63,7 +62,7 @@ export function SkillOrbit() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h3 className="text-2xl font-headline font-bold text-accent mb-2">{centerNode}</h3>
+          <h3 className="text-2xl font-headline font-bold text-accent mb-2" data-testid="skill-orbit-center-node-mobile">{centerNode}</h3>
           <p className="text-sm text-muted-foreground">A conceptual map of my engineering mind.</p>
         </motion.div>
         <Accordion type="single" collapsible className="w-full space-y-4">
@@ -74,7 +73,7 @@ export function SkillOrbit() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <AccordionItem value={domain.name} className="bg-card border border-border rounded-lg hover:border-accent/50 transition-colors duration-300">
+              <AccordionItem value={domain.name} className="bg-card border border-border rounded-lg hover:border-accent/50 transition-colors duration-300" data-testid={`skill-domain-item-${domain.name}`}>
                 <AccordionTrigger className="p-4 md:p-6 text-lg font-headline w-full text-left">
                   {domain.name}
                 </AccordionTrigger>
@@ -117,6 +116,7 @@ export function SkillOrbit() {
           <Tooltip>
             <TooltipTrigger asChild>
               <motion.div
+                data-testid="skill-orbit-center-node"
                 className="absolute z-20 flex items-center justify-center"
                 style={{ width: centerSize, height: centerSize, top: '50%', left: '50%', x: '-50%', y: '-50%' }}
                 initial={{ scale: 0, opacity: 0 }}
@@ -210,6 +210,7 @@ export function SkillOrbit() {
             return (
               <motion.div
                 key={domain.name}
+                data-testid={`skill-orbit-node-${domain.name}`}
                 className="absolute cursor-pointer group z-10"
                 style={{ 
                   top: '50%',

@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import {
   Accordion,
@@ -69,7 +68,7 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
           : 'maintained';
 
   return (
-    <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden group">
+    <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300 overflow-hidden group" data-testid={`project-inspector-${title.replace(/\s+/g, '-').toLowerCase()}`}>
         <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={String(title)} className="border-b-0">
                 <div className="p-4 md:p-6 flex flex-col md:flex-row items-start gap-4 text-left">
@@ -99,13 +98,14 @@ export function ProjectInspector({ project }: ProjectInspectorProps) {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={`View project ${title} on GitHub`}
+                                    data-testid={`project-link-${title.replace(/\s+/g, '-').toLowerCase()}`}
                                 >
                                     View <ArrowUpRight className="ml-1 h-4 w-4 hidden sm:inline" />
                                 </a>
                             </Button>
                         )}
                         {interactive && (
-                            <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:-rotate-180">
+                            <AccordionTrigger className="p-2 rounded-md hover:bg-secondary [&[data-state=open]>svg]:-rotate-180" data-testid={`project-details-trigger-${title.replace(/\s+/g, '-').toLowerCase()}`}>
                                <span className="sr-only">Details</span>
                                <ChevronsUpDown className="h-4 w-4 transition-transform duration-200" />
                             </AccordionTrigger>
