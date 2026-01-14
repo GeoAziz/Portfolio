@@ -47,7 +47,7 @@ export default function SplashPage() {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-background z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-background z-50" data-testid="splash-page">
             {/* Skip Button */}
             <Button
                 variant="ghost"
@@ -60,7 +60,7 @@ export default function SplashPage() {
             </Button>
 
             <MotionFade className="w-full">
-                <div className="flex flex-col items-center text-center space-y-8 px-4">
+                <div className="flex flex-col items-center text-center space-y-8 px-4" data-testid="splash-content">
                     <div className="flex items-center space-x-4">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -69,12 +69,12 @@ export default function SplashPage() {
                         >
                             <path d="M128,24a104,104,0,1,0,104,104A104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a48,48,0,1,1-48-48A48.05,48.05,0,0,1,176,128Z" />
                         </svg>
-                        <h1 className="font-headline text-4xl md:text-6xl font-bold">
+                        <h1 className="font-headline text-4xl md:text-6xl font-bold" data-testid="splash-title">
                             Personal OS
                         </h1>
                     </div>
 
-                    <p className="text-xl md:text-2xl text-muted-foreground">
+                    <p className="text-xl md:text-2xl text-muted-foreground" data-testid="splash-subtitle">
                         A futuristic engineer-builder with human depth.
                     </p>
 
@@ -83,11 +83,12 @@ export default function SplashPage() {
                         size="lg" 
                         className="bg-accent text-accent-foreground hover:bg-accent/90"
                         onClick={() => localStorage.setItem('hasSeenSplash', 'true')}
+                        data-testid="splash-enter-button"
                     >
                         <Link href="/">Enter Universe</Link>
                     </Button>
                     
-                    <p className="text-xs text-muted-foreground/60 mt-4">
+                    <p className="text-xs text-muted-foreground/60 mt-4" data-testid="splash-redirect-message">
                         Auto-redirecting in 3 seconds...
                     </p>
                 </div>

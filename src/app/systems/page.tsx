@@ -18,13 +18,14 @@ const { philosophies } = philosophyData;
 
 export default function SystemsPage() {
   return (
-    <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 mt-16 md:mt-24">
+    <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 mt-16 md:mt-24" data-testid="systems-page">
       {/* Section 1: Header */}
       <motion.section
         className="space-y-4 max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        data-testid="systems-header"
       >
         <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
           System Architecture & Core Engine
@@ -37,7 +38,7 @@ export default function SystemsPage() {
       {/* Section 2: System Architecture Diagram */}
       <section className="w-full max-w-6xl">
         <SectionHeader title="Architecture Diagram" />
-        <div className="mt-8">
+        <div className="mt-8" data-testid="architecture-diagram">
           <ArchitectureDiagram />
         </div>
       </section>
@@ -45,7 +46,7 @@ export default function SystemsPage() {
       {/* Section 3: Tech Stack Tiles */}
       <section className="w-full max-w-6xl">
         <SectionHeader title="System Components" />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8" data-testid="tech-stack-grid">
           {techStack.map((tech) => (
             <TechStackTile key={tech.name} {...tech} />
           ))}
@@ -55,7 +56,7 @@ export default function SystemsPage() {
       {/* Section 4: Execution Capabilities */}
       <section className="w-full max-w-5xl">
         <SectionHeader title="Execution Capabilities" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8" data-testid="capabilities-grid">
           {capabilities.map((capability) => (
             <CapabilityCard key={capability.title} {...capability} />
           ))}
@@ -73,7 +74,7 @@ export default function SystemsPage() {
       {/* Section 6: Design Philosophy */}
       <section className="w-full max-w-4xl text-left">
         <SectionHeader title="Design Philosophy" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-8" data-testid="philosophy-grid">
           {philosophies.map((philosophy) => (
             <PhilosophyCard key={philosophy.title} {...philosophy} />
           ))}

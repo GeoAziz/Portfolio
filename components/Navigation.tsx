@@ -36,6 +36,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={() => setTheme(prev => (prev === 'light' ? 'dark' : 'light'))}
       aria-label="Toggle theme"
+      data-testid="theme-toggle"
       className="h-9 w-9"
     >
       {theme === 'light' ? (
@@ -72,6 +73,7 @@ export function LanguageSwitcher() {
       size="icon"
       onClick={() => setLang(prev => (prev === 'en' ? 'es' : 'en'))}
       aria-label="Toggle language"
+      data-testid="language-switcher"
       className="h-9 w-9"
     >
       <span className="sr-only">Toggle language</span>
@@ -103,12 +105,12 @@ export function Navigation() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-16 items-center px-6 lg:px-8 xl:px-10 2xl:px-12 mx-auto max-w-[1600px]">
+    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60" data-testid="navigation-header">
+      <div className="flex h-16 items-center justify-between px-6 lg:px-8 xl:px-10 2xl:px-12 mx-auto max-w-[1600px]">
         
         {/* Left Section: Brand */}
         <div className="flex items-center gap-3 flex-shrink-0">
-          <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+          <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80" data-testid="home-logo-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 256 256"
@@ -121,35 +123,37 @@ export function Navigation() {
             </span>
           </Link>
         </div>
+
+        {/* Center Section: Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2" data-testid="desktop-navigation">
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              data-testid={`nav-link-${link.label.toLowerCase()}`}
+              className={cn(
+                'relative text-sm font-normal transition-all duration-200',
+                pathname?.startsWith(link.href) 
+                  ? 'text-foreground' 
+                  : 'text-muted-foreground hover:text-foreground nav-link-hover'
+              )}
+            >
+              {link.label}
+              {pathname?.startsWith(link.href) && (
+                <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground/40 translate-y-1" />
+              )}
+            </Link>
+          ))}
+        </nav>
         
-        {/* Right Section: Navigation Links + Utilities */}
-        <div className="flex items-center gap-3 flex-shrink-0 ml-auto">
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative text-sm font-normal transition-all duration-200',
-                  pathname?.startsWith(link.href) 
-                    ? 'text-foreground' 
-                    : 'text-muted-foreground hover:text-foreground nav-link-hover'
-                )}
-              >
-                {link.label}
-                {pathname?.startsWith(link.href) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground/40 translate-y-1" />
-                )}
-              </Link>
-            ))}
-          </nav>
-          
+        {/* Right Section: Search + Utilities */}
+        <div className="flex items-center gap-3 flex-shrink-0">
           {/* Desktop Search */}
           <button
             onClick={openCommandPalette}
             className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-md bg-muted/40 border border-border/50 hover:bg-muted/60 transition-colors group"
             aria-label="Open search"
+            data-testid="search-button"
           >
             <Search className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
             <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">Search</span>
@@ -159,7 +163,7 @@ export function Navigation() {
           </button>
 
           {/* Utilities: Theme, Language */}
-          <div className="flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
@@ -168,16 +172,16 @@ export function Navigation() {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Button variant="ghost" size="icon" className="h-9 w-9" data-testid="mobile-menu-trigger">
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[280px] sm:w-[350px]">
+              <SheetContent side="left" className="w-[280px] sm:w-[350px]" data-testid="mobile-menu">
                 <SheetHeader>
                   <SheetTitle className="sr-only">Main Menu</SheetTitle>
                 </SheetHeader>
-                <Link href="/" className="flex items-center gap-2 mb-8 mt-2">
+                <Link href="/" className="flex items-center gap-2 mb-8 mt-2" data-testid="mobile-home-logo">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 256 256"
@@ -187,11 +191,12 @@ export function Navigation() {
                   </svg>
                   <span className="font-normal font-headline text-sm">Personal OS</span>
                 </Link>
-                <nav className="flex flex-col space-y-1">
+                <nav className="flex flex-col space-y-1" data-testid="mobile-navigation">
                   {navLinks.map(link => (
                     <Link
                       key={link.href}
                       href={link.href}
+                      data-testid={`mobile-nav-link-${link.label.toLowerCase()}`}
                       className={cn(
                         'text-sm py-3 px-4 rounded-md transition-all duration-200',
                         pathname?.startsWith(link.href) 
@@ -203,11 +208,16 @@ export function Navigation() {
                     </Link>
                   ))}
                 </nav>
+                <div className="mt-8 flex items-center gap-2 px-4">
+                  <LanguageSwitcher />
+                  <ThemeToggle />
+                </div>
                 <div className="absolute bottom-8 left-6 right-6">
                   <Button 
                     variant="outline" 
                     className="w-full" 
                     onClick={openCommandPalette}
+                    data-testid="mobile-search-button"
                   >
                     <Command className="mr-2 h-4 w-4" />
                     Search

@@ -41,11 +41,11 @@ export default function ContactPage() {
 
   return (
     <MotionFade>
-      <div className="space-y-16">
+      <div className="space-y-16" data-testid="contact-container">
         {/* Header */}
         <div className="space-y-4">
           <SectionHeader title="Get in Touch" />
-          <p className="text-lg text-muted-foreground max-w-2xl">
+          <p className="text-lg text-muted-foreground max-w-2xl" data-testid="contact-description">
             Have a question or project idea? Let's talk! I'm always interested in learning about new projects and opportunities. Feel free to reach out with any inquiries.
           </p>
         </div>
@@ -55,13 +55,13 @@ export default function ContactPage() {
           <div className="lg:col-span-2">
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-2">Send me a message</h2>
-                <p className="text-muted-foreground">
+                <h2 className="text-2xl font-bold text-foreground mb-2" data-testid="contact-form-title">Send me a message</h2>
+                <p className="text-muted-foreground" data-testid="contact-form-subtitle">
                   Fill out the form below and I'll get back to you as soon as possible.
                 </p>
               </div>
 
-              <Card className="bg-card border-border">
+              <Card className="bg-card border-border" data-testid="contact-form-card">
                 <CardContent className="pt-6">
                   <ContactForm />
                 </CardContent>
@@ -72,7 +72,7 @@ export default function ContactPage() {
           {/* Contact Methods Sidebar */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-bold text-foreground mb-4">Other ways to connect</h3>
+              <h3 className="text-lg font-bold text-foreground mb-4" data-testid="contact-methods-title">Other ways to connect</h3>
               <div className="space-y-4">
                 {contactMethods.map((method) => {
                   const Icon = method.icon;
@@ -83,15 +83,16 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block group"
+                      data-testid={`contact-method-${method.title.toLowerCase()}`}
                     >
                       <Card className="bg-card border-border hover:border-accent transition-colors">
                         <CardContent className="pt-4">
                           <div className="flex items-start gap-3">
                             <Icon className="w-5 h-5 text-accent mt-1 flex-shrink-0 group-hover:text-accent-research transition-colors" />
                             <div className="min-w-0">
-                              <p className="font-semibold text-foreground text-sm">{method.title}</p>
-                              <p className="text-xs text-muted-foreground">{method.description}</p>
-                              <p className="text-sm font-mono text-accent mt-2 truncate group-hover:text-accent-research">
+                              <p className="font-semibold text-foreground text-sm" data-testid={`contact-method-name-${method.title.toLowerCase()}`}>{method.title}</p>
+                              <p className="text-xs text-muted-foreground" data-testid={`contact-method-description-${method.title.toLowerCase()}`}>{method.description}</p>
+                              <p className="text-sm font-mono text-accent mt-2 truncate group-hover:text-accent-research" data-testid={`contact-method-value-${method.title.toLowerCase()}`}>
                                 {method.value}
                               </p>
                             </div>

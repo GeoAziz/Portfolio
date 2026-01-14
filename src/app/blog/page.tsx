@@ -39,9 +39,9 @@ export default function BlogPage() {
 
   return (
     <MotionFade>
-      <div className="space-y-12">
+      <div className="space-y-12" data-testid="blog-container">
         <div className="text-center max-w-4xl mx-auto pt-8">
-          <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+          <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground" data-testid="blog-title">
             Systems Journal
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground">

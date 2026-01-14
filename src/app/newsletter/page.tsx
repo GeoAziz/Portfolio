@@ -10,17 +10,17 @@ import { PageTransition } from '@/components/PageTransition';
 
 export default function NewsletterPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div data-testid="newsletter-page" className="min-h-screen bg-slate-950 text-white">
       <PageTransition>
-        <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <section data-testid="newsletter-section" className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <SectionHeader title="Stay Updated" />
-          <p className="text-slate-400 text-center max-w-2xl mx-auto mt-4">
+          <p data-testid="newsletter-description" className="text-slate-400 text-center max-w-2xl mx-auto mt-4">
             Get weekly insights on systems engineering, AI research, and building at the intersection of curiosity and computation.
           </p>
 
           <div className="mt-12 space-y-8">
             {/* Newsletter Form */}
-            <div className="max-w-md mx-auto">
+            <div data-testid="newsletter-form" className="max-w-md mx-auto">
               <NewsletterSignup
                 title="Join 500+ Curious Engineers"
                 description="Weekly digest of new projects, research findings, and technical deep dives"
@@ -31,7 +31,7 @@ export default function NewsletterPage() {
             </div>
 
             {/* What You'll Get */}
-            <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-8 mt-12">
+            <div data-testid="newsletter-benefits" className="bg-slate-900/50 border border-slate-800 rounded-lg p-8 mt-12">
               <h3 className="text-lg font-semibold text-cyan-400 mb-6">📬 What You'll Receive</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex gap-4">

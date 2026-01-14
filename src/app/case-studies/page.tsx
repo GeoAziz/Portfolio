@@ -10,15 +10,15 @@ export default function CaseStudiesPage() {
 
   return (
     <MotionFade>
-      <div className="space-y-12">
+      <div className="space-y-12" data-testid="case-studies-page">
         <SectionHeader title="Case Studies" />
-        <p className="text-muted-foreground max-w-3xl">
+        <p data-testid="case-studies-description" className="text-muted-foreground max-w-3xl">
           Detailed breakdowns of selected projects — problem, architecture, implementation challenges, results, and lessons learned.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div data-testid="case-studies-grid" className="grid md:grid-cols-2 gap-6">
           {studies.map(study => (
-            <Card key={study.id} className="overflow-hidden">
+            <Card key={study.id} data-testid={`case-study-${study.slug}`} className="overflow-hidden">
               <Link href={`/case-studies/${study.slug}`} className="block">
                 {study.screenshots && study.screenshots[0] && (
                   <div className="relative h-44 w-full">

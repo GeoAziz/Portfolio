@@ -21,26 +21,27 @@ const { outputs } = aiExampleOutputsData;
 
 export default function AiPage() {
   return (
-    <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 mt-16 md:mt-24">
+    <div data-testid="ai-page" className="flex flex-col items-center text-center space-y-24 md:space-y-32 mt-16 md:mt-24">
       {/* Section 1: Header */}
       <motion.section
+        data-testid="ai-header"
         className="space-y-4 max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
+        <h1 data-testid="ai-title" className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
           AI Systems & Cognitive Engines
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+        <p data-testid="ai-description" className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           This is my playground for experimenting with machine learning models, autonomous reasoning tools, and intelligent pipelines.
         </p>
       </motion.section>
 
       {/* Section 2: Model Playground */}
-      <section className="w-full max-w-7xl">
+      <section data-testid="ai-models" className="w-full max-w-7xl">
         <SectionHeader title="Model Playground" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <div data-testid="ai-models-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
           {models.map((model) => (
             <ModelCard key={model.name} {...model as unknown as ModelCardProps} />
           ))}
@@ -48,9 +49,9 @@ export default function AiPage() {
       </section>
 
       {/* Section 3: AI Experiments & Research Sandbox */}
-      <section className="w-full max-w-7xl">
+      <section data-testid="ai-experiments" className="w-full max-w-7xl">
         <SectionHeader title="AI Experiments & Research Sandbox" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+        <div data-testid="ai-experiments-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
           {experiments.map((experiment) => (
             <LabTile key={experiment.title} {...experiment} />
           ))}
@@ -58,9 +59,9 @@ export default function AiPage() {
       </section>
 
       {/* Section 4: AI Philosophy & Approach */}
-      <section className="w-full max-w-4xl text-left">
+      <section data-testid="ai-philosophy" className="w-full max-w-4xl text-left">
         <SectionHeader title="AI Philosophy & Approach" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-8">
+        <div data-testid="ai-philosophy-cards" className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mt-8">
           {philosophy.map((item) => (
             <PhilosophyCard key={item.title} {...item} />
           ))}

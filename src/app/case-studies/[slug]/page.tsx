@@ -18,7 +18,7 @@ export default function CaseStudyDetail({ params }: Params) {
 
   return (
     <MotionFade>
-      <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-4xl mx-auto space-y-8" data-testid="case-study-detail-page">
         <SectionHeader title={study.title} />
 
         {study.screenshots && study.screenshots.length > 0 && (
@@ -32,7 +32,7 @@ export default function CaseStudyDetail({ params }: Params) {
         )}
 
         <div className="space-y-6">
-          <Card>
+          <Card data-testid="case-study-problem">
             <CardHeader>
               <CardTitle>Problem</CardTitle>
             </CardHeader>
@@ -41,7 +41,7 @@ export default function CaseStudyDetail({ params }: Params) {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card data-testid="case-study-solution">
             <CardHeader>
               <CardTitle>Solution & Architecture</CardTitle>
             </CardHeader>
@@ -55,7 +55,7 @@ export default function CaseStudyDetail({ params }: Params) {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card data-testid="case-study-challenges">
             <CardHeader>
               <CardTitle>Challenges</CardTitle>
             </CardHeader>
@@ -68,7 +68,7 @@ export default function CaseStudyDetail({ params }: Params) {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card data-testid="case-study-results">
             <CardHeader>
               <CardTitle>Results</CardTitle>
             </CardHeader>
@@ -83,7 +83,7 @@ export default function CaseStudyDetail({ params }: Params) {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card data-testid="case-study-lessons">
             <CardHeader>
               <CardTitle>Lessons Learned</CardTitle>
             </CardHeader>

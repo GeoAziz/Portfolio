@@ -120,7 +120,19 @@ export function ContactForm({ className }: ContactFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={cn('space-y-6', className)}>
+    <form onSubmit={handleSubmit} className={cn('space-y-6', className)} data-testid="contact-form">
+      {/* Live region for screen readers */}
+      <div 
+        role="status" 
+        aria-live="polite" 
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {status === 'success' && 'Message sent successfully! I will get back to you as soon as possible.'}
+        {status === 'error' && errorMessage && `Error: ${errorMessage}`}
+        {status === 'loading' && 'Sending your message...'}
+      </div>
+
       {/* Status Messages */}
       {status === 'success' && (
         <div className="rounded-lg bg-green-500/10 border border-green-500/20 p-4 flex items-start gap-3">
@@ -148,7 +160,7 @@ export function ContactForm({ className }: ContactFormProps) {
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label htmlFor="name" className="text-sm font-medium text-foreground">
-            Name *
+            Name <span aria-label="required" className="text-red-500">*</span>
           </label>
           <Input
             id="name"
@@ -160,12 +172,15 @@ export function ContactForm({ className }: ContactFormProps) {
             disabled={status === 'loading'}
             className="bg-card border-border"
             required
+            aria-required="true"
+            aria-invalid={status === 'error' && errorMessage?.includes('Name') ? 'true' : 'false'}
+            data-testid="contact-input-name"
           />
         </div>
 
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium text-foreground">
-            Email *
+            Email <span aria-label="required" className="text-red-500">*</span>
           </label>
           <Input
             id="email"
@@ -177,13 +192,16 @@ export function ContactForm({ className }: ContactFormProps) {
             disabled={status === 'loading'}
             className="bg-card border-border"
             required
+            aria-required="true"
+            aria-invalid={status === 'error' && errorMessage?.includes('email') ? 'true' : 'false'}
+            data-testid="contact-input-email"
           />
         </div>
       </div>
 
       <div className="space-y-2">
         <label htmlFor="subject" className="text-sm font-medium text-foreground">
-          Subject *
+          Subject <span aria-label="required" className="text-red-500">*</span>
         </label>
         <Input
           id="subject"
@@ -195,12 +213,15 @@ export function ContactForm({ className }: ContactFormProps) {
           disabled={status === 'loading'}
           className="bg-card border-border"
           required
+          aria-required="true"
+          aria-invalid={status === 'error' && errorMessage?.includes('Subject') ? 'true' : 'false'}
+          data-testid="contact-input-subject"
         />
       </div>
 
       <div className="space-y-2">
         <label htmlFor="message" className="text-sm font-medium text-foreground">
-          Message *
+          Message <span aria-label="required" className="text-red-500">*</span>
         </label>
         <Textarea
           id="message"
@@ -212,8 +233,12 @@ export function ContactForm({ className }: ContactFormProps) {
           rows={6}
           className="bg-card border-border resize-none"
           required
+          aria-required="true"
+          aria-invalid={status === 'error' && errorMessage?.includes('Message') ? 'true' : 'false'}
+          aria-describedby="message-hint"
+          data-testid="contact-input-message"
         />
-        <p className="text-xs text-muted-foreground">
+        <p id="message-hint" className="text-xs text-muted-foreground">
           {formData.message.length} / 5000 characters
         </p>
       </div>
@@ -223,6 +248,7 @@ export function ContactForm({ className }: ContactFormProps) {
         disabled={status === 'loading' || status === 'success'}
         className="w-full"
         size="lg"
+        data-testid="contact-submit-button"
       >
         {status === 'loading' ? (
           <>

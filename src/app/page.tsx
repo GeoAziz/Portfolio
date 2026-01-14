@@ -88,7 +88,8 @@ export default function Home() {
     <div className="flex flex-col items-center text-center space-y-24 md:space-y-32 lg:space-y-40 w-full">
       {/* Section 1: Hero */}
       <motion.section
-        className="mt-24 md:mt-32 lg:mt-40 xl:mt-48 2xl:mt-56 mb-16 md:mb-24 lg:mb-32 w-full px-4 sm:px-6 md:px-8 lg:px-10 2xl:px-12"
+        className="hero-section mt-24 md:mt-32 lg:mt-40 xl:mt-48 2xl:mt-56 mb-16 md:mb-24 lg:mb-32 w-full px-4 sm:px-6 md:px-8 lg:px-10 2xl:px-12"
+        data-testid="hero-section"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -96,6 +97,7 @@ export default function Home() {
         <div className="space-y-6 lg:space-y-8 max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-6xl 2xl:max-w-7xl mx-auto">
           <motion.h1
             className="font-headline text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter leading-[1.1] text-foreground"
+            data-testid="hero-title"
             variants={itemVariants}
           >
             Engineer Dev Mahn X
@@ -117,15 +119,15 @@ export default function Home() {
             variants={itemVariants}
           >
             {[
-              { href: '#systems', label: 'Explore the Work', variant: 'outline' },
-              { href: '/resume', label: 'Contact / Collaborate', variant: 'default' },
+              { href: '#systems', label: 'Explore the Work', variant: 'outline', testid: 'explore-work-button' },
+              { href: '/resume', label: 'Contact / Collaborate', variant: 'default', testid: 'contact-button' },
             ].map((btn) => (
               <motion.div
                 key={btn.href}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button asChild size="lg" variant={btn.variant as any}>
+                <Button asChild size="lg" variant={btn.variant as any} data-testid={btn.testid}>
                   <Link href={btn.href}>{btn.label}</Link>
                 </Button>
               </motion.div>
@@ -137,6 +139,7 @@ export default function Home() {
       {/* Section 2: SkillOrbit */}
       <motion.section
         className="w-full max-w-6xl lg:max-w-7xl 2xl:max-w-7xl mx-auto py-12 md:py-20 lg:py-24 xl:py-32 px-4 lg:px-6"
+        data-testid="skill-orbit-section"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-150px" }}
@@ -150,7 +153,7 @@ export default function Home() {
         >
           <SectionHeader title="Cognitive Skill Map" />
         </motion.div>
-        <div className="mt-8">
+        <div className="mt-8" data-testid="skill-orbit">
           <SkillOrbit />
         </div>
       </motion.section>
@@ -158,6 +161,7 @@ export default function Home() {
       {/* Section 3: Core Competency Snapshot */}
       <motion.section
         className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
+        data-testid="competency-section"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -167,6 +171,8 @@ export default function Home() {
           {competencies.map((competency, index) => (
             <motion.div
               key={competency.title}
+              data-testid={`competency-card-${index}`}
+              className="competency-card flex items-start gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-all duration-300 group cursor-pointer"
               initial={{ opacity: 0, x: index === 0 ? -50 : index === 2 ? 50 : 0, y: index === 1 ? 30 : 0 }}
               whileInView={{
                 opacity: 1,
@@ -180,7 +186,6 @@ export default function Home() {
               }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.03, y: -5 }}
-              className="flex items-start gap-4 p-4 rounded-lg hover:bg-secondary/50 transition-all duration-300 group cursor-pointer"
             >
               <motion.div
                 className="bg-secondary p-3 lg:p-4 xl:p-5 rounded-full"
@@ -202,6 +207,7 @@ export default function Home() {
       <motion.section
         id="systems"
         className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
+        data-testid="projects-section"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -214,9 +220,11 @@ export default function Home() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 mt-8 lg:mt-10"
           variants={containerVariants}
         >
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project, index) => (
             <motion.div
               key={project.name}
+              data-testid="project-card"
+              data-project-index={index}
               variants={cardVariants}
               whileHover={{ scale: 1.05, y: -8 }}
               transition={{ duration: 0.3 }}
@@ -254,6 +262,7 @@ export default function Home() {
       {/* Section 6: Navigation into the Universe */}
       <motion.section
         className="w-full max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-10"
+        data-testid="explore-universe-section"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -273,12 +282,12 @@ export default function Home() {
           variants={containerVariants}
         >
           {[
-            { href: '/systems', label: 'Systems' },
-            { href: '/ai', label: 'AI' },
-            { href: '/hardware', label: 'Hardware' },
-            { href: '/research', label: 'Research' },
-            { href: '/open-source', label: 'Open Source' },
-            { href: '/resume', label: 'Resume' },
+            { href: '/systems', label: 'Systems', testid: 'nav-systems' },
+            { href: '/ai', label: 'AI', testid: 'nav-ai' },
+            { href: '/hardware', label: 'Hardware', testid: 'nav-hardware' },
+            { href: '/research', label: 'Research', testid: 'nav-research' },
+            { href: '/open-source', label: 'Open Source', testid: 'nav-opensource' },
+            { href: '/resume', label: 'Resume', testid: 'nav-resume' },
           ].map((nav) => (
             <motion.div
               key={nav.href}
@@ -287,7 +296,7 @@ export default function Home() {
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
-              <Button variant="outline" asChild size="lg" className="w-full">
+              <Button variant="outline" asChild size="lg" className="w-full" data-testid={nav.testid}>
                 <Link href={nav.href}>{nav.label} &rarr;</Link>
               </Button>
             </motion.div>

@@ -39,8 +39,8 @@ export default function BlogList({ allPosts }: BlogListProps) {
   }, [allPosts, selectedTag]);
 
   return (
-    <section className="max-w-3xl mx-auto">
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+    <section className="max-w-3xl mx-auto" data-testid="blog-grid">
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-8" data-testid="blog-filter">
         {allTags.map(tag => (
           <Button
             key={tag}
@@ -48,12 +48,13 @@ export default function BlogList({ allPosts }: BlogListProps) {
             size="sm"
             onClick={() => setSelectedTag(tag)}
             className="font-mono"
+            data-testid={`blog-filter-tag-${tag}`}
           >
             {tag}
           </Button>
         ))}
         {selectedTag && (
-          <Button variant="ghost" size="sm" onClick={() => setSelectedTag(null)}>
+          <Button variant="ghost" size="sm" onClick={() => setSelectedTag(null)} data-testid="blog-filter-clear">
             Clear Filter
           </Button>
         )}
@@ -63,8 +64,8 @@ export default function BlogList({ allPosts }: BlogListProps) {
         {filteredPosts.length > 0 ? (
           filteredPosts
             .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
-            .map((post) => (
-              <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
+            .map((post, index) => (
+              <Link href={`/blog/${post.slug}`} key={post.slug} className="block group" data-testid={`blog-post-card-${index}`}>
                 <Card className="bg-card border-border hover:border-accent/50 transition-colors duration-300">
                   <CardHeader>
                     <div className="flex items-center gap-3 flex-wrap">
@@ -73,7 +74,7 @@ export default function BlogList({ allPosts }: BlogListProps) {
                                 {post.metadata.type}
                             </Badge>
                         )}
-                        <p className="text-xs md:text-sm text-muted-foreground">{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground" data-testid={`blog-post-date-${index}`}>{format(new Date(post.metadata.date), 'MMMM d, yyyy')}</p>
                         {post.readingTime && (
                             <p className="text-xs md:text-sm text-muted-foreground">•</p>
                         )}
@@ -81,8 +82,8 @@ export default function BlogList({ allPosts }: BlogListProps) {
                             <p className="text-xs md:text-sm text-muted-foreground">{post.readingTime} min read</p>
                         )}
                     </div>
-                    <CardTitle className="text-lg md:text-2xl font-headline group-hover:text-accent transition-colors pt-2">{post.metadata.title}</CardTitle>
-                    <CardDescription className="pt-4 font-body text-sm md:text-base text-muted-foreground">
+                    <CardTitle className="text-lg md:text-2xl font-headline group-hover:text-accent transition-colors pt-2" data-testid={`blog-post-title-${index}`}>{post.metadata.title}</CardTitle>
+                    <CardDescription className="pt-4 font-body text-sm md:text-base text-muted-foreground" data-testid={`blog-post-excerpt-${index}`}>
                         <span className='font-semibold text-foreground'>Key Insight:</span> {post.metadata.keyInsight || post.metadata.summary}
                     </CardDescription>
                     <div className="flex flex-wrap gap-2 pt-4">

@@ -1,7 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { readFile, writeFile } from 'fs/promises';
+import { join } from 'path';
 
-// In-memory storage for messages (replace with database in production)
-const messages: any[] = [];
+// File-based storage for messages
+const CONTACTS_FILE = join(process.cwd(), '.data', 'contacts.json');
+
+async function loadMessages() {
+  try {
+    const data = await readFile(CONTACTS_FILE, 'utf-8');
+    const parsed = JSON.parse(data);
+    return parsed.messages || [];
+  } catch {
+    return [];
+  }
+}
+
+async function saveMessages(messages: any[]) {
+  try {
+    await writeFile(CONTACTS_FILE, JSON.stringify({ messages }, null, 2), 'utf-8');
+  } catch (error) {
+    console.error('Error saving messages:', error);
+  }
+}
 
 // Simple rate limiting: track IP + email combinations
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -120,11 +140,10 @@ export async function POST(request: NextRequest) {
       read: false,
     };
 
-    // Store message
+    // Load existing messages, add new one, save
+    const messages = await loadMessages();
     messages.push(message);
-
-    // TODO: Send email via Nodemailer/SendGrid
-    // TODO: Store in database (Supabase/MongoDB)
+    await saveMessages(messages);
 
     console.log(`New contact message from ${message.email}:`, message.subject);
 
@@ -147,7 +166,6 @@ export async function POST(request: NextRequest) {
 
 // GET endpoint to retrieve messages (admin only)
 export async function GET(request: NextRequest) {
-  // TODO: Add authentication check
   const adminToken = request.headers.get('x-admin-token');
 
   if (!adminToken || adminToken !== process.env.ADMIN_TOKEN) {
@@ -157,12 +175,15 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  const messages = await loadMessages();
   return NextResponse.json({
     total: messages.length,
-    unread: messages.filter(m => !m.read).length,
+    unread: messages.filter((m: any) => !m.read).length,
     messages,
   });
 }
 
 // Export for testing and admin dashboard
-export { messages as getStoredMessages };
+export async function getStoredMessages() {
+  return await loadMessages();
+}

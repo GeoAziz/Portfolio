@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Search, Filter, X, Tag } from 'lucide-react';
 
@@ -31,22 +31,26 @@ export function GlobalSearch() {
   const [tagStats, setTagStats] = useState<Record<string, number>>({});
 
   // Load tags on mount
-  const loadTags = useCallback(async () => {
-    try {
-      const response = await fetch('/api/search?tags=all');
-      const data = await response.json();
-      if (data.success) {
-        setAllTags(data.data);
-      }
+  useEffect(() => {
+    const loadTags = async () => {
+      try {
+        const response = await fetch('/api/search?tags=all');
+        const data = await response.json();
+        if (data.success) {
+          setAllTags(data.data);
+        }
 
-      const statsResponse = await fetch('/api/search?tags=stats');
-      const statsData = await statsResponse.json();
-      if (statsData.success) {
-        setTagStats(statsData.data);
+        const statsResponse = await fetch('/api/search?tags=stats');
+        const statsData = await statsResponse.json();
+        if (statsData.success) {
+          setTagStats(statsData.data);
+        }
+      } catch (error) {
+        console.error('Error loading tags:', error);
       }
-    } catch (error) {
-      console.error('Error loading tags:', error);
-    }
+    };
+
+    loadTags();
   }, []);
 
   // Debounced search
@@ -146,18 +150,20 @@ export function GlobalSearch() {
                 value={query}
                 onChange={(e) => handleQueryChange(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && performSearch(query)}
+                data-testid="search-input"
                 className="w-full pl-10 pr-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
               />
             </div>
 
             {/* Suggestions Dropdown */}
             {suggestions.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-10">
+              <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-10" data-testid="search-suggestions">
                 {suggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     onClick={() => handleSuggestionClick(suggestion)}
                     className="w-full text-left px-4 py-2 hover:bg-accent/10 border-b border-border last:border-b-0 transition"
+                    data-testid="search-suggestion-item"
                   >
                     {suggestion}
                   </button>
@@ -167,6 +173,7 @@ export function GlobalSearch() {
           </div>
 
           <button
+            data-testid="search-button"
             onClick={() => performSearch(query)}
             disabled={loading}
             className="px-4 py-2 bg-accent text-accent-foreground rounded-lg hover:bg-accent/90 disabled:opacity-50 transition"
@@ -261,7 +268,7 @@ export function GlobalSearch() {
       )}
 
       {/* Results */}
-      <div>
+      <div data-testid="search-results">
         {results.length > 0 && (
           <p className="text-sm text-muted-foreground mb-4">
             Found {results.length} result{results.length !== 1 ? 's' : ''}
@@ -269,16 +276,16 @@ export function GlobalSearch() {
         )}
 
         {results.length === 0 && !loading && query && (
-          <Card className="bg-muted/50 border-border">
+          <Card className="bg-muted/50 border-border" data-testid="search-no-results">
             <CardContent className="pt-6 text-center text-muted-foreground">
               <p>No results found for "{query}"</p>
             </CardContent>
           </Card>
         )}
 
-        <div className="space-y-4">
+        <div className="space-y-4" data-testid="search-results-grid">
           {results.map((result) => (
-            <Card key={`${result.type}-${result.slug}`} className="bg-card border-border hover:border-accent transition">
+            <Card key={`${result.type}-${result.slug}`} className="bg-card border-border hover:border-accent transition" data-testid="search-result-card">
               <CardContent className="pt-6">
                 <div className="space-y-2">
                   <div className="flex items-start justify-between gap-4">

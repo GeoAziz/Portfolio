@@ -151,6 +151,7 @@ export function AdminAnalytics() {
               Enter your admin token to access analytics and bulk operations.
             </p>
             <input
+              data-testid="admin-analytics-auth-input"
               type="password"
               placeholder="Admin Token"
               value={adminToken}
@@ -168,7 +169,7 @@ export function AdminAnalytics() {
       <div className="space-y-8">
         {/* Message */}
         {message && (
-          <Card
+          <Card data-testid="admin-analytics-message"
             className={`border-l-4 ${
               message.type === 'success'
                 ? 'border-l-green-500 bg-green-500/10'
@@ -191,6 +192,7 @@ export function AdminAnalytics() {
         {/* Tab Navigation */}
         <div className="flex gap-2 border-b border-border overflow-x-auto">
           <button
+            data-testid="admin-analytics-tab-stats"
             onClick={() => setActiveTab('stats')}
             className={`px-4 py-2 font-medium transition whitespace-nowrap ${
               activeTab === 'stats'
@@ -204,6 +206,7 @@ export function AdminAnalytics() {
             </div>
           </button>
           <button
+            data-testid="admin-analytics-tab-export"
             onClick={() => setActiveTab('export')}
             className={`px-4 py-2 font-medium transition whitespace-nowrap ${
               activeTab === 'export'
@@ -217,6 +220,7 @@ export function AdminAnalytics() {
             </div>
           </button>
           <button
+            data-testid="admin-analytics-tab-delete"
             onClick={() => setActiveTab('delete')}
             className={`px-4 py-2 font-medium transition whitespace-nowrap ${
               activeTab === 'delete'
@@ -345,6 +349,7 @@ export function AdminAnalytics() {
               </div>
 
               <button
+                data-testid="admin-analytics-export-action"
                 onClick={handleExport}
                 disabled={exporting}
                 className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white rounded-md transition flex items-center justify-center gap-2"
@@ -389,6 +394,7 @@ export function AdminAnalytics() {
 
               <div className="flex items-center gap-3">
                 <input
+                  data-testid="admin-analytics-delete-confirm"
                   type="checkbox"
                   id="deleteConfirm"
                   checked={deleteConfirm}
@@ -401,6 +407,7 @@ export function AdminAnalytics() {
               </div>
 
               <button
+                data-testid="admin-analytics-delete-action"
                 onClick={handleDelete}
                 disabled={!deleteConfirm || deleting}
                 className="w-full px-4 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white rounded-md transition flex items-center justify-center gap-2"
@@ -418,10 +425,10 @@ export function AdminAnalytics() {
 
 export default function AdminAnalyticsPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" data-testid="admin-analytics-page">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Admin Analytics</h1>
-        <p className="text-muted-foreground mt-2">Statistics, export, and bulk operations</p>
+        <h1 className="text-3xl font-bold text-foreground" data-testid="admin-analytics-title">Admin Analytics</h1>
+        <p className="text-muted-foreground mt-2" data-testid="admin-analytics-description">Statistics, export, and bulk operations</p>
       </div>
 
       <AdminAnalytics />

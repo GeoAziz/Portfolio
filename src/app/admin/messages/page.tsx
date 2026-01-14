@@ -124,7 +124,7 @@ export default function AdminMessagesPage() {
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="space-y-4">
           <div className="h-12 w-12 rounded-lg bg-accent/20 animate-pulse" />
-          <p className="text-muted-foreground">Loading messages...</p>
+          <p data-testid="admin-messages-loading" className="text-muted-foreground">Loading messages...</p>
         </div>
       </div>
     );
@@ -142,9 +142,10 @@ export default function AdminMessagesPage() {
               {error}
             </p>
             <Button
-              onClick={fetchMessages}
-              variant="outline"
-              className="mt-4 w-full"
+                data-testid="admin-messages-retry-button"
+                onClick={fetchMessages}
+                variant="outline"
+                className="mt-4 w-full"
             >
               Retry
             </Button>
@@ -158,18 +159,18 @@ export default function AdminMessagesPage() {
 
   return (
     <MotionFade>
-      <div className="space-y-8">
+      <div className="space-y-8" data-testid="admin-messages-page">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Messages</h1>
-          <p className="text-muted-foreground mt-2">
+          <h1 className="text-3xl font-bold text-foreground" data-testid="admin-messages-title">Messages</h1>
+          <p className="text-muted-foreground mt-2" data-testid="admin-messages-description">
             Manage and respond to contact form submissions
           </p>
         </div>
 
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-4">
-          <Card className="bg-card border-border">
+          <Card data-testid="admin-messages-total" className="bg-card border-border">
             <CardContent className="pt-6">
               <div className="space-y-2">
                 <p className="text-sm text-muted-foreground">Total Messages</p>
@@ -178,7 +179,7 @@ export default function AdminMessagesPage() {
             </CardContent>
           </Card>
 
-          <Card className={cn(
+          <Card data-testid="admin-messages-unread" className={cn(
             'bg-card border-border',
             unreadCount > 0 && 'border-yellow-500/20 bg-yellow-500/5'
           )}>
@@ -195,7 +196,7 @@ export default function AdminMessagesPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-card border-border">
+          <Card data-testid="admin-messages-read" className="bg-card border-border">
             <CardContent className="pt-6">
               <div className="space-y-2">
                 <p className="text-sm text-muted-foreground">Read</p>
@@ -211,6 +212,7 @@ export default function AdminMessagesPage() {
         {messages.length > 0 && (
           <div className="flex justify-end">
             <Button
+              data-testid="admin-messages-export"
               onClick={handleExport}
               variant="outline"
               className="flex items-center gap-2"
@@ -224,9 +226,9 @@ export default function AdminMessagesPage() {
         {/* Messages List */}
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Messages Column */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-4" data-testid="admin-messages-list">
             {messages.length === 0 ? (
-              <Card className="bg-card border-border">
+              <Card data-testid="admin-messages-empty" className="bg-card border-border">
                 <CardContent className="pt-12 pb-8">
                   <div className="text-center">
                     <Mail className="w-12 h-12 text-muted-foreground/50 mx-auto mb-3" />
@@ -241,6 +243,7 @@ export default function AdminMessagesPage() {
               messages.map(message => (
                 <Card
                   key={message.id}
+                  data-testid={`admin-message-${message.id}`}
                   className={cn(
                     'bg-card border-border cursor-pointer transition-colors hover:border-accent',
                     selectedMessage?.id === message.id && 'border-accent bg-accent/5',
@@ -286,7 +289,7 @@ export default function AdminMessagesPage() {
           {/* Message Detail Column */}
           <div>
             {selectedMessage ? (
-              <Card className="bg-card border-border sticky top-4">
+              <Card data-testid="admin-message-detail" className="bg-card border-border sticky top-4">
                 <CardHeader>
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">

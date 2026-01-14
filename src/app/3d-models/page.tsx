@@ -27,7 +27,7 @@ const ModelViewerGrid = dynamic(() => import('@/components/ModelViewer3D').then(
 
 export default function Models3DPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black">
+    <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black" data-testid="3d-models-page">
       {/* Header */}
       <PageHeader
         title="3D Model Viewer"
@@ -49,7 +49,7 @@ export default function Models3DPage() {
         {/* Main Gallery */}
         <SectionHeader title="Model Gallery" subtitle="Select a model to view details" />
         <MotionFade delay={0.2}>
-          <ModelViewerGrid models={models3D} />
+          <ModelViewerGrid models={models3D} data-testid="models-grid" />
         </MotionFade>
 
         {/* Individual Models Section */}
@@ -59,7 +59,7 @@ export default function Models3DPage() {
             subtitle="Detailed views of each system"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8" data-testid="featured-models-grid">
             {models3D.map((model, index) => (
               <MotionFade key={model.id} delay={0.1 + index * 0.05}>
                 <div className="space-y-4">
@@ -125,7 +125,7 @@ export default function Models3DPage() {
         {/* Controls Guide */}
         <div className="mt-16">
           <SectionHeader title="Controls Guide" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8" data-testid="controls-guide-grid">
             <MotionFade delay={0.2}>
               <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/5 border border-blue-500/20 rounded-lg p-6">
                 <h4 className="font-semibold text-white mb-4">Mouse Controls</h4>

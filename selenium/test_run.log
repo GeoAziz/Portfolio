@@ -1,0 +1,401 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-7.4.3, pluggy-1.6.0 -- /home/devmahnx/Portfolio/selenium/venv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.11.2', 'Platform': 'Linux-6.12.32-amd64-x86_64-with-glibc2.36', 'Packages': {'pytest': '7.4.3', 'pluggy': '1.6.0'}, 'Plugins': {'xdist': '3.5.0', 'metadata': '3.1.1', 'html': '4.1.1'}}
+rootdir: /home/devmahnx/Portfolio/selenium
+plugins: xdist-3.5.0, metadata-3.1.1, html-4.1.1
+collecting ... collected 96 items
+
+tests/test_admin_analytics.py::test_admin_analytics_page_loads PASSED    [  1%]
+tests/test_admin_analytics.py::test_admin_analytics_tab_navigation PASSED [  2%]
+tests/test_admin_messages.py::test_admin_messages_page_loads 
+📸 Screenshot saved: screenshots/test_admin_messages_page_loads_20260113_150821_FAILED.png
+FAILED      [  3%]
+tests/test_admin_messages.py::test_admin_messages_list_and_select 
+📸 Screenshot saved: screenshots/test_admin_messages_list_and_select_20260113_150857_FAILED.png
+FAILED [  4%]
+tests/test_blog.py::TestBlogPageLoad::test_blog_page_loads PASSED        [  5%]
+tests/test_blog.py::TestBlogPageLoad::test_blog_grid_visible PASSED      [  6%]
+tests/test_blog.py::TestBlogPostDisplay::test_blog_posts_have_metadata PASSED [  7%]
+tests/test_blog.py::TestBlogPostDisplay::test_blog_posts_clickable 
+📸 Screenshot saved: screenshots/test_blog_posts_clickable_20260113_150921_FAILED.png
+FAILED [  8%]
+tests/test_blog.py::TestBlogFiltering::test_blog_filter_controls_present PASSED [  9%]
+tests/test_blog.py::TestBlogFiltering::test_blog_filter_functionality PASSED [ 10%]
+tests/test_blog.py::TestBlogNavigation::test_blog_accessible_from_navigation PASSED [ 11%]
+tests/test_blog.py::TestBlogNavigation::test_blog_no_console_errors PASSED [ 12%]
+tests/test_blog.py::TestBlogResponsive::test_blog_responsive_desktop PASSED [ 13%]
+tests/test_blog.py::TestBlogResponsive::test_blog_responsive_mobile PASSED [ 14%]
+tests/test_case_studies.py::test_case_studies_list_and_navigate PASSED   [ 15%]
+tests/test_contact.py::TestContactPageLoad::test_contact_page_loads PASSED [ 16%]
+tests/test_contact.py::TestContactPageLoad::test_contact_form_visible PASSED [ 17%]
+tests/test_contact.py::TestContactFormFields::test_all_form_fields_present PASSED [ 18%]
+tests/test_contact.py::TestContactFormFields::test_form_fields_accept_input PASSED [ 19%]
+tests/test_contact.py::TestContactMethods::test_contact_methods_sidebar_visible PASSED [ 20%]
+tests/test_contact.py::TestContactMethods::test_contact_methods_available PASSED [ 21%]
+tests/test_contact.py::TestContactMethods::test_email_contact_method_clickable PASSED [ 22%]
+tests/test_contact.py::TestContactSubmit::test_submit_button_visible PASSED [ 23%]
+tests/test_contact.py::TestContactSubmit::test_submit_button_enabled PASSED [ 25%]
+tests/test_contact.py::TestContactResponsive::test_contact_layout_desktop PASSED [ 26%]
+tests/test_contact.py::TestContactResponsive::test_contact_layout_mobile PASSED [ 27%]
+tests/test_contact.py::TestContactPageTitle::test_page_has_title PASSED  [ 28%]
+tests/test_contact.py::TestContactPageTitle::test_page_has_description PASSED [ 29%]
+tests/test_contact.py::TestContactAccessibility::test_page_text_is_visible PASSED [ 30%]
+tests/test_error_pages.py::test_404_page_rendered PASSED                 [ 31%]
+tests/test_error_pages.py::test_500_page_rendered 
+📸 Screenshot saved: screenshots/test_500_page_rendered_20260113_151413_FAILED.png
+FAILED                 [ 32%]
+tests/test_opensource.py::TestOpenSourcePageLoad::test_opensource_page_loads PASSED [ 33%]
+tests/test_opensource.py::TestOpenSourcePageLoad::test_opensource_container_visible PASSED [ 34%]
+tests/test_opensource.py::TestOpenSourceHeader::test_header_has_title PASSED [ 35%]
+tests/test_opensource.py::TestOpenSourceHeader::test_header_content_complete PASSED [ 36%]
+tests/test_opensource.py::TestOpenSourceProjects::test_projects_section_visible PASSED [ 37%]
+tests/test_opensource.py::TestOpenSourceProjects::test_projects_present PASSED [ 38%]
+tests/test_opensource.py::TestOpenSourcePhilosophy::test_philosophy_section_visible PASSED [ 39%]
+tests/test_opensource.py::TestOpenSourcePhilosophy::test_philosophy_content_present PASSED [ 40%]
+tests/test_opensource.py::TestOpenSourcePhilosophy::test_philosophy_statement_present PASSED [ 41%]
+tests/test_opensource.py::TestOpenSourceSections::test_all_sections_present PASSED [ 42%]
+tests/test_opensource.py::TestOpenSourceSections::test_philosophy_values_present PASSED [ 43%]
+tests/test_opensource.py::TestOpenSourceResponsive::test_opensource_layout_desktop PASSED [ 44%]
+tests/test_opensource.py::TestOpenSourceResponsive::test_opensource_layout_mobile PASSED [ 45%]
+tests/test_opensource.py::TestOpenSourceAccessibility::test_page_text_visible PASSED [ 46%]
+tests/test_projects.py::TestProjectsPageLoad::test_projects_page_loads PASSED [ 47%]
+tests/test_projects.py::TestProjectsPageLoad::test_projects_grid_visible PASSED [ 48%]
+tests/test_projects.py::TestProjectsDisplay::test_projects_have_metadata PASSED [ 50%]
+tests/test_projects.py::TestProjectsDisplay::test_project_titles_accessible PASSED [ 51%]
+tests/test_projects.py::TestProjectsFiltering::test_category_filters_available PASSED [ 52%]
+tests/test_projects.py::TestProjectsFiltering::test_technology_filters_available PASSED [ 53%]
+tests/test_projects.py::TestProjectsFiltering::test_clear_filters_button_exists PASSED [ 54%]
+tests/test_projects.py::TestProjectsSearch::test_search_input_accessible PASSED [ 55%]
+tests/test_projects.py::TestProjectsSearch::test_search_accepts_input PASSED [ 56%]
+tests/test_projects.py::TestProjectsNavigation::test_projects_page_accessible_from_home PASSED [ 57%]
+tests/test_projects.py::TestProjectsNavigation::test_project_click_navigation PASSED [ 58%]
+tests/test_projects.py::TestProjectsResponsive::test_projects_layout_desktop PASSED [ 59%]
+tests/test_projects.py::TestProjectsResponsive::test_projects_layout_mobile PASSED [ 60%]
+tests/test_resume.py::TestResumePageLoad::test_resume_page_loads PASSED  [ 61%]
+tests/test_resume.py::TestResumePageLoad::test_resume_container_visible PASSED [ 62%]
+tests/test_resume.py::TestResumeHeader::test_header_has_title PASSED     [ 63%]
+tests/test_resume.py::TestResumeHeader::test_header_content_complete PASSED [ 64%]
+tests/test_resume.py::TestResumeExpertise::test_expertise_section_visible PASSED [ 65%]
+tests/test_resume.py::TestResumeExpertise::test_expertise_cards_present PASSED [ 66%]
+tests/test_resume.py::TestResumeExperience::test_experience_section_visible PASSED [ 67%]
+tests/test_resume.py::TestResumeExperience::test_experience_entries_present PASSED [ 68%]
+tests/test_resume.py::TestResumeProjects::test_projects_section_visible PASSED [ 69%]
+tests/test_resume.py::TestResumeProjects::test_projects_present PASSED   [ 70%]
+tests/test_resume.py::TestResumeContact::test_contact_section_visible PASSED [ 71%]
+tests/test_resume.py::TestResumeContact::test_github_button_visible PASSED [ 72%]
+tests/test_resume.py::TestResumeDownload::test_download_button_visible PASSED [ 73%]
+tests/test_resume.py::TestResumeDownload::test_all_sections_present PASSED [ 75%]
+tests/test_resume.py::TestResumeResponsive::test_resume_layout_desktop PASSED [ 76%]
+tests/test_resume.py::TestResumeResponsive::test_resume_layout_mobile PASSED [ 77%]
+tests/test_search.py::test_search_page_loads 
+📸 Screenshot saved: screenshots/test_search_page_loads_20260113_152440_FAILED.png
+FAILED                      [ 78%]
+tests/test_search.py::test_search_interaction_and_accessibility 
+📸 Screenshot saved: screenshots/test_search_interaction_and_accessibility_20260113_152505_FAILED.png
+FAILED   [ 79%]
+tests/test_smoke.py::TestHomePageSmoke::test_home_page_loads PASSED      [ 80%]
+tests/test_smoke.py::TestHomePageSmoke::test_hero_section_visible PASSED [ 81%]
+tests/test_smoke.py::TestHomePageSmoke::test_explore_button_clickable PASSED [ 82%]
+tests/test_smoke.py::TestHomePageSmoke::test_contact_button_clickable PASSED [ 83%]
+tests/test_smoke.py::TestHomePageSmoke::test_no_console_errors PASSED    [ 84%]
+tests/test_smoke.py::TestNavigationSmoke::test_home_to_projects_navigation PASSED [ 85%]
+tests/test_smoke.py::TestNavigationSmoke::test_home_to_resume_navigation PASSED [ 86%]
+tests/test_smoke.py::TestContactFormSmoke::test_contact_page_loads PASSED [ 87%]
+tests/test_smoke.py::TestContactFormSmoke::test_contact_form_has_all_fields PASSED [ 88%]
+tests/test_smoke.py::TestPageAccessibility::test_home_page_has_single_h1 PASSED [ 89%]
+tests/test_smoke.py::TestPageAccessibility::test_navigation_structure_present PASSED [ 90%]
+tests/test_smoke.py::TestSearchFunctionality::test_search_page_loads 
+📸 Screenshot saved: screenshots/test_search_page_loads_20260113_152612_FAILED.png
+FAILED [ 91%]
+tests/test_smoke.py::TestSearchFunctionality::test_search_input_accepts_text PASSED [ 92%]
+tests/test_static_pages.py::test_ai_page_loads PASSED                    [ 93%]
+tests/test_static_pages.py::test_hardware_page_loads PASSED              [ 94%]
+tests/test_static_pages.py::test_research_page_loads PASSED              [ 95%]
+tests/test_static_pages.py::test_newsletter_page_loads PASSED            [ 96%]
+tests/test_static_pages.py::test_3d_models_page_loads 
+📸 Screenshot saved: screenshots/test_3d_models_page_loads_20260113_152723_FAILED.png
+FAILED             [ 97%]
+tests/test_static_pages.py::test_systems_page_loads PASSED               [ 98%]
+tests/test_static_pages.py::test_splash_page_loads PASSED                [100%]
+
+=================================== FAILURES ===================================
+________________________ test_admin_messages_page_loads ________________________
+tests/test_admin_messages.py:11: in test_admin_messages_page_loads
+    assert page.is_loaded(), "Admin Messages title should be visible"
+E   AssertionError: Admin Messages title should be visible
+E   assert False
+E    +  where False = <bound method AdminMessagesPage.is_loaded of <page_objects.admin_messages_page.AdminMessagesPage object at 0x7f2d2e3baad0>>()
+E    +    where <bound method AdminMessagesPage.is_loaded of <page_objects.admin_messages_page.AdminMessagesPage object at 0x7f2d2e3baad0>> = <page_objects.admin_messages_page.AdminMessagesPage object at 0x7f2d2e3baad0>.is_loaded
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_admin_messages_page_loads
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_admin_messages_page_loads
+================================================================================
+
+_____________________ test_admin_messages_list_and_select ______________________
+tests/test_admin_messages.py:24: in test_admin_messages_list_and_select
+    assert page.is_element_displayed(AdminMessagesPage.EMPTY)
+E   assert False
+E    +  where False = <bound method BasePage.is_element_displayed of <page_objects.admin_messages_page.AdminMessagesPage object at 0x7f2d2e47b5d0>>(('css selector', "[data-testid='admin-messages-empty']"))
+E    +    where <bound method BasePage.is_element_displayed of <page_objects.admin_messages_page.AdminMessagesPage object at 0x7f2d2e47b5d0>> = <page_objects.admin_messages_page.AdminMessagesPage object at 0x7f2d2e47b5d0>.is_element_displayed
+E    +    and   ('css selector', "[data-testid='admin-messages-empty']") = AdminMessagesPage.EMPTY
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_admin_messages_list_and_select
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_admin_messages_list_and_select
+================================================================================
+
+________________ TestBlogPostDisplay.test_blog_posts_clickable _________________
+tests/test_blog.py:114: in test_blog_posts_clickable
+    assert "/blog/" in current_url, f"Not on blog post page: {current_url}"
+E   AssertionError: Not on blog post page: http://localhost:9002/blog
+E   assert '/blog/' in 'http://localhost:9002/blog'
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_blog_posts_clickable
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_blog_posts_clickable
+================================================================================
+
+____________________________ test_500_page_rendered ____________________________
+tests/test_error_pages.py:14: in test_500_page_rendered
+    assert page.is_element_displayed(ErrorPages.PAGE_500), "500 error page should be reachable at /error"
+E   AssertionError: 500 error page should be reachable at /error
+E   assert False
+E    +  where False = <bound method BasePage.is_element_displayed of <page_objects.error_pages.ErrorPages object at 0x7f2d2e45be90>>(('css selector', "[data-testid='500-page']"))
+E    +    where <bound method BasePage.is_element_displayed of <page_objects.error_pages.ErrorPages object at 0x7f2d2e45be90>> = <page_objects.error_pages.ErrorPages object at 0x7f2d2e45be90>.is_element_displayed
+E    +    and   ('css selector', "[data-testid='500-page']") = ErrorPages.PAGE_500
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_500_page_rendered
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_500_page_rendered
+================================================================================
+
+____________________________ test_search_page_loads ____________________________
+tests/test_search.py:19: in test_search_page_loads
+    assert page.is_element_displayed(SearchPage.SEARCH_INPUT), "Search input should be visible"
+E   AssertionError: Search input should be visible
+E   assert False
+E    +  where False = <bound method BasePage.is_element_displayed of <page_objects.search_page.SearchPage object at 0x7f2d2e562910>>(('css selector', "[data-testid='search-input']"))
+E    +    where <bound method BasePage.is_element_displayed of <page_objects.search_page.SearchPage object at 0x7f2d2e562910>> = <page_objects.search_page.SearchPage object at 0x7f2d2e562910>.is_element_displayed
+E    +    and   ('css selector', "[data-testid='search-input']") = SearchPage.SEARCH_INPUT
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_search_page_loads
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_search_page_loads
+================================================================================
+
+__________________ test_search_interaction_and_accessibility ___________________
+tests/test_search.py:30: in test_search_interaction_and_accessibility
+    page.enter_query(q)
+page_objects/search_page.py:28: in enter_query
+    self.fill_text(self.SEARCH_INPUT, text)
+page_objects/base_page.py:159: in fill_text
+    element = self.find_clickable_element(locator)
+page_objects/base_page.py:126: in find_clickable_element
+    return wait.until(EC.element_to_be_clickable(locator))
+venv/lib/python3.11/site-packages/selenium/webdriver/support/wait.py:101: in until
+    raise TimeoutException(message, screen, stacktrace)
+E   selenium.common.exceptions.TimeoutException: Message: 
+E   Stacktrace:
+E   #0 0x55d4dd5c940a <unknown>
+E   #1 0x55d4dcffd76b <unknown>
+E   #2 0x55d4dd04ee88 <unknown>
+E   #3 0x55d4dd04f0c1 <unknown>
+E   #4 0x55d4dd09d2c4 <unknown>
+E   #5 0x55d4dd09a760 <unknown>
+E   #6 0x55d4dd0417b2 <unknown>
+E   #7 0x55d4dd042461 <unknown>
+E   #8 0x55d4dd591df9 <unknown>
+E   #9 0x55d4dd594d5d <unknown>
+E   #10 0x55d4dd57ab41 <unknown>
+E   #11 0x55d4dd59593b <unknown>
+E   #12 0x55d4dd561870 <unknown>
+E   #13 0x55d4dd5b6828 <unknown>
+E   #14 0x55d4dd5b69fc <unknown>
+E   #15 0x55d4dd5c8763 <unknown>
+E   #16 0x7f8416f591f5 <unknown>
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_search_interaction_and_accessibility
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_search_interaction_and_accessibility
+================================================================================
+
+________________ TestSearchFunctionality.test_search_page_loads ________________
+tests/test_smoke.py:270: in test_search_page_loads
+    assert search_input.is_displayed(), "Search input not visible"
+E   AssertionError: Search input not visible
+E   assert False
+E    +  where False = <bound method WebElement.is_displayed of <selenium.webdriver.remote.webelement.WebElement (session="f79119cf4777e1bc7ce38a56be5f2782", element="f.1AF0F0EBA5A38FA647FBEDFC2BB9F7A7.d.11942C53C86585A835142B69BD9A707F.e.4")>>()
+E    +    where <bound method WebElement.is_displayed of <selenium.webdriver.remote.webelement.WebElement (session="f79119cf4777e1bc7ce38a56be5f2782", element="f.1AF0F0EBA5A38FA647FBEDFC2BB9F7A7.d.11942C53C86585A835142B69BD9A707F.e.4")>> = <selenium.webdriver.remote.webelement.WebElement (session="f79119cf4777e1bc7ce38a56be5f2782", element="f.1AF0F0EBA5A38FA647FBEDFC2BB9F7A7.d.11942C53C86585A835142B69BD9A707F.e.4")>.is_displayed
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_search_page_loads
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_search_page_loads
+================================================================================
+
+__________________________ test_3d_models_page_loads ___________________________
+tests/test_static_pages.py:46: in test_3d_models_page_loads
+    assert page.is_loaded(), "3D Models page should load"
+E   AssertionError: 3D Models page should load
+E   assert False
+E    +  where False = <bound method StaticPage.is_loaded of <page_objects.static_pages.Models3DPage object at 0x7f2d2e459450>>()
+E    +    where <bound method StaticPage.is_loaded of <page_objects.static_pages.Models3DPage object at 0x7f2d2e459450>> = <page_objects.static_pages.Models3DPage object at 0x7f2d2e459450>.is_loaded
+---------------------------- Captured stdout setup -----------------------------
+
+================================================================================
+▶️  TEST: test_3d_models_page_loads
+================================================================================
+
+✅ Chrome driver initialized
+   Base URL: http://localhost:9002
+   Viewport: 1024x768
+   Headless: False
+--------------------------- Captured stdout teardown ---------------------------
+
+🧹 Closing Chrome driver
+
+================================================================================
+✅ TEST COMPLETE: test_3d_models_page_loads
+================================================================================
+
+=============================== warnings summary ===============================
+tests/test_blog.py:22
+  /home/devmahnx/Portfolio/selenium/tests/test_blog.py:22: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_blog.py:65
+  /home/devmahnx/Portfolio/selenium/tests/test_blog.py:65: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_blog.py:118
+  /home/devmahnx/Portfolio/selenium/tests/test_blog.py:118: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_blog.py:177
+  /home/devmahnx/Portfolio/selenium/tests/test_blog.py:177: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_blog.py:230
+  /home/devmahnx/Portfolio/selenium/tests/test_blog.py:230: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_smoke.py:22
+  /home/devmahnx/Portfolio/selenium/tests/test_smoke.py:22: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_smoke.py:113
+  /home/devmahnx/Portfolio/selenium/tests/test_smoke.py:113: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_smoke.py:164
+  /home/devmahnx/Portfolio/selenium/tests/test_smoke.py:164: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_smoke.py:212
+  /home/devmahnx/Portfolio/selenium/tests/test_smoke.py:212: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/test_smoke.py:254
+  /home/devmahnx/Portfolio/selenium/tests/test_smoke.py:254: PytestUnknownMarkWarning: Unknown pytest.mark.smoke - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.smoke
+
+tests/conftest.py:56
+  /home/devmahnx/Portfolio/selenium/tests/conftest.py:56: PytestUnknownMarkWarning: Unknown pytest.mark.feature - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    item.add_marker(pytest.mark.feature)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_admin_messages.py::test_admin_messages_page_loads - Asserti...
+FAILED tests/test_admin_messages.py::test_admin_messages_list_and_select - as...
+FAILED tests/test_blog.py::TestBlogPostDisplay::test_blog_posts_clickable - A...
+FAILED tests/test_error_pages.py::test_500_page_rendered - AssertionError: 50...
+FAILED tests/test_search.py::test_search_page_loads - AssertionError: Search ...
+FAILED tests/test_search.py::test_search_interaction_and_accessibility - sele...
+FAILED tests/test_smoke.py::TestSearchFunctionality::test_search_page_loads
+FAILED tests/test_static_pages.py::test_3d_models_page_loads - AssertionError...
+============ 8 failed, 88 passed, 11 warnings in 1186.11s (0:19:46) ============

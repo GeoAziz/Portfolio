@@ -7,9 +7,14 @@ import { useIsMobile } from '@/hooks/use-mobile';
 export function ParticleFX() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isMobile = useIsMobile();
+  const prefersReducedMotion = useRef(false);
 
   useEffect(() => {
-    if (isMobile) return;
+    prefersReducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+
+  useEffect(() => {
+    if (isMobile || prefersReducedMotion.current) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;

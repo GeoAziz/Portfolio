@@ -28,6 +28,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Contact form data (temporary file-based storage)
+.data/
 .pnpm-debug.log*
 
 # vercel

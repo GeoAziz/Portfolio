@@ -81,10 +81,10 @@ export default function ProjectsPageClient({
 
   return (
     <MotionFade>
-      <div className="space-y-12">
+      <div className="space-y-12" data-testid="projects-container">
         {/* Header */}
         <div className="space-y-4">
-          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground" data-testid="projects-title">
             Projects
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
@@ -121,7 +121,7 @@ export default function ProjectsPageClient({
         </div>
 
         {/* Search and Filters */}
-        <div className="space-y-6 bg-card border border-border rounded-lg p-6">
+        <div className="space-y-6 bg-card border border-border rounded-lg p-6" data-testid="projects-filter">
           {/* Search */}
           <div>
             <label htmlFor="search" className="block text-sm font-medium text-foreground mb-2">
@@ -134,6 +134,7 @@ export default function ProjectsPageClient({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-2 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+              data-testid="projects-search"
             />
           </div>
 
@@ -142,7 +143,7 @@ export default function ProjectsPageClient({
             <label className="block text-sm font-medium text-foreground mb-3">
               Filter by Category
             </label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" data-testid="projects-filter-category">
               {allCategories.map(category => (
                 <Button
                   key={category}
@@ -150,6 +151,7 @@ export default function ProjectsPageClient({
                   size="sm"
                   onClick={() => setSelectedCategory(selectedCategory === category ? null : category)}
                   className="font-mono"
+                  data-testid={`projects-filter-category-${category}`}
                 >
                   {category}
                 </Button>
@@ -162,7 +164,7 @@ export default function ProjectsPageClient({
             <label className="block text-sm font-medium text-foreground mb-3">
               Filter by Technology
             </label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" data-testid="projects-filter-tech">
               {allTechs.map(tech => (
                 <Button
                   key={tech}
@@ -170,6 +172,7 @@ export default function ProjectsPageClient({
                   size="sm"
                   onClick={() => toggleTech(tech)}
                   className="font-mono text-xs"
+                  data-testid={`projects-filter-tech-${tech}`}
                 >
                   {tech}
                 </Button>
@@ -183,6 +186,7 @@ export default function ProjectsPageClient({
               variant="secondary"
               size="sm"
               onClick={clearFilters}
+              data-testid="projects-filter-clear"
             >
               Clear Filters ({selectedCategory ? 1 : 0} + {selectedTechs.length})
             </Button>
@@ -202,12 +206,13 @@ export default function ProjectsPageClient({
             <h2 className="font-headline text-2xl font-bold text-foreground">
               Featured Projects
             </h2>
-            <div className="grid grid-cols-1 gap-6">
-              {featuredProjects.map(project => (
+            <div className="grid grid-cols-1 gap-6" data-testid="projects-featured-grid">
+              {featuredProjects.map((project, index) => (
                 <Link
                   key={project.slug}
                   href={`/projects/${project.slug}`}
                   className="block group"
+                  data-testid={`project-card-featured-${index}`}
                 >
                   <Card className="bg-card border-border hover:border-accent/50 transition-colors overflow-hidden">
                     <div className="grid md:grid-cols-3 gap-6 p-6">
@@ -220,13 +225,13 @@ export default function ProjectsPageClient({
                             {project.category}
                           </Badge>
                         </div>
-                        <CardTitle className="text-2xl group-hover:text-accent transition-colors">
+                        <CardTitle className="text-2xl group-hover:text-accent transition-colors" data-testid={`project-title-featured-${index}`}>
                           {project.title}
                         </CardTitle>
-                        <CardDescription className="text-base">
+                        <CardDescription className="text-base" data-testid={`project-summary-featured-${index}`}>
                           {project.summary}
                         </CardDescription>
-                        <div className="flex flex-wrap gap-1 pt-2">
+                        <div className="flex flex-wrap gap-1 pt-2" data-testid={`project-tech-featured-${index}`}>
                           {project.tech.slice(0, 4).map(tech => (
                             <Badge key={tech} variant="outline" className="text-xs">
                               {tech}
@@ -260,12 +265,13 @@ export default function ProjectsPageClient({
                 Other Projects
               </h2>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherProjects.map(project => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="projects-grid">
+              {otherProjects.map((project, index) => (
                 <Link
                   key={project.slug}
                   href={`/projects/${project.slug}`}
                   className="block group"
+                  data-testid={`project-card-${index}`}
                 >
                   <Card className="bg-card border-border hover:border-accent/50 transition-colors h-full">
                     <CardHeader>
@@ -274,15 +280,15 @@ export default function ProjectsPageClient({
                           {project.category}
                         </Badge>
                       </div>
-                      <CardTitle className="text-lg group-hover:text-accent transition-colors pt-2">
+                      <CardTitle className="text-lg group-hover:text-accent transition-colors pt-2" data-testid={`project-title-${index}`}>
                         {project.title}
                       </CardTitle>
-                      <CardDescription>
+                      <CardDescription data-testid={`project-summary-${index}`}>
                         {project.summary}
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-1" data-testid={`project-tech-${index}`}>
                         {project.tech.slice(0, 3).map(tech => (
                           <Badge key={tech} variant="outline" className="text-xs">
                             {tech}

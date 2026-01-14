@@ -123,13 +123,13 @@ export default function ResearchPage() {
 
   return (
     <MotionFade>
-      <div className="space-y-12">
+      <div data-testid="research-page" className="space-y-12">
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
+        <div data-testid="research-header" className="text-center max-w-4xl mx-auto">
+          <h1 data-testid="research-title" className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground flex items-center justify-center gap-4">
             <TestTube className="w-10 h-10 text-accent-research" /> Research & Inquiry
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-muted-foreground">
+          <p data-testid="research-description" className="mt-4 text-lg md:text-xl text-muted-foreground">
             Documenting experiments, discoveries, hypotheses & evolving intellectual frameworks.
           </p>
           <p className="mt-4 text-md text-muted-foreground/80">
@@ -138,7 +138,7 @@ export default function ResearchPage() {
         </div>
 
         {/* Filters Section */}
-        <section className="max-w-4xl mx-auto space-y-6">
+        <section data-testid="research-filters" className="max-w-4xl mx-auto space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
               <Filter className="w-5 h-5" />
