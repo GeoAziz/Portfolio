@@ -184,6 +184,6 @@ export async function GET(request: NextRequest) {
 }
 
 // Export for testing and admin dashboard
-export async function getStoredMessages() {
+async function getStoredMessages() {
   return await loadMessages();
 }

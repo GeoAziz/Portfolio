@@ -21,7 +21,7 @@ interface ContentStats {
   project?: { count: number; featured: number; technologies: string[] };
 }
 
-export function AdminAnalytics() {
+function AdminAnalytics() {
   const [stats, setStats] = useState<ContentStats | null>(null);
   const [loading, setLoading] = useState(false);
   const [adminToken, setAdminToken] = useState('');
