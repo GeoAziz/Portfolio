@@ -111,7 +111,10 @@ async function networkFirst(request) {
     // Cache successful responses
     if (response.ok) {
       const cache = await caches.open(CACHE_VERSION);
-      cache.put(request, response.clone());
+      // Clone immediately to avoid "body already used" if the response
+      // stream is consumed elsewhere before the async cache.put runs.
+      const responseClone = response.clone();
+      await cache.put(request, responseClone);
     }
 
     return response;
@@ -144,7 +147,8 @@ async function cacheFirst(request) {
 
     if (response.ok) {
       const cache = await caches.open(CACHE_VERSION);
-      cache.put(request, response.clone());
+      const responseClone = response.clone();
+      await cache.put(request, responseClone);
     }
 
     return response;
@@ -162,9 +166,11 @@ async function staleWhileRevalidate(request) {
   const cached = await caches.match(request);
 
   const networkPromise = fetch(request).then((response) => {
-    if (response.ok) {
-      const cache = caches.open(CACHE_VERSION);
-      cache.then((c) => c.put(request, response.clone()));
+    if (response && response.ok) {
+      // Clone immediately to avoid the response body being locked/used
+      // by other consumers before we write to the cache.
+      const responseClone = response.clone();
+      caches.open(CACHE_VERSION).then((c) => c.put(request, responseClone));
     }
     return response;
   });
